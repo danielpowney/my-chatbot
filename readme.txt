@@ -17,14 +17,11 @@ Assume the appearance of an API.AI supported messaging platform to display rich 
 
 A shortcode and widget are available to display the chatbot.
 
-= [my_chatbot] Shortcode =
+**[my_chatbot] Shortcode**
 
 Attributes:
 
  * demo - true or false. Default is false. If true, a textarea is added below the conversation area showing the API.AI JSON response data to assist debugging.
-GitHub Repository
-
-= GitHub Repository =
 
 **Follow this plugin on [GitHub](https://github.com/danielpowney/my-chatbot)**
 
@@ -32,13 +29,13 @@ GitHub Repository
 
 1. Install and activate the plugin.
 2. Create an API.AI account, setup an agent and copy the client access token. If you're a newbie I recommend you try importing the Small Talk prebuilt agent.
-4. Go to My Chatbot plugin options page under the Settings menu, enter the access token and then save
-5. Add the [my_chatbot] shortcode inside the contents of a page
-6  View your page and engage in conversation with your chatbot.
+3. Go to My Chatbot plugin options page under the Settings menu, enter the access token and then save
+4. Add the [my_chatbot] shortcode inside the contents of a page
+5  View your page and engage in conversation with your chatbot.
 
 == Screenshots ==
 
-1. A chatbot conversation with rich messages using the [myc_chatbot] shortcode
+1. A chatbot conversation with rich messages using the [my_chatbot] shortcode
 2. Plugin options
 
 == Changelog ==
