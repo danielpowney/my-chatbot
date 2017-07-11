@@ -98,7 +98,7 @@ function prepareResponse(response) {
 			
 			if (myc_script_vars.messaging_platform == message.platform 
 					|| myc_script_vars.messaging_platform == "default" && message.platform === undefined
-					|| ! hasPlatform(messages, myc_script_vars.messaging_platform) ) {
+					|| message.platform === undefined && ! hasPlatform(messages, myc_script_vars.messaging_platform) ) {
 			
 				switch (message.type) {
 				    case 0: // text response
