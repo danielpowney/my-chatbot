@@ -17,7 +17,7 @@ Assume the appearance of an API.AI supported messaging platform to display rich 
 
 A shortcode and widget are available to display the chatbot.
 
-= [myc_chatbot] Shortcode =
+= [my_chatbot] Shortcode =
 
 Attributes:
 
