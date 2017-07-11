@@ -75,10 +75,54 @@ function myc_section_general_desc() {
 /**
  * Field input setting
  */
-function field_input( $args ) {
+function myc_field_input( $args ) {
 	$settings = (array) get_option( $args['option_name' ] );
 	?>
 	<input class="regular-text" type="text" name="<?php echo $args['option_name']; ?>[<?php echo $args['setting_id']; ?>]" value="<?php echo $settings[$args['setting_id']]; ?>" />
 	<label><?php echo $args['label']; ?></label>
 	<?php 
+}
+
+/**
+ * Color picker field
+ *
+ * @param unknown $args
+ */
+function myc_field_color_picker( $args ) {
+	$settings = (array) get_option( $args['option_name' ] );
+	?>
+	<input type="text" class="color-picker" name="<?php echo $args['option_name']; ?>[<?php echo $args['setting_id']; ?>]" value="<?php echo $settings[$args['setting_id']]; ?>" />
+	<?php 
+}
+	
+	
+/**
+ * Checkbox setting
+ */
+function myc_field_checkbox( $args ) {
+	$settings = (array) get_option( $args['option_name' ] );
+	?>
+	<input type="checkbox" name="<?php echo $args['option_name']; ?>[<?php echo $args['setting_id']; ?>]" value="true" <?php checked( true, isset( $settings[$args['setting_id']] ) ? $settings[$args['setting_id']] : false , true ); ?> />
+	<?php 
+	if ( isset( $args['label'] ) ) { ?>
+		<label><?php echo $args['label']; ?></label>
+	<?php }
+}
+
+
+/**
+ * Field radio buttons
+ */
+function myc_field_radio_buttons( $args ) {
+	$settings = (array) get_option( $args['option_name' ] );
+	foreach ( $args['radio_buttons'] as $radio_button ) {
+		?>
+		<input type="radio" name="<?php echo $args['option_name']; ?>[<?php echo $args['setting_id']; ?>]" value="<?php echo $radio_button['value']; ?>" <?php checked( $radio_button['value'], $settings[$args['setting_id']], true); ?> />
+		<label><?php echo $radio_button['label']; ?></label><br />
+		<?php
+	}
+	?>
+	<br />
+	<label><?php echo $args['label']; ?></label>
+	<?php
 }

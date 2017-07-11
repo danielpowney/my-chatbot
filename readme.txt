@@ -1,6 +1,6 @@
 === My Chatbot ===
 Contributors: dpowney
-Tags: chatbot, talkbot, chat, api.ai, AI, bot, conversational, asssistant, FAQ, natural language
+Tags: chatbot, talkbot, chat, API.AI, AI, bot, conversational, asssistant, FAQ, natural language
 Requires at least: 4.0
 Tested up to: 4.8
 Stable tag: trunk
@@ -12,6 +12,10 @@ A artificial intelligent chatbot for WordPress powered by API.AI.
 == Description ==
 
 A artificial intelligent chatbot for WordPress powered by API.AI. [View Demo](https://danielpowney.com/my-chatbot-demo?utm_source=view-demo&utm_medium=free-plugin&utm_campaign=readme). 
+
+Assume the appearance of an API.AI supported messaging platform to display rich message content. Note only Quick Replies and Image rich messages are supported. 
+
+A shortcode and widget are available to display the chatbot.
 
 = [myc_chatbot] Shortcode =
 
@@ -32,7 +36,12 @@ GitHub Repository
 5. Add the [my_chatbot] shortcode inside the contents of a page
 6  View your page and engage in conversation with your chatbot.
 
+== Screenshots ==
+
+1. A chatbot conversation with rich messages using the [myc_chatbot] shortcode
+2. Plugin options
+
 == Changelog ==
 
-= 0.1 (07/07/2017) =
+= 0.1 (11/07/2017) =
  * Initial

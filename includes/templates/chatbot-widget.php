@@ -1,3 +1,9 @@
+<?php
+if ( ! empty( $title ) ) {	
+	echo "$before_title" . esc_html( $title ) . "$after_title";
+}
+?>
+
 <div class="myc-container">
 	<div id="myc-conversation-area"></div>
 	<div id="myc-input-area">
