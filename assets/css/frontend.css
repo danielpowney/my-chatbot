@@ -1,31 +1,73 @@
 .myc-container {
-	min-width: 300px;
+	width: auto;
+	min-width: 500px; /* min screen size */
+	display: inline-block;
+}
+
+#myc-conversation-area {
+	width: auto;
+	max-width: 100%;
+	max-height: 400px;
+	overflow: auto;
+	padding-right: 10px; /* FIXME only add padding if vertical scrollbar is added*/
+}
+.myc-conversation-bubble-container + .myc-conversation-bubble-container {
+	margin-top: 10px;
 }
 .myc-conversation-bubble {
-	margin-bottom: 10px;
 	padding: 6px 9px;
 	display: inline-block;
 	border-radius: 3px;
 	box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+	max-width: 80%;
 }
 .myc-conversation-response {
-	background-color: #E8E8E8;
+	background-color: #e8e8e8;
 	color: #323232;
+}
+.myc-image-response {
+	padding: 9px 6px 6px 6px;
+}
+.myc-quick-reply {
+	display: block;
+	margin-top: 6px;
+}
+.myc-image-response img {
+	max-width: 300px;
+	max-height: 300px;
+	display: inline-block;
 } 
 .myc-conversation-request {
 	background-color: #1f4c73;
 	color: #fff;
 }
 #myc-input-area {
+	margin-top: 10px;
 	clear: both;
 	display: block;
 }
-#myc-speech {
+#myc-text {
 	max-width: 100%;
-	min-width: 300px;
-	
+	min-width: 100%;
 }
-
 .myc-debug {
 	margin-top: 10px;
+}
+#myc-debug-data {
+	max-width: 100%;
+}
+.myc-conversation-bubble-container-response {
+	text-align: right;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-width : 320px) and (max-width : 480px) {
+	.myc-container {
+		min-width: 100%;
+		width: 100%;
+		max-height: 320px;'
+	}
+	.myc-image-response img {
+		max-width: 100%;
+	}
 }

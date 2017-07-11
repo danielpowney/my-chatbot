@@ -19,7 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Enqueues the required scripts.
  *
  * @since 0.1
- * @global $post
  * @return void
  */
 function myc_load_scripts() {
@@ -36,7 +35,10 @@ function myc_load_scripts() {
 
 	wp_localize_script( 'myc-script', 'myc_script_vars', apply_filters( 'myc_script_vars', array(
 			'access_token' => $general_settings['myc_access_token'],
+			'enable_welcome_event' => $general_settings['enable_welcome_event'],
+			'messaging_platform' => $general_settings['messaging_platform'],
 			'base_url' => 'https://api.api.ai/v1/',
+			'version_date' => '20150910',
 			'messages' => array(
 					'internal_error' => __( 'An internal error occured', 'my-chatbot' ),
 					'input_unknown' => __( 'I\'m sorry I do not understand.', 'my-chatbot' )
@@ -45,6 +47,7 @@ function myc_load_scripts() {
 
 }
 add_action( 'wp_enqueue_scripts', 'myc_load_scripts' );
+
 
 /**
  * Register Styles
@@ -55,18 +58,59 @@ add_action( 'wp_enqueue_scripts', 'myc_load_scripts' );
  * @return void
 */
 function myc_register_styles() {
-	if ( get_option( 'myc_disable_styles', false ) ) {
-		//return;
+	
+	$general_settings = (array) get_option( 'myc_general_settings' );
+	$disable_css_styles = isset( $general_settings['disable_css_styles'] ) ? $general_settings['disable_css_styles'] : false;
+	
+	if ( $disable_css_styles ) {
+		return;
 	}
 	
 	$css_dir = MYC_PLUGIN_URL . 'assets/css/';
 	
 	// Use minified libraries if SCRIPT_DEBUG is turned off
 	$suffix = ''; //( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-//echo $css_dir . 'frontend' . $suffix . '.css'; die();
+	
 	wp_register_style( 'myc-style', $css_dir . 'frontend' . $suffix . '.css', array(), MYC_VERSION, 'all' );
+	
+	$custom_css = '
+		.myc-conversation-response {
+			background-color: ' . $general_settings['response_background_color'] . ';
+			color: ' . $general_settings['response_font_color'] . ';
+		}
+		.myc-conversation-request {
+			background-color: ' . $general_settings['request_background_color'] . ';
+			color: ' . $general_settings['request_font_color'] . ';
+		}
+	';
+	wp_add_inline_style( 'myc-style', $custom_css );
 	wp_enqueue_style( 'myc-style' );
 	
 	wp_enqueue_style( 'dashicons' );
 }
 add_action( 'wp_enqueue_scripts', 'myc_register_styles' );
+
+
+/**
+ * Load Admin Scripts
+ *
+ * Enqueues the required admin scripts.
+ *
+ * @since 0.1
+ * @return void
+ */
+function myc_load_admin_scripts() {
+	
+	$js_dir = MYC_PLUGIN_URL . 'assets/js/';
+	
+	// Use minified libraries if SCRIPT_DEBUG is turned off
+	$suffix = ''; //( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+	
+	wp_register_script( 'myc-admin-script', $js_dir . 'admin' . $suffix . '.js', array( 'jquery' ), MYC_VERSION );
+	wp_enqueue_script( 'myc-admin-script' );
+	
+	wp_enqueue_style( 'wp-color-picker' );
+	wp_enqueue_script( 'wp-color-picker' );
+	
+}
+add_action( 'admin_enqueue_scripts', 'myc_load_admin_scripts' );

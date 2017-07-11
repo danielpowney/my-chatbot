@@ -201,14 +201,14 @@ class MYC_Welcome {
 			<div class="changelog">
 				<div class="feature-section">
 					<div class="feature-section-media">
-						<img src="<?php echo MYC_PLUGIN_URL . 'assets/images/screenshots/demo-screenshot.png'; ?>" class="myc-welcome-screenshots"/>
+						<img src="<?php echo MYC_PLUGIN_URL . 'assets/images/screenshots/screenshot-1.PNG'; ?>" class="myc-welcome-screenshots"/>
 					</div>
 					<div class="feature-section-content">
 						<h4><?php _e( 'Installation & Setup', 'my-chatbot' ); ?></h4>
 						<ol>
 							<li><?php _e( 'Install and activate the plugin.', 'my-chatbot' ); ?></li>
 							<li><?php _e( 'Create an API.AI account, setup an agent and copy the client access token. If you\'re a newbie I recommend you try importing the Small Talk prebuilt agent.', 'my-chatbot' ); ?></li>
-							<li><?php printf( __( 'Go to <a href="%s">My Chatbot plugin options page</a> under the Settings menu, enter the client access token and then save', 'my-chatbot' ), esc_url( admin_url( add_query_arg( array( 'page' => 'my-chatbot' ), 'options-genera;.php' ) ) ) ); ?></li>
+							<li><?php printf( __( 'Go to <a href="%s">My Chatbot plugin options page</a> under the Settings menu, enter the client access token and then save', 'my-chatbot' ), esc_url( admin_url( add_query_arg( array( 'page' => 'my-chatbot' ), 'options-general.php' ) ) ) ); ?></li>
 							<li><?php _e( 'Add [my_chatbot] shortcode inside the contents of a page', 'my-chatbot' ); ?></li>
 							<li><?php _e( 'View your page and engage in conversation with your chatbot.', 'my-chatbot' ); ?></li>
 						</ol>
@@ -218,6 +218,9 @@ class MYC_Welcome {
 						<ul style="margin-left: 10px">
 							<li><?php _e( 'demo - true or false. Default is false. If true, a textarea is added below the conversation area showing the API.AI JSON response data to assist debugging.', 'my-chatbot' ); ?></li>
 						</ul>
+						
+						<h4><?php _e( 'Rich Messages', 'my-chatbot' );?></h4>
+						<p><?php _e( 'Assume the appearance of an API.AI supported messaging platform to display rich message content. Note only Quick Replies and Image rich messages are supported.', 'my-chatbot' );?>
 						
 						<h4><?php _e( 'GitHub Repository', 'my-chatbot' ); ?></h4>
 						<p><a href="https://github.com/danielpowney/my-chatbot">https://github.com/danielpowney/my-chatbot</a></p>
