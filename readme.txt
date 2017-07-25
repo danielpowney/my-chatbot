@@ -13,9 +13,12 @@ A artificial intelligent chatbot for WordPress powered by API.AI.
 
 A artificial intelligent chatbot for WordPress powered by API.AI. [View Demo](https://danielpowney.com/my-chatbot-demo?utm_source=view-demo&utm_medium=free-plugin&utm_campaign=readme). 
 
-Assume the appearance of an API.AI supported messaging platform to display rich message content. Note only Quick Replies and Image rich messages are supported. 
 
-A shortcode and widget are available to display the chatbot.
+* Assume the appearance of an API.AI supported messaging platform to display rich message content. Quick Replies and Image rich messages are supported
+* Links in response message content are supported
+* An overlay can be added on every page to dispkay the chatbot. The overlay can toggle up or down
+* A shortcode and widget are available to display the chatbot.
+* Settings with color pickers for backgrounds and fonts, custom text (e.g. powered by) and opacity for old conversation bubbles
 
 **[my_chatbot] Shortcode**
 
@@ -39,6 +42,12 @@ Attributes:
 2. Plugin options
 
 == Changelog ==
+
+= 0.2 (24/07/2017) =
+* New: Added an overlay of the chatbot at the bottom right of every page which is enabled by default
+* Tweak: Refined styles of conversation area
+* New: Added default language translation files for US English
+* New: Added opacity option for old conversation bubbles
 
 = 0.1 (11/07/2017) =
  * Initial

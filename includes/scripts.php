@@ -74,15 +74,41 @@ function myc_register_styles() {
 	wp_register_style( 'myc-style', $css_dir . 'frontend' . $suffix . '.css', array(), MYC_VERSION, 'all' );
 	
 	$custom_css = '
-		.myc-conversation-response {
+		.myc-conversation-response, .myc-conversation-response:after {
 			background-color: ' . $general_settings['response_background_color'] . ';
 			color: ' . $general_settings['response_font_color'] . ';
 		}
-		.myc-conversation-request {
+		.myc-conversation-request, .myc-conversation-request:before  {
 			background-color: ' . $general_settings['request_background_color'] . ';
 			color: ' . $general_settings['request_font_color'] . ';
 		}
+		.myc-content-overlay-header {
+			background-color: ' . $general_settings['overlay_header_background_color'] . ';
+			color: ' . $general_settings['overlay_header_font_color'] . ';
+		}
+		.myc-conversation-bubble {
+			opacity: ' . $general_settings['non_current_opacity'] . ';
+    		filter: alpha(opacity=' . 100 * intval( $general_settings['non_current_opacity'] ) . ' ); /* For IE8 and earlier */
+		}
+		.myc-is-active {
+			opacity: 1.0;
+    		filter: alpha(opacity=100); /* For IE8 and earlier */
+		}
 	';
+	
+	if ( $general_settings['overlay_default_open'] ) {
+		$custom_css .= '
+			.myc-content-overlay-header .dashicons-arrow-up-alt2 {
+				display: none;
+			}
+		';
+	} else {
+		$custom_css .= '
+			.myc-content-overlay-header .dashicons-arrow-down-alt2, .myc-content-overlay-powered-by, .myc-content-overlay-container {
+				display: none;
+			}
+		';
+	}
 	wp_add_inline_style( 'myc-style', $custom_css );
 	wp_enqueue_style( 'myc-style' );
 	

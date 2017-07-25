@@ -7,9 +7,10 @@
 #myc-conversation-area {
 	width: auto;
 	max-width: 100%;
-	max-height: 400px;
+	max-height: 320px;
 	overflow: auto;
-	padding-right: 10px; /* FIXME only add padding if vertical scrollbar is added*/
+	padding-right: 20px; /* FIXME only add padding if vertical scrollbar is added*/
+	padding-left: 20px; /* FIXME only add padding if vertical scrollbar is added*/
 }
 .myc-conversation-bubble-container + .myc-conversation-bubble-container {
 	margin-top: 10px;
@@ -24,6 +25,36 @@
 .myc-conversation-response {
 	background-color: #e8e8e8;
 	color: #323232;
+	position: relative;
+}
+
+.myc-conversation-response:after {
+	position: absolute;
+    right: -5px;
+    background-color: #e8e8e8;
+    content: ' ';
+    display: block;
+    top: 30%;
+    height: 10px;
+    width: 10px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+}
+.myc-conversation-request:before {
+	position: absolute;
+    left: -5px;
+    background-color: #1f4c73;
+    content: ' ';
+    display: block;
+    top: 30%;
+    height: 10px;
+    width: 10px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
 }
 .myc-image-response {
 	padding: 9px 6px 6px 6px;
@@ -34,12 +65,13 @@
 }
 .myc-image-response img {
 	max-width: 300px;
-	max-height: 300px;
+	max-height: 200px;
 	display: inline-block;
 } 
 .myc-conversation-request {
 	background-color: #1f4c73;
 	color: #fff;
+	position: relative;
 }
 #myc-input-area {
 	margin-top: 10px;
@@ -49,6 +81,8 @@
 #myc-text {
 	max-width: 100%;
 	min-width: 100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 .myc-debug {
 	margin-top: 10px;
@@ -60,14 +94,80 @@
 	text-align: right;
 }
 
+
+/* Overlay */
+.myc-content-overlay {
+	position: fixed; 
+	bottom: 0%; 
+	right: 5%; 
+	width: 350px;
+	display: block;
+	box-shadow: 0 0 3px rgba(0,0,0,.3);
+	z-index: 999;
+	background-color: #fff;
+	text-align: left;
+}
+.myc-content-overlay-header {
+	height: 50px; 
+	font-weight: 600;
+	line-height: 50px;
+	font-size: 22px;
+	padding-left: 10px;
+	padding-right: 10px;
+	display: block;
+}
+.myc-content-overlay-powered-by {
+	background-color: #e5e5e5;
+	color: #333;
+	font-size: 80%;
+	padding: 5px;
+	text-align: right;
+	font-style: italic;
+}
+
+.myc-content-overlay-header .dashicons-arrow-up-alt2, .myc-content-overlay-header .dashicons-arrow-down-alt2 {
+	cursor: pointer;
+	line-height: 50px;
+	float: right;
+}
+.myc-content-overlay-container {
+	display: block;
+}
+.myc-content-overlay-container .myc-container {
+	width: 100% !important;
+	min-width: auto !important;
+	display: block;
+}
+.myc-content-overlay-container .myc-container #myc-conversation-area {
+	max-height: inherit;
+	display: block;
+	height: 350px;
+	padding-top: 10px;
+}
+.myc-content-overlay-container .myc-image-response img {
+	max-width: 100%;
+}
+
+.myc-content-overlay-container #myc-input-area {
+	padding: 10px;
+	margin-top: 0px;
+}
+
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-width : 320px) and (max-width : 480px) {
 	.myc-container {
 		min-width: 100%;
 		width: 100%;
-		max-height: 320px;'
+		max-height: 320px;
 	}
 	.myc-image-response img {
 		max-width: 100%;
+	}
+	
+	.myc-content-overlay {
+		width: 100%;
+	}
+	.myc-content-overlay-container {
+		font-size: 100%;
 	}
 }
