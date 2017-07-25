@@ -5,7 +5,7 @@
  * Description: A artificial intelligent chatbot for WordPress powered by API.AI.
  * Author: Daniel Powney
  * Author URI: https://danielpowney.com
- * Version: 0.1
+ * Version: 0.2
  * Text Domain: my-chatbot
  * Domain Path: languages
  *
@@ -125,7 +125,7 @@ final class My_Chatbot {
 
 		// Plugin version.
 		if ( ! defined( 'MYC_VERSION' ) ) {
-			define( 'MYC_VERSION', '0.1' );
+			define( 'MYC_VERSION', '0.2' );
 		}
 
 		// Plugin Folder Path.

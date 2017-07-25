@@ -77,10 +77,21 @@ function myc_section_general_desc() {
  */
 function myc_field_input( $args ) {
 	$settings = (array) get_option( $args['option_name' ] );
+	$class = isset( $args['class'] ) ? $args['class'] : 'regular-text';
+	$type = isset( $args['type'] ) ? $args['type'] : 'text';
+	$min = isset( $args['min'] ) && is_numeric( $args['min'] ) ? intval( $args['min'] ) : null;
+	$max = isset( $args['max'] ) && is_numeric( $args['max'] ) ? intval( $args['max'] ) : null;
+	$step = isset( $args['step'] ) && is_numeric( $args['step'] ) ? floatval( $args['step'] ) : null;
+	$readonly = isset( $args['readonly'] ) && $args['readonly'] ? ' readonly' : '';
 	?>
-	<input class="regular-text" type="text" name="<?php echo $args['option_name']; ?>[<?php echo $args['setting_id']; ?>]" value="<?php echo $settings[$args['setting_id']]; ?>" />
-	<label><?php echo $args['label']; ?></label>
+	<input class="<?php echo $class; ?>" type="<?php echo $type; ?>" name="<?php echo $args['option_name']; ?>[<?php echo $args['setting_id']; ?>]" 
+			value="<?php echo esc_attr( $settings[$args['setting_id']] ); ?>" <?php if ( $min !== null ) { echo ' min="' . $min . '"'; } ?> 
+			<?php if ( $max !== null) { echo ' max="' . $max . '"'; } echo $readonly; ?>
+			<?php if ( $step !== null ) { echo ' step="' . $step . '"'; } ?> />
 	<?php 
+	if ( isset( $args['label'] ) ) { ?>
+		<label><?php echo $args['label']; ?></label>
+	<?php } 
 }
 
 /**

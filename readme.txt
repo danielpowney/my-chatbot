@@ -13,18 +13,18 @@ A artificial intelligent chatbot for WordPress powered by API.AI.
 
 A artificial intelligent chatbot for WordPress powered by API.AI. [View Demo](https://danielpowney.com/my-chatbot-demo?utm_source=view-demo&utm_medium=free-plugin&utm_campaign=readme). 
 
-Assume the appearance of an API.AI supported messaging platform to display rich message content. Note only Quick Replies and Image rich messages are supported. 
 
-A shortcode and widget are available to display the chatbot.
+* Assume the appearance of an API.AI supported messaging platform to display rich message content. Quick Replies and Image rich messages are supported
+* Links in response message content are supported
+* An overlay can be added on every page to dispkay the chatbot. The overlay can toggle up or down
+* A shortcode and widget are available to display the chatbot.
+* Settings with color pickers for backgrounds and fonts, custom text (e.g. powered by) and opacity for old conversation bubbles
 
-= [my_chatbot] Shortcode =
+**[my_chatbot] Shortcode**
 
 Attributes:
 
  * demo - true or false. Default is false. If true, a textarea is added below the conversation area showing the API.AI JSON response data to assist debugging.
-GitHub Repository
-
-= GitHub Repository =
 
 **Follow this plugin on [GitHub](https://github.com/danielpowney/my-chatbot)**
 
@@ -32,16 +32,24 @@ GitHub Repository
 
 1. Install and activate the plugin.
 2. Create an API.AI account, setup an agent and copy the client access token. If you're a newbie I recommend you try importing the Small Talk prebuilt agent.
-4. Go to My Chatbot plugin options page under the Settings menu, enter the access token and then save
-5. Add the [my_chatbot] shortcode inside the contents of a page
-6  View your page and engage in conversation with your chatbot.
+3. Go to My Chatbot plugin options page under the Settings menu, enter the access token and then save
+4. Add the [my_chatbot] shortcode inside the contents of a page
+5  View your page and engage in conversation with your chatbot.
 
 == Screenshots ==
 
-1. A chatbot conversation with rich messages using the [myc_chatbot] shortcode
-2. Plugin options
+1. Chatbot overlay example with rich message content
+2. [my_chatbot] shortcode example
+3. Plugin options
+4. Plugin options continued
 
 == Changelog ==
+
+= 0.2 (24/07/2017) =
+* New: Added an overlay of the chatbot at the bottom right of every page which is enabled by default
+* Tweak: Refined styles of conversation area
+* New: Added default language translation files for US English
+* New: Added opacity option for old conversation bubbles
 
 = 0.1 (11/07/2017) =
  * Initial

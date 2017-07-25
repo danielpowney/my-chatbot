@@ -15,6 +15,7 @@ jQuery(document).ready(function() {
 			var text = jQuery("input#myc-text").val();
 			jQuery("#myc-conversation-area").append("<div class=\"myc-conversation-bubble-container myc-conversation-bubble-container-request\"><div class=\"myc-conversation-bubble myc-conversation-request myc-is-active\">" + text + "</div><div>");
 			jQuery("input#myc-text").val("");
+			jQuery("#myc-conversation-area").scrollTop(jQuery("#myc-conversation-area").prop("scrollHeight"));
 			textQuery(text);
 		}
 	});
@@ -43,9 +44,23 @@ jQuery(document).ready(function() {
 			},
 			error : function() {
 				textResponse(myc_script_vars.messages.internal_error);
+				jQuery("#myc-conversation-area").scrollTop(jQuery("#myc-conversation-area").prop("scrollHeight"));
 			}
 		});
 	}
+	
+	
+	/* Overlay slide toggle */
+	jQuery(".myc-content-overlay .myc-content-overlay-header .dashicons-arrow-up-alt2").click(function(event){
+		jQuery(this).hide();
+		jQuery(this).parent().find(".dashicons-arrow-down-alt2").show();
+		jQuery(this).parent().siblings(".myc-content-overlay-container, .myc-content-overlay-powered-by").slideToggle("slow", function() {});
+	});
+	jQuery(".myc-content-overlay .myc-content-overlay-header .dashicons-arrow-down-alt2").click(function(event){
+		jQuery(this).hide();
+		jQuery(this).parent().find(".dashicons-arrow-up-alt2").show();
+		jQuery(this).parent().siblings(".myc-content-overlay-container, .myc-content-overlay-powered-by").slideToggle("slow", function() {});
+	});
 	
 });
 
@@ -75,6 +90,7 @@ function textQuery(text) {
 		},
 		error : function() {
 			textResponse(myc_script_vars.messages.internal_error);
+			jQuery("#myc-conversation-area").scrollTop(jQuery("#myc-conversation-area").prop("scrollHeight"));
 		}
 	});
 }
