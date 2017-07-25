@@ -38,8 +38,10 @@ Attributes:
 
 == Screenshots ==
 
-1. A chatbot conversation with rich messages using the [my_chatbot] shortcode
-2. Plugin options
+1. Chatbot overlay example with rich message content
+2. [my_chatbot] shortcode example
+3. Plugin options
+4. Plugin options continued
 
 == Changelog ==
 
