@@ -53,11 +53,15 @@ jQuery(document).ready(function() {
 	/* Overlay slide toggle */
 	jQuery(".myc-content-overlay .myc-content-overlay-header .dashicons-arrow-up-alt2").click(function(event){
 		jQuery(this).hide();
+		jQuery(this).parent().parent().removeClass("myc-toggle-closed");
+		jQuery(this).parent().parent().addClass("myc-toggle-open");
 		jQuery(this).parent().find(".dashicons-arrow-down-alt2").show();
 		jQuery(this).parent().siblings(".myc-content-overlay-container, .myc-content-overlay-powered-by").slideToggle("slow", function() {});
 	});
 	jQuery(".myc-content-overlay .myc-content-overlay-header .dashicons-arrow-down-alt2").click(function(event){
 		jQuery(this).hide();
+		jQuery(this).parent().parent().removeClass("myc-toggle-open");
+		jQuery(this).parent().parent().addClass("myc-toggle-closed");
 		jQuery(this).parent().find(".dashicons-arrow-up-alt2").show();
 		jQuery(this).parent().siblings(".myc-content-overlay-container, .myc-content-overlay-powered-by").slideToggle("slow", function() {});
 	});
@@ -103,6 +107,8 @@ function textQuery(text) {
 function prepareResponse(response) {
 	
 	if (response.status.code == "200" ) {
+		
+		jQuery(window).trigger("myc_response_success", response);
 		
 		jQuery("#myc-conversation-area .myc-conversation-response").removeClass("myc-is-active");
 		

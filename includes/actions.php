@@ -23,7 +23,8 @@ function myc_content_overlay() {
 	ob_start();
 	myc_get_template_part( 'chatbot', 'overlay', true, array(
 			'overlay_header_text' 		=> $general_settings['overlay_header_text'],
-			'overlay_powered_by_text' 	=> $general_settings['overlay_powered_by_text']
+			'overlay_powered_by_text' 	=> $general_settings['overlay_powered_by_text'],
+			'toggle_class'				=> $general_settings['overlay_default_open'] == true ? 'myc-toggle-open' :  'myc-toggle-closed'
 	) );
 	$html = ob_get_contents();
 	ob_end_clean();

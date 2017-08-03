@@ -45,6 +45,12 @@ Attributes:
 
 == Changelog ==
 
+= 0.3 (03/08/2017) =
+* Tweak: Added obverlay for mobile using CSS3 media queries for different small screens with portrait and lanscape orientations
+* Added toggle CSS class to overlay for open/closed
+* Added JavaScript event in frontend for extra response handling
+* Added myc_shortcode_before_conversation_area action hook to [my_chatbot] shortcode template
+
 = 0.2 (24/07/2017) =
 * New: Added an overlay of the chatbot at the bottom right of every page which is enabled by default
 * Tweak: Refined styles of conversation area

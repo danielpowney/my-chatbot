@@ -1,4 +1,4 @@
-<div class="myc-content-overlay">
+<div class="myc-content-overlay <?php if ( isset( $toggle_class ) ) { echo $toggle_class; } ?>">
 	<div class="myc-content-overlay-header">
 	<span class=myc-content-overlay-header-text"><?php echo $overlay_header_text; ?></span>
 	<span class="dashicons dashicons-arrow-up-alt2" title="<?php _e( 'Open', 'my-chatbot' ); ?>"></span>
