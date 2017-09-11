@@ -57,11 +57,12 @@ class MYC_Chatbot_Widget extends WP_Widget {
 		echo $before_widget;
 
 		myc_get_template_part( 'chatbot-widget', null, true, array(
-				'title' => $title,
-				'before_title' => $before_title,
-				'after_title' => $after_title,
-				'class' => 'myc-chatbot-widget',
-				'debug' => $debug
+				'title' 					=> $title,
+				'before_title' 				=> $before_title,
+				'after_title' 				=> $after_title,
+				'class' 					=> 'myc-chatbot-widget',
+				'debug' 					=> $debug,
+				'input_text'				=> $general_settings['input_text']
 		) );
 
 		echo $after_widget;

@@ -94,6 +94,12 @@
 	text-align: right;
 }
 
+.myc-datetime {
+	margin-top: 2px;
+	font-style: italic;
+	font-color: #888;
+}
+
 
 /* Overlay */
 .myc-content-overlay {

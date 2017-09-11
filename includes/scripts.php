@@ -32,17 +32,27 @@ function myc_load_scripts() {
 	wp_enqueue_script( 'myc-script' );
 	
 	$general_settings = (array) get_option( 'myc_general_settings' );
+	
+	$session_id = null;
+	if ( isset( $_COOKIE['myc_session_id'] ) && strlen( $_COOKIE['myc_session_id'] ) > 0 ) {
+		$session_id = $_COOKIE['myc_session_id'];
+	} else {
+		$session_id = md5( uniqid( 'myc-' ) );
+		setcookie( 'myc_session_id', $session_id, time() + ( 86400 * 30 ), '/' ); // 86400 = 1 day
+	}
 
 	wp_localize_script( 'myc-script', 'myc_script_vars', apply_filters( 'myc_script_vars', array(
-			'access_token' => $general_settings['myc_access_token'],
-			'enable_welcome_event' => $general_settings['enable_welcome_event'],
-			'messaging_platform' => $general_settings['messaging_platform'],
+			'access_token' => apply_filters( 'myc_script_access_token', $general_settings['myc_access_token'] ),
+			'enable_welcome_event' => apply_filters( 'myc_script_enable_welcome_event', $general_settings['enable_welcome_event'] ),
+			'messaging_platform' => apply_filters( 'myc_script_messaging_platform', $general_settings['messaging_platform'] ),
 			'base_url' => 'https://api.api.ai/v1/',
 			'version_date' => '20150910',
 			'messages' => array(
 					'internal_error' => __( 'An internal error occured', 'my-chatbot' ),
 					'input_unknown' => __( 'I\'m sorry I do not understand.', 'my-chatbot' )
-			)
+			),
+			'session_id' => apply_filters( 'myc_script_session_id', $session_id ),
+			'show_time' => apply_filters( 'myc_script_show_time', $general_settings['show_time'] ),
 	) ) );
 
 }

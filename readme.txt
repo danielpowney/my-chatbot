@@ -45,11 +45,18 @@ Attributes:
 
 == Changelog ==
 
+= 0.4 (11/09/2017) =
+* New: Add input text (e.g. Ask something...) as an option 
+* New: Added unique session id for API.AI conversations using a cookie which expires after 24 hours
+* New: Added myc_widget_before_conversation_area action hook to chatbot widget template
+* New: Added option to show time underneath conversation bubbles
+* New: Added filters to modify the access token, enable welcome event, messaging platform, session id and show time options. This allows you to have different chatbots on different pages for example.
+
 = 0.3 (03/08/2017) =
 * Tweak: Added obverlay for mobile using CSS3 media queries for different small screens with portrait and lanscape orientations
-* Added toggle CSS class to overlay for open/closed
-* Added JavaScript event in frontend for extra response handling
-* Added myc_shortcode_before_conversation_area action hook to [my_chatbot] shortcode template
+* New: Added toggle CSS class to overlay for open/closed
+* New: Added JavaScript event in frontend for extra response handling
+* New: Added myc_shortcode_before_conversation_area action hook to [my_chatbot] shortcode template
 
 = 0.2 (24/07/2017) =
 * New: Added an overlay of the chatbot at the bottom right of every page which is enabled by default

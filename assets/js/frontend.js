@@ -13,7 +13,13 @@ jQuery(document).ready(function() {
 			event.preventDefault();
 			jQuery("#myc-conversation-area .myc-conversation-request").removeClass("myc-is-active");
 			var text = jQuery("input#myc-text").val();
-			jQuery("#myc-conversation-area").append("<div class=\"myc-conversation-bubble-container myc-conversation-bubble-container-request\"><div class=\"myc-conversation-bubble myc-conversation-request myc-is-active\">" + text + "</div><div>");
+			var date = new Date();
+			var innerHTML = "<div class=\"myc-conversation-bubble-container myc-conversation-bubble-container-request\"><div class=\"myc-conversation-bubble myc-conversation-request myc-is-active\">" + text + "</div>";
+			if (myc_script_vars.show_time) {
+				innerHTML += "<div class=\"myc-datetime\">" + date.toLocaleTimeString() + "</div>";
+			}
+			innerHTML += "</div>";
+			jQuery("#myc-conversation-area").append(innerHTML); 
 			jQuery("input#myc-text").val("");
 			jQuery("#myc-conversation-area").scrollTop(jQuery("#myc-conversation-area").prop("scrollHeight"));
 			textQuery(text);
@@ -37,12 +43,12 @@ jQuery(document).ready(function() {
 					name : "WELCOME"
 				},
 				lang : "en",			 
-				sessionId : "my-chatbot"
+				sessionId : myc_script_vars.session_id,
 			} ),
 			success : function(response) {
 				prepareResponse(response);
 			},
-			error : function() {
+			error : function(response) {
 				textResponse(myc_script_vars.messages.internal_error);
 				jQuery("#myc-conversation-area").scrollTop(jQuery("#myc-conversation-area").prop("scrollHeight"));
 			}
@@ -87,12 +93,12 @@ function textQuery(text) {
 		data: JSON.stringify( {
 			query: text, 
 			lang: "en", 
-			sessionId: "my-chatbot"
+			sessionId: myc_script_vars.session_id
 		} ),
 		success : function(response) {
 			prepareResponse(response);
 		},
-		error : function() {
+		error : function(response) {
 			textResponse(myc_script_vars.messages.internal_error);
 			jQuery("#myc-conversation-area").scrollTop(jQuery("#myc-conversation-area").prop("scrollHeight"));
 		}
@@ -185,7 +191,13 @@ function textResponse(text) {
 	if (text === "") {
 		text = myc_script_vars.messages.internal_error;
 	}
-	jQuery("#myc-conversation-area").append("<div class=\"myc-conversation-bubble-container myc-conversation-bubble-container-response\"><div class=\"myc-conversation-bubble myc-conversation-response myc-is-active myc-text-response\">" + text + "</div></div>");
+	var date = new Date();
+	var innerHTML = "<div class=\"myc-conversation-bubble-container myc-conversation-bubble-container-response\"><div class=\"myc-conversation-bubble myc-conversation-response myc-is-active myc-text-response\">" + text + "</div>";
+	if (myc_script_vars.show_time) {
+		innerHTML += "<div class=\"myc-datetime\">" + date.toLocaleTimeString() + "</div>";
+	}
+	innerHTML += "</div>";
+	jQuery("#myc-conversation-area").append(innerHTML);
 }
 
 /**
@@ -199,7 +211,13 @@ function imageResponse(imageUrl) {
 		textResponse(myc_script_vars.messages.internal_error)
 	} else {
 		// FIXME wait for image to load by creating HTML first
-		jQuery("#myc-conversation-area").append("<div class=\"myc-conversation-bubble-container myc-conversation-bubble-container-response\"><div class=\"myc-conversation-bubble myc-conversation-response myc-is-active myc-image-response\"><img src=\"" + imageUrl + "\"/></div></div>");
+		var date = new Date();
+		var innerHTML = "<div class=\"myc-conversation-bubble-container myc-conversation-bubble-container-response\"><div class=\"myc-conversation-bubble myc-conversation-response myc-is-active myc-image-response\"><img src=\"" + imageUrl + "\"/></div>";
+		if (myc_script_vars.show_time) {
+			innerHTML += "<div class=\"myc-datetime\">" + date.toLocaleTimeString() + "</div>";
+		}
+		innerHTML += "</div>";
+		jQuery("#myc-conversation-area").append(innerHTML);
 	}
 }
 
@@ -233,13 +251,25 @@ function quickRepliesResponse(title, replies) {
 		html += "<input type=\"button\" class=\"myc-quick-reply\" value=\"" + replies[index] + "\" />";
 	}
 	
-	jQuery("#myc-conversation-area").append("<div class=\"myc-conversation-bubble-container myc-conversation-bubble-container-response\"><div class=\"myc-conversation-bubble myc-conversation-response myc-is-active myc-quick-replies-response\">" + html + "</div></div>");
+	var date = new Date();
+	var innerHTML = "<div class=\"myc-conversation-bubble-container myc-conversation-bubble-container-response\"><div class=\"myc-conversation-bubble myc-conversation-response myc-is-active myc-quick-replies-response\">" + html + "</div>";
+	if (myc_script_vars.show_time) {
+		innerHTML += "<div class=\"myc-datetime\">" + date.toLocaleTimeString() + "</div>";
+	}
+	innerHTML += "</div>";
+	jQuery("#myc-conversation-area").append(innerHTML);
 
 	jQuery("#myc-conversation-area .myc-is-active .myc-quick-reply").click(function(event) {
 		event.preventDefault();
 		jQuery("#myc-conversation-area .myc-conversation-request").removeClass("myc-is-active");
 		var text = jQuery(this).val()
-		jQuery("#myc-conversation-area").append("<div class=\"myc-conversation-bubble-container myc-conversation-bubble-container-request\"><div class=\"myc-conversation-bubble myc-conversation-request myc-is-active\">" + text + "</div><div>");
+		var date = new Date();
+		var innerHTML = "<div class=\"myc-conversation-bubble-container myc-conversation-bubble-container-request\"><div class=\"myc-conversation-bubble myc-conversation-request myc-is-active\">" + text + "</div>";
+		if (myc_script_vars.show_time) {
+			innerHTML += "<div class=\"myc-datetime\">" + date.toLocaleTimeString() + "</div>";
+		}
+		innerHTML += "</div>";
+		jQuery("#myc-conversation-area").append(innerHTML);
 		textQuery(text);
 	});
 	

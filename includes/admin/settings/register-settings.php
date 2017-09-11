@@ -59,6 +59,17 @@ function myc_register_settings() {
 							'label' 		=> __( 'Enter API.API agent client access token.', 'my-chatbot' )
 					)
 			),
+			'input_text' => array(
+					'title' 	=> __( 'Input Text', 'my-chatbot' ),
+					'callback' 	=> 'myc_field_input',
+					'page' 		=> 'my-chatbot',
+					'section' 	=> 'myc_section_general',
+					'args' => array(
+							'option_name' 	=> 'myc_general_settings',
+							'setting_id' 	=> 'input_text',
+							'label' 		=> __( 'Enter input text.', 'my-chatbot' )
+					)
+			),
 			'enable_welcome_event' => array(
 					'title' 	=> __( 'Enable Welcome Event', 'my-chatbot' ),
 					'callback' 	=> 'myc_field_checkbox',
@@ -114,6 +125,17 @@ function myc_register_settings() {
 									
 							),
 							'label'			=> __( 'Assume appearance of a API.AI supported messaging platform. Note default responses do not support rich message content.', 'my-chatbot' )
+					)
+			),
+			'show_time' => array(
+					'title' 	=> __( 'Show Time', 'my-chatbot' ),
+					'callback' 	=> 'myc_field_checkbox',
+					'page' 		=> 'my-chatbot',
+					'section' 	=> 'myc_section_general',
+					'args' => array(
+							'option_name' 	=> 'myc_general_settings',
+							'setting_id' 	=> 'show_time',
+							'label' 		=> __( 'Check this box if you want to show the time underneath the conversation bubbles.', 'my-chatbot' )
 					)
 			),
 			'request_background_color' => array(
@@ -270,8 +292,10 @@ function myc_default_settings() {
 
 	$general_settings = array_merge( array(
 			'myc_access_token' 					=> '',
+			'input_text'						=> __( 'Ask something...', 'my-chatbot' ),
 			'enable_welcome_event'				=> false,
 			'messaging_platform'				=> 'default',
+			'show_time'							=> false,
 			
 			// conversation bubbles
 			'request_background_color'			=> '#1f4c73',
@@ -312,6 +336,12 @@ function myc_sanitize_general_settings( $input ) {
 		$input['enable_welcome_event'] = true;
 	} else {
 		$input['enable_welcome_event'] = false;
+	}
+	
+	if ( isset( $input['show_time'] ) && $input['show_time'] == 'true' ) {
+		$input['show_time'] = true;
+	} else {
+		$input['show_time'] = false;
 	}
 	
 	if ( isset( $input['disable_css_styles'] ) && $input['disable_css_styles'] == 'true' ) {
