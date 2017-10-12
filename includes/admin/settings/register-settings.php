@@ -56,7 +56,7 @@ function myc_register_settings() {
 					'args' => array(
 							'option_name' 	=> 'myc_general_settings',
 							'setting_id' 	=> 'myc_access_token',
-							'label' 		=> __( 'Enter API.API agent client access token.', 'my-chatbot' )
+							'label' 		=> __( 'Enter API.AI agent client access token.', 'my-chatbot' )
 					)
 			),
 			'enable_welcome_event' => array(
