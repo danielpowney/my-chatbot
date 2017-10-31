@@ -20,7 +20,7 @@ function myc_upgrade_check() {
 		myc_upgrade_to_0_4();
 	}
 
-	//update_option( 'myc_plugin_version', MYC_VERSION ); // latest version upgrade complete
+	update_option( 'myc_plugin_version', MYC_VERSION ); // latest version upgrade complete
 
 }
 if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
