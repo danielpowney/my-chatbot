@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Register Settings
  *
@@ -29,12 +29,13 @@ function myc_get_settings() {
 		// Update old settings with new single option
 
 		$general_settings = is_array( get_option( 'myc_general_settings' ) )    ? get_option( 'myc_general_settings' )    : array();
-		
-		$settings = array_merge( $general_settings );
+		$overlay_settings = is_array( get_option( 'myc_overlay_settings' ) )    ? get_option( 'myc_overlay_settings' )    : array();
+
+		$settings = array_merge( $general_settings, $overlay_settings );
 
 		update_option( 'myc_settings', $settings );
 	}
-	
+
 	return apply_filters( 'myc_get_settings', $settings );
 }
 
@@ -42,38 +43,42 @@ function myc_get_settings() {
  * Reister settings
  */
 function myc_register_settings() {
-	
+
 	register_setting( 'myc_general_settings', 'myc_general_settings', 'myc_sanitize_general_settings' );
-	
-	add_settings_section( 'myc_section_general', null, 'myc_section_general_desc', 'my-chatbot' );
-	
+	register_setting( 'myc_overlay_settings', 'myc_overlay_settings', 'myc_sanitize_overlay_settings' );
+
+	add_settings_section( 'myc_section_general', null, 'myc_section_general_desc', 'my-chatbot&tab=myc_general_settings' );
+	add_settings_section( 'myc_section_overlay', null, 'myc_section_overlay_desc', 'my-chatbot&tab=myc_overlay_settings' );
+
 	$setting_fields = array(
 			'myc_access_token' => array(
 					'title' 	=> __( 'Access Token', 'my-chatbot' ),
 					'callback' 	=> 'myc_field_input',
-					'page' 		=> 'my-chatbot',
+					'page' 		=> 'my-chatbot&tab=myc_general_settings',
 					'section' 	=> 'myc_section_general',
 					'args' => array(
 							'option_name' 	=> 'myc_general_settings',
 							'setting_id' 	=> 'myc_access_token',
-							'label' 		=> __( 'Enter API.API agent client access token.', 'my-chatbot' )
+							'label' 		=> __( 'Enter Dialogflow agent client access token.', 'my-chatbot' ),
+							'placeholder'	=> __( 'Enter access token...', 'my-chatbot' )
 					)
 			),
 			'input_text' => array(
 					'title' 	=> __( 'Input Text', 'my-chatbot' ),
 					'callback' 	=> 'myc_field_input',
-					'page' 		=> 'my-chatbot',
+					'page' 		=> 'my-chatbot&tab=myc_general_settings',
 					'section' 	=> 'myc_section_general',
 					'args' => array(
 							'option_name' 	=> 'myc_general_settings',
 							'setting_id' 	=> 'input_text',
-							'label' 		=> __( 'Enter input text.', 'my-chatbot' )
+							'label' 		=> __( 'Enter input text.', 'my-chatbot' ),
+							'placeholder'	=> __( 'Enter input text...', 'my-chatbot' )
 					)
 			),
 			'enable_welcome_event' => array(
 					'title' 	=> __( 'Enable Welcome Event', 'my-chatbot' ),
 					'callback' 	=> 'myc_field_checkbox',
-					'page' 		=> 'my-chatbot',
+					'page' 		=> 'my-chatbot&tab=myc_general_settings',
 					'section' 	=> 'myc_section_general',
 					'args' => array(
 							'option_name' 	=> 'myc_general_settings',
@@ -84,7 +89,7 @@ function myc_register_settings() {
 			'messaging_platform' => array(
 					'title' 	=> __( 'Messaging Platform', 'my-chatbot' ),
 					'callback' 	=> 'myc_field_radio_buttons',
-					'page' 		=> 'my-chatbot',
+					'page' 		=> 'my-chatbot&tab=myc_general_settings',
 					'section' 	=> 'myc_section_general',
 					'args' => array(
 							'option_name' 	=> 'myc_general_settings',
@@ -122,15 +127,15 @@ function myc_register_settings() {
 											'value' => 'skype',
 											'label' => __( 'Skype', 'my-chatbot' ),
 									)
-									
+
 							),
-							'label'			=> __( 'Assume appearance of a API.AI supported messaging platform. Note default responses do not support rich message content.', 'my-chatbot' )
+							'label'			=> __( 'Assume appearance of a Dialogflow supported messaging platform. Note default responses do not support rich message content.', 'my-chatbot' )
 					)
 			),
 			'show_time' => array(
 					'title' 	=> __( 'Show Time', 'my-chatbot' ),
 					'callback' 	=> 'myc_field_checkbox',
-					'page' 		=> 'my-chatbot',
+					'page' 		=> 'my-chatbot&tab=myc_general_settings',
 					'section' 	=> 'myc_section_general',
 					'args' => array(
 							'option_name' 	=> 'myc_general_settings',
@@ -141,7 +146,7 @@ function myc_register_settings() {
 			'request_background_color' => array(
 					'title' 	=> __( 'Request Background Color', 'my-chatbot' ),
 					'callback' 	=> 'myc_field_color_picker',
-					'page' 		=> 'my-chatbot',
+					'page' 		=> 'my-chatbot&tab=myc_general_settings',
 					'section' 	=> 'myc_section_general',
 					'args' => array(
 							'option_name' 	=> 'myc_general_settings',
@@ -152,7 +157,7 @@ function myc_register_settings() {
 			'request_font_color' => array(
 					'title' 	=> __( 'Request Font Color', 'my-chatbot' ),
 					'callback' 	=> 'myc_field_color_picker',
-					'page' 		=> 'my-chatbot',
+					'page' 		=> 'my-chatbot&tab=myc_general_settings',
 					'section' 	=> 'myc_section_general',
 					'args' => array(
 							'option_name' 	=> 'myc_general_settings',
@@ -163,7 +168,7 @@ function myc_register_settings() {
 			'response_background_color' => array(
 					'title' 	=> __( 'Response Background Color', 'my-chatbot' ),
 					'callback' 	=> 'myc_field_color_picker',
-					'page' 		=> 'my-chatbot',
+					'page' 		=> 'my-chatbot&tab=myc_general_settings',
 					'section' 	=> 'myc_section_general',
 					'args' => array(
 							'option_name' 	=> 'myc_general_settings',
@@ -174,7 +179,7 @@ function myc_register_settings() {
 			'response_font_color' => array(
 					'title' 	=> __( 'Response Font Color', 'my-chatbot' ),
 					'callback' 	=> 'myc_field_color_picker',
-					'page' 		=> 'my-chatbot',
+					'page' 		=> 'my-chatbot&tab=myc_general_settings',
 					'section' 	=> 'myc_section_general',
 					'args' => array(
 							'option_name' 	=> 'myc_general_settings',
@@ -185,7 +190,7 @@ function myc_register_settings() {
 			'non_current_opacity' => array(
 					'title' 	=> __( 'Non Current Opacity', 'my-chatbot' ),
 					'callback' 	=> 'myc_field_input',
-					'page' 		=> 'my-chatbot',
+					'page' 		=> 'my-chatbot&tab=myc_general_settings',
 					'section' 	=> 'myc_section_general',
 					'args' => array(
 							'option_name' 	=> 'myc_general_settings',
@@ -198,76 +203,78 @@ function myc_register_settings() {
 							'step'			=> 0.05
 					)
 			),
-			'overlay_header_background_color' => array(
-					'title' 	=> __( 'Overlay Header Background Color', 'my-chatbot' ),
-					'callback' 	=> 'myc_field_color_picker',
-					'page' 		=> 'my-chatbot',
-					'section' 	=> 'myc_section_general',
+			'enable_overlay' => array(
+					'title' 	=> __( 'Enable Overlay', 'my-chatbot' ),
+					'callback' 	=> 'myc_field_checkbox',
+					'page' 		=> 'my-chatbot&tab=myc_overlay_settings',
+					'section' 	=> 'myc_section_overlay',
 					'args' => array(
-							'option_name' 	=> 'myc_general_settings',
+							'option_name' 	=> 'myc_overlay_settings',
+							'setting_id' 	=> 'enable_overlay',
+							'label' 		=> __( 'Check this box if you want to enable an overlay of the chatbot on every page. Note you can override this setting from the Edit post screen for specific posts.', 'my-chatbot' )
+					)
+			),
+			'overlay_header_background_color' => array(
+					'title' 	=> __( 'Header Background Color', 'my-chatbot' ),
+					'callback' 	=> 'myc_field_color_picker',
+					'page' 		=> 'my-chatbot&tab=myc_overlay_settings',
+					'section' 	=> 'myc_section_overlay',
+					'args' => array(
+							'option_name' 	=> 'myc_overlay_settings',
 							'setting_id' 	=> 'overlay_header_background_color',
 							'label'			=> __( 'Choose a background color for the overlay header.', 'my-chatbot' )
 					)
 			),
 			'overlay_header_font_color' => array(
-					'title' 	=> __( 'Overlay Header Font Color', 'my-chatbot' ),
+					'title' 	=> __( 'Header Font Color', 'my-chatbot' ),
 					'callback' 	=> 'myc_field_color_picker',
-					'page' 		=> 'my-chatbot',
-					'section' 	=> 'myc_section_general',
+					'page' 		=> 'my-chatbot&tab=myc_overlay_settings',
+					'section' 	=> 'myc_section_overlay',
 					'args' => array(
-							'option_name' 	=> 'myc_general_settings',
+							'option_name' 	=> 'myc_overlay_settings',
 							'setting_id' 	=> 'overlay_header_font_color',
 							'label'			=> __( 'Choose a font color for the overlay header text.', 'my-chatbot' )
 					)
 			),
-			'enable_overlay' => array(
-					'title' 	=> __( 'Enable Overlay', 'my-chatbot' ),
-					'callback' 	=> 'myc_field_checkbox',
-					'page' 		=> 'my-chatbot',
-					'section' 	=> 'myc_section_general',
-					'args' => array(
-							'option_name' 	=> 'myc_general_settings',
-							'setting_id' 	=> 'enable_overlay',
-							'label' 		=> __( 'Check this box if you want to enable an overlay of the chatbot on every page.', 'my-chatbot' )
-					)
-			),
 			'overlay_default_open' => array(
-					'title' 	=> __( 'Overlay Default Open', 'my-chatbot' ),
+					'title' 	=> __( 'Default Open', 'my-chatbot' ),
 					'callback' 	=> 'myc_field_checkbox',
-					'page' 		=> 'my-chatbot',
-					'section' 	=> 'myc_section_general',
+					'page' 		=> 'my-chatbot&tab=myc_overlay_settings',
+					'section' 	=> 'myc_section_overlay',
 					'args' => array(
-							'option_name' 	=> 'myc_general_settings',
+							'option_name' 	=> 'myc_overlay_settings',
 							'setting_id' 	=> 'overlay_default_open',
 							'label' 		=> __( 'Check this box if you want to default the overlay to open on page load.', 'my-chatbot' )
 					)
 			),
 			'overlay_header_text' => array(
-					'title' 	=> __( 'Overlay Header Text', 'my-chatbot' ),
+					'title' 	=> __( 'Header Text', 'my-chatbot' ),
 					'callback' 	=> 'myc_field_input',
-					'page' 		=> 'my-chatbot',
-					'section' 	=> 'myc_section_general',
+					'page' 		=> 'my-chatbot&tab=myc_overlay_settings',
+					'section' 	=> 'myc_section_overlay',
 					'args' => array(
-							'option_name' 	=> 'myc_general_settings',
+							'option_name' 	=> 'myc_overlay_settings',
 							'setting_id' 	=> 'overlay_header_text',
-							'label' 		=> __( 'Enter overlay header text.', 'my-chatbot' )
+							'label' 		=> __( 'Enter overlay header text.', 'my-chatbot' ),
+							'placeholder'	=> __( 'Enter overlay header text...', 'my-chatbot' )
 					)
 			),
 			'overlay_powered_by_text' => array(
-					'title' 	=> __( 'Overlay Powered By Text', 'my-chatbot' ),
+					'title' 	=> __( 'Powered By Text', 'my-chatbot' ),
 					'callback' 	=> 'myc_field_input',
-					'page' 		=> 'my-chatbot',
-					'section' 	=> 'myc_section_general',
+					'page' 		=> 'my-chatbot&tab=myc_overlay_settings',
+					'section' 	=> 'myc_section_overlay',
 					'args' => array(
-							'option_name' 	=> 'myc_general_settings',
+							'option_name' 	=> 'myc_overlay_settings',
 							'setting_id' 	=> 'overlay_powered_by_text',
-							'label' 		=> __( 'Enter overlay powered by text. If empty, the powered by bar will not be displayed.', 'my-chatbot' )
+							'label' 		=> __( 'Enter overlay powered by text. If empty, the powered by bar will not be displayed.', 'my-chatbot' ),
+							'placeholder'	=> __( 'Enter powered by text...', 'my-chatbot' )
 					)
 			),
 			'disable_css_styles' => array(
 					'title' 	=> __( 'Disable CSS Styles', 'my-chatbot' ),
 					'callback' 	=> 'myc_field_checkbox',
-					'page' 		=> 'my-chatbot',
+					'page' 		=> 'my-chatbot&tab=myc_general_settings',
 					'section' 	=> 'myc_section_general',
 					'args' => array(
 							'option_name' 	=> 'myc_general_settings',
@@ -276,7 +283,7 @@ function myc_register_settings() {
 					)
 			),
 	);
-	
+
 	foreach ( $setting_fields as $setting_id => $setting_data ) {
 		// $id, $title, $callback, $page, $section, $args
 		add_settings_field( $setting_id, $setting_data['title'], $setting_data['callback'], $setting_data['page'], $setting_data['section'], $setting_data['args'] );
@@ -296,77 +303,91 @@ function myc_default_settings() {
 			'enable_welcome_event'				=> false,
 			'messaging_platform'				=> 'default',
 			'show_time'							=> false,
-			
+
 			// conversation bubbles
 			'request_background_color'			=> '#1f4c73',
 			'request_font_color'				=> '#fff',
 			'response_background_color'			=> '#e8e8e8',
 			'response_font_color'				=> '#323232',
 			'non_current_opacity'				=> 0.8,
-			
-			// overlay
+
+			'disable_css_styles'				=> false,
+	), $general_settings );
+
+	update_option( 'myc_general_settings', $general_settings );
+
+	$overlay_settings = (array) get_option( 'myc_overlay_settings' );
+
+	$overlay_settings = array_merge( array(
 			'enable_overlay'					=> true,
 			'overlay_default_open'				=> false,
 			'overlay_powered_by_text'			=> __( 'Powered by <a href="#">Replace Me</a>', 'my-chatbot' ),
 			'overlay_header_text'				=> __( 'My Chatbot', 'my-chatbot' ),
 			'overlay_header_background_color'	=> '#1f4c73',
 			'overlay_header_font_color'			=> '#fff',
-			
-			'disable_css_styles'				=> false,
-			
-	), $general_settings );
+	), $overlay_settings );
 
-	update_option( 'myc_general_settings', $general_settings );
+	update_option( 'myc_overlay_settings', $overlay_settings );
 
 }
 
 if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
 	add_action( 'admin_init', 'myc_default_settings', 10, 0 );
 	add_action( 'admin_init', 'myc_register_settings' );
-	
+
 }
 
 /**
  * Sanitize general settings
- * @param 	$input 
+ * @param 	$input
  */
 function myc_sanitize_general_settings( $input ) {
-	
+
 	if ( isset( $input['enable_welcome_event'] ) && $input['enable_welcome_event'] == 'true' ) {
 		$input['enable_welcome_event'] = true;
 	} else {
 		$input['enable_welcome_event'] = false;
 	}
-	
+
 	if ( isset( $input['show_time'] ) && $input['show_time'] == 'true' ) {
 		$input['show_time'] = true;
 	} else {
 		$input['show_time'] = false;
 	}
-	
+
 	if ( isset( $input['disable_css_styles'] ) && $input['disable_css_styles'] == 'true' ) {
 		$input['disable_css_styles'] = true;
 	} else {
 		$input['disable_css_styles'] = false;
 	}
-	
-	if ( isset( $input['overlay_default_open'] ) && $input['overlay_default_open'] == 'true' ) {
-		$input['overlay_default_open'] = true;
-	} else {
-		$input['overlay_default_open'] = false;
-	}
-	
-	if ( isset( $input['enable_overlay'] ) && $input['enable_overlay'] == 'true' ) {
-		$input['enable_overlay'] = true;
-	} else {
-		$input['enable_overlay'] = false;
-	}
-	
+
 	if ( ! is_numeric( $input['non_current_opacity'] ) ) {
 		add_settings_error( 'myc_general_settings', 'non_numeric_non_current_opacity', __( 'Non current opacity must be numeric.' , 'my-chatbot' ), 'error' );
 	} else if ( floatval( $input['non_current_opacity'] ) < 0 || floatval( $input['non_current_opacity'] ) > 1 ) {
 		add_settings_error( 'myc_general_settings', 'range_error_non_current_opacity', __( 'Non current opacity cannot be less than 0 or greater than 1.', 'my-chatbot' ), 'error' );
 	}
-	
+
+	return $input;
+}
+
+
+/**
+ * Sanitize chatbot overlay settings
+ * @param 	$input
+ */
+function myc_sanitize_overlay_settings( $input ) {
+
+	if ( isset( $input['overlay_default_open'] ) && $input['overlay_default_open'] == 'true' ) {
+		$input['overlay_default_open'] = true;
+	} else {
+		$input['overlay_default_open'] = false;
+	}
+
+	if ( isset( $input['enable_overlay'] ) && $input['enable_overlay'] == 'true' ) {
+		$input['enable_overlay'] = true;
+	} else {
+		$input['enable_overlay'] = false;
+	}
+
 	return $input;
 }

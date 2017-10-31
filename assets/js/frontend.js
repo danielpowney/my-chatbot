@@ -4,7 +4,7 @@
 
 // When ready :)
 jQuery(document).ready(function() {
-	
+
 	/*
 	 * When the user enters text in the text input text field and then the presses Enter key
 	 */
@@ -19,13 +19,13 @@ jQuery(document).ready(function() {
 				innerHTML += "<div class=\"myc-datetime\">" + date.toLocaleTimeString() + "</div>";
 			}
 			innerHTML += "</div>";
-			jQuery("#myc-conversation-area").append(innerHTML); 
+			jQuery("#myc-conversation-area").append(innerHTML);
 			jQuery("input#myc-text").val("");
 			jQuery("#myc-conversation-area").scrollTop(jQuery("#myc-conversation-area").prop("scrollHeight"));
 			textQuery(text);
 		}
 	});
-	
+
 	/*
 	 * Welcome
 	 */
@@ -39,10 +39,10 @@ jQuery(document).ready(function() {
 				"Authorization" : "Bearer " + myc_script_vars.access_token
 			},
 			data : JSON.stringify( {
-				event : { 
+				event : {
 					name : "WELCOME"
 				},
-				lang : "en",			 
+				lang : "en",
 				sessionId : myc_script_vars.session_id,
 			} ),
 			success : function(response) {
@@ -54,8 +54,8 @@ jQuery(document).ready(function() {
 			}
 		});
 	}
-	
-	
+
+
 	/* Overlay slide toggle */
 	jQuery(".myc-content-overlay .myc-content-overlay-header .dashicons-arrow-up-alt2").click(function(event){
 		jQuery(this).hide();
@@ -71,12 +71,12 @@ jQuery(document).ready(function() {
 		jQuery(this).parent().find(".dashicons-arrow-up-alt2").show();
 		jQuery(this).parent().siblings(".myc-content-overlay-container, .myc-content-overlay-powered-by").slideToggle("slow", function() {});
 	});
-	
+
 });
 
 /**
- * Send API.AI query
- * 
+ * Send Dialogflow query
+ *
  * @param text
  * @returns
  */
@@ -91,8 +91,8 @@ function textQuery(text) {
 			"Authorization" : "Bearer " + myc_script_vars.access_token
 		},
 		data: JSON.stringify( {
-			query: text, 
-			lang: "en", 
+			query: text,
+			lang: "en",
 			sessionId: myc_script_vars.session_id
 		} ),
 		success : function(response) {
@@ -106,31 +106,31 @@ function textQuery(text) {
 }
 
 /**
- * Handle API.AI response
- * 
+ * Handle Dialogflow response
+ *
  * @param response
  */
 function prepareResponse(response) {
-	
+
 	if (response.status.code == "200" ) {
-		
+
 		jQuery(window).trigger("myc_response_success", response);
-		
+
 		jQuery("#myc-conversation-area .myc-conversation-response").removeClass("myc-is-active");
-		
+
 		var messages = response.result.fulfillment.messages;
 		var numMessages = messages.length;
 		var index = 0;
-		for (index; index<numMessages; index++) { 
+		for (index; index<numMessages; index++) {
 			var message = messages[index];
-			
-			if (myc_script_vars.messaging_platform == message.platform 
+
+			if (myc_script_vars.messaging_platform == message.platform
 					|| myc_script_vars.messaging_platform == "default" && message.platform === undefined
 					|| message.platform === undefined && ! hasPlatform(messages, myc_script_vars.messaging_platform) ) {
-			
+
 				switch (message.type) {
 				    case 0: // text response
-						textResponse(message.speech);	
+						textResponse(message.speech);
 				        break;
 				    case 1: // card response
 				        cardResponse(message.title, message.subtitle, message.buttons, message.text, message.postback);
@@ -139,22 +139,22 @@ function prepareResponse(response) {
 				    	quickRepliesResponse(message.title, message.replies);
 				        break;
 				    case 3: // image response
-						imageResponse(message.imageUrl);	
+						imageResponse(message.imageUrl);
 				        break;
 				    case 3: // custom payload
-				        
+
 				        break;
-				    default:       
+				    default:
 				}
 			}
-		} 
-			
+		}
+
 	} else {
 		textResponse(myc_script_vars.messages.internal_error);
 	}
-	
+
 	jQuery("#myc-conversation-area").scrollTop(jQuery("#myc-conversation-area").prop("scrollHeight"));
-	
+
 	if (jQuery("#myc-debug-data").length) {
 		var debugData = JSON.stringify(response, undefined, 2);
 		jQuery("#myc-debug-data").text(debugData);
@@ -163,7 +163,7 @@ function prepareResponse(response) {
 
 /**
  * Checks if messages support a specific platform
- * 
+ *
  * @param messages
  * @param platform
  * @returns {Boolean}
@@ -171,19 +171,19 @@ function prepareResponse(response) {
 function hasPlatform(messages, platform) {
 	var numMessages = messages.length;
 	var index = 0;
-	for (index; index<numMessages; index++) { 
+	for (index; index<numMessages; index++) {
 		var message = messages[index];
 		if (message.platform === platform) {
 			return true;
 		}
 	}
-	
+
 	return false;
 }
 
 /**
  * Displays a text response
- * 
+ *
  * @param text
  * @returns
  */
@@ -202,7 +202,7 @@ function textResponse(text) {
 
 /**
  * Displays a image response
- * 
+ *
  * @param imageUrl
  * @returns
  */
@@ -223,7 +223,7 @@ function imageResponse(imageUrl) {
 
 /**
  * Card response
- * 
+ *
  * @param title
  * @param subtitle
  * @param buttons
@@ -238,19 +238,19 @@ function cardResponse(title, subtitle, buttons, text, postback) {
 
 /**
  * Quick replies response
- * 
+ *
  * @param title
  * @param replies
  */
 function quickRepliesResponse(title, replies) {
-	
+
 	var html = "<div class=\"myc-quick-replies-title\">" + title + "</div>";
-	
+
 	var index = 0;
-	for (index; index<replies.length; index++) { 
+	for (index; index<replies.length; index++) {
 		html += "<input type=\"button\" class=\"myc-quick-reply\" value=\"" + replies[index] + "\" />";
 	}
-	
+
 	var date = new Date();
 	var innerHTML = "<div class=\"myc-conversation-bubble-container myc-conversation-bubble-container-response\"><div class=\"myc-conversation-bubble myc-conversation-response myc-is-active myc-quick-replies-response\">" + html + "</div>";
 	if (myc_script_vars.show_time) {
@@ -272,14 +272,14 @@ function quickRepliesResponse(title, replies) {
 		jQuery("#myc-conversation-area").append(innerHTML);
 		textQuery(text);
 	});
-	
+
 }
 
 /**
  * Custom payload
- * 
+ *
  * @param payload
  */
 function customPayload(payload) {
-	
+
 }

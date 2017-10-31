@@ -1,37 +1,39 @@
 === My Chatbot ===
 Contributors: dpowney
-Tags: chatbot, talkbot, chat, API.AI, AI, bot, conversational, asssistant, FAQ, natural language
+Tags: chatbot, Dialogflow, AI, asssistant, natural language, intent recognition, conversational
 Requires at least: 4.0
 Tested up to: 4.8
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A artificial intelligent chatbot for WordPress powered by API.AI.
+A artificial intelligent chatbot for WordPress powered by Dialogflow (formerly API.AI).
 
 == Description ==
 
-A artificial intelligent chatbot for WordPress powered by API.AI. [View Demo](https://danielpowney.com/my-chatbot-demo?utm_source=view-demo&utm_medium=free-plugin&utm_campaign=readme). 
+A artificial intelligent chatbot for WordPress powered by Dialogflow (formerly API.AI).. [View Demo](https://danielpowney.com/my-chatbot-demo?utm_source=view-demo&utm_medium=free-plugin&utm_campaignAI=readme).
 
-
-* Assume the appearance of an API.AI supported messaging platform to display rich message content. Quick Replies and Image rich messages are supported
-* Links in response message content are supported.
+* Assume the appearance of a Dialogflow supported messaging platform to display rich message content. Quick Replies and Image rich messages are supported.
+* Add hyperlinks in response message content using HTML markup.
 * An overlay can be added on every page to display the chatbot. The overlay can toggle up or down.
 * A shortcode and widget are available to display the chatbot.
-* Settings with color pickers for backgrounds and fonts, custom text (e.g. powered by) and opacity for old conversation bubbles
+* Settings with color pickers for backgrounds and fonts, custom text (e.g. powered by) and opacity for old conversation bubbles.
+* Lightweight and super fast as it uses the Dialogflow Agent API to process natural language queries.
+* Enable the chatbot overlay to be displayed on specific posts.
+* In-built template system and plenty of extensible WordPress action hooks & filters.
 
 **[my_chatbot] Shortcode**
 
 Attributes:
 
- * demo - true or false. Default is false. If true, a textarea is added below the conversation area showing the API.AI JSON response data to assist debugging.
+ * demo - true or false. Default is false. If true, a textarea is added below the conversation area showing the Dialogflow JSON response data to assist debugging.
 
 **Follow this plugin on [GitHub](https://github.com/danielpowney/my-chatbot)**
 
 == Installation ==
 
 1. Install and activate the plugin.
-2. Create an API.AI account, setup an agent and copy the client access token. If you're a newbie I recommend you try importing the Small Talk prebuilt agent.
+2. Create a Dialogflow account, setup an agent and copy the client access token. If you're a newbie I recommend you try importing the Small Talk prebuilt agent.
 3. Go to My Chatbot plugin options page under the Settings menu, enter the access token and then save
 4. Add the [my_chatbot] shortcode inside the contents of a page
 5  View your page and engage in conversation with your chatbot.
@@ -46,8 +48,13 @@ Attributes:
 == Changelog ==
 
 = 0.4 (11/09/2017) =
-* New: Add input text (e.g. Ask something...) as an option 
-* New: Added unique session id for API.AI conversations using a cookie which expires after 24 hours
+* New: Added myc_protocol_version filter for API query requests
+* New: Added option in Edit Post screen to override displaying the chatbot overlay on specific posts
+* Tweak: Added HTML5 placeholder to input text settings
+* Tweak: Dialogflow rebranding required updates to various text (formerly API.AI) and changed base_url to https://api.dialogflow.com/v1/
+* Tweak: Updated readme and welcome page
+* New: Add input text (e.g. Ask something...) as an option
+* New: Added unique session id for Dialogflow conversations using a cookie which expires after 24 hours
 * New: Added myc_widget_before_conversation_area action hook to chatbot widget template
 * New: Added option to show time underneath conversation bubbles
 * New: Added filters to modify the access token, enable welcome event, messaging platform, session id and show time options. This allows you to have different chatbots on different pages for example.

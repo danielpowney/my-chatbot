@@ -2,7 +2,7 @@
 /**
  * Plugin Name: My Chatbot
  * Plugin URI: https://github.com/danielpowney/my-chatbot
- * Description: A artificial intelligent chatbot for WordPress powered by API.AI.
+ * Description: A artificial intelligent chatbot for WordPress powered by Dialogflow  (formerly API.AI).
  * Author: Daniel Powney
  * Author URI: https://danielpowney.com
  * Version: 0.4
@@ -24,7 +24,7 @@
  *
  * @package     MYC
  * @author 		Daniel Powney
- * @version		0.1
+ * @version		0.4
  */
 
 // Exit if accessed directly.
@@ -38,7 +38,7 @@ if ( ! class_exists( 'My_Chatbot' ) ) :
  * @since 1.4
  */
 final class My_Chatbot {
-	
+
 	/**
 	 * MYC API Object.
 	 *
@@ -46,7 +46,7 @@ final class My_Chatbot {
 	 * @since 1.5
 	 */
 	public $api;
-	
+
 	/** Singleton *************************************************************/
 
 	/**
@@ -73,12 +73,12 @@ final class My_Chatbot {
 	 * @return object|My_Chatbot The one true My_Chatbot
 	 */
 	public static function instance() {
-		
+
 		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof My_Chatbot ) ) {
-			
+
 			self::$instance = new My_Chatbot;
 			self::$instance->setup_constants();
-			
+
 			add_action( 'plugins_loaded', array( self::$instance, 'load_textdomain' ) );
 
 			self::$instance->includes();
@@ -127,7 +127,7 @@ final class My_Chatbot {
 		if ( ! defined( 'MYC_VERSION' ) ) {
 			define( 'MYC_VERSION', '0.4' );
 		}
-		
+
 		// Plugin slug.
 		if ( ! defined( 'MYC_SLUG' ) ) {
 			define( 'MYC_SLUG', 'my-chatbot' );
@@ -173,6 +173,7 @@ final class My_Chatbot {
 		require_once MYC_PLUGIN_DIR . 'includes/misc-functions.php';
 		require_once MYC_PLUGIN_DIR . 'includes/shortcodes.php';
 		require_once MYC_PLUGIN_DIR . 'includes/scripts.php';
+		require_once MYC_PLUGIN_DIR . 'includes/post-meta-box.php';
 
 		if ( is_admin() ) {
 			require_once MYC_PLUGIN_DIR . 'includes/admin/admin-actions.php';
@@ -180,7 +181,7 @@ final class My_Chatbot {
 			require_once MYC_PLUGIN_DIR . 'includes/admin/settings/display-settings.php';
 			require_once MYC_PLUGIN_DIR . 'includes/admin/upgrades/upgrade-functions.php';
 			require_once MYC_PLUGIN_DIR . 'includes/admin/welcome.php';
-			
+
 		}
 
 		require_once MYC_PLUGIN_DIR . 'includes/install.php';
@@ -250,6 +251,18 @@ final class My_Chatbot {
 }
 
 endif; // End if class_exists check.
+
+/**
+ * Checks whether function is disabled.
+ *
+ * @param string  $function Name of the function.
+ * @return bool Whether or not function is disabled.
+ */
+function myc_is_func_disabled( $function ) {
+	$disabled = explode( ',',  ini_get( 'disable_functions' ) );
+
+	return in_array( $function, $disabled );
+}
 
 
 /**

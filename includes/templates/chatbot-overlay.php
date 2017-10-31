@@ -7,7 +7,7 @@
 	<?php if ( strlen( $overlay_powered_by_text ) > 0 ) {
 		?>
 		<div class="myc-content-overlay-powered-by"><?php echo $overlay_powered_by_text; ?></div>
-		<?php 
+		<?php
 	} ?>
 	<div class="myc-content-overlay-container"><?php echo do_shortcode( '[my_chatbot]' ); ?></div>
 </div>
