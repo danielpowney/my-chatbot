@@ -23,44 +23,33 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function myc_options_page() {
 	?>
 	<div class="wrap">
-		
+		<h1><?php _e( 'My Chatbot Settings', 'my-chatbot' ); ?></h1>
 		<h2 class="nav-tab-wrapper">
 			<?php
 			$current_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'myc_general_settings';
 			$tabs = array (
-					'myc_general_settings'		=> __( 'General', 'my-chatbot' )
+					'myc_general_settings'				=> __( 'General', 'my-chatbot' ),
+					'myc_overlay_settings'		=> __( 'Overlay', 'my-chatbot' )
 			);
-			
+
 			$tabs = apply_filters( 'myc_settings_tabs', $tabs );
-			
+
 			foreach ( $tabs as $tab_key => $tab_caption ) {
 				$active = $current_tab == $tab_key ? 'nav-tab-active' : '';
 				echo '<a class="nav-tab ' . $active . '" href="options-general.php?page=my-chatbot&tab=' . $tab_key . '">' . $tab_caption . '</a>';
 			}
 			?>
 		</h2>
-		
-		<?php
-		if ( isset( $_GET['updated'] ) && isset( $_GET['page'] ) ) {
-			add_settings_error( 'general', 'settings_updated', __( 'Settings saved.', 'my-chatbot' ), 'updated' );
-		}
-				
-		settings_errors();
-		
-		if ( $current_tab == 'myc_general_settings' ) {
-			?>
-			<form method="post" name="myc_general_settings" action="options.php">
-				<?php
-				wp_nonce_field( 'update-options' );
-				settings_fields( 'myc_general_settings' );
-				do_settings_sections( 'my-chatbot' );
-				submit_button(null, 'primary', 'submit', true, null);
-				?>
-			</form>
+
+		<form method="post" name="<?php echo $current_tab; ?>" action="options.php">
 			<?php
-		}
-		
-		?>
+			wp_nonce_field( 'update-options' );
+			settings_fields( $current_tab );
+			do_settings_sections( 'my-chatbot&tab=' . $current_tab );
+			submit_button( null, 'primary', 'submit', true, null );
+			?>
+		</form>
+
 	</div>
 	<?php
 }
@@ -69,7 +58,18 @@ function myc_options_page() {
  * General settings section
  */
 function myc_section_general_desc() {
+?>
+	<p class="myc-settings-section"><?php _e( 'Dialogflow integration settings and chatbot conversation styles.', 'my-chatbot'); ?></p>
+	<?php
+}
 
+/**
+ * Chatbot overlay settings section
+ */
+function myc_section_overlay_desc() {
+	?>
+	<p class="myc-settings-section"><?php _e( 'Settings to overlay a chatbot on the bottom right of each page which can toggle up and down.', 'my-chatbot'); ?></p>
+	<?php
 }
 
 /**
@@ -83,15 +83,18 @@ function myc_field_input( $args ) {
 	$max = isset( $args['max'] ) && is_numeric( $args['max'] ) ? intval( $args['max'] ) : null;
 	$step = isset( $args['step'] ) && is_numeric( $args['step'] ) ? floatval( $args['step'] ) : null;
 	$readonly = isset( $args['readonly'] ) && $args['readonly'] ? ' readonly' : '';
+	$placeholder = isset( $args['placeholder'] ) ? $args['placeholder'] : '';
+	$required = isset( $args['required'] ) && $args['required'] === true ? 'required' : '';
 	?>
-	<input class="<?php echo $class; ?>" type="<?php echo $type; ?>" name="<?php echo $args['option_name']; ?>[<?php echo $args['setting_id']; ?>]" 
-			value="<?php echo esc_attr( $settings[$args['setting_id']] ); ?>" <?php if ( $min !== null ) { echo ' min="' . $min . '"'; } ?> 
+	<input class="<?php echo $class; ?>" type="<?php echo $type; ?>" name="<?php echo $args['option_name']; ?>[<?php echo $args['setting_id']; ?>]"
+			value="<?php echo esc_attr( $settings[$args['setting_id']] ); ?>" <?php if ( $min !== null ) { echo ' min="' . $min . '"'; } ?>
 			<?php if ( $max !== null) { echo ' max="' . $max . '"'; } echo $readonly; ?>
-			<?php if ( $step !== null ) { echo ' step="' . $step . '"'; } ?> />
-	<?php 
+			<?php if ( $step !== null ) { echo ' step="' . $step . '"'; } ?>
+			placeholder="<?php echo $placeholder; ?>" <?php echo $required; ?> />
+	<?php
 	if ( isset( $args['label'] ) ) { ?>
 		<label><?php echo $args['label']; ?></label>
-	<?php } 
+	<?php }
 }
 
 /**
@@ -103,10 +106,10 @@ function myc_field_color_picker( $args ) {
 	$settings = (array) get_option( $args['option_name' ] );
 	?>
 	<input type="text" class="color-picker" name="<?php echo $args['option_name']; ?>[<?php echo $args['setting_id']; ?>]" value="<?php echo $settings[$args['setting_id']]; ?>" />
-	<?php 
+	<?php
 }
-	
-	
+
+
 /**
  * Checkbox setting
  */
@@ -114,7 +117,7 @@ function myc_field_checkbox( $args ) {
 	$settings = (array) get_option( $args['option_name' ] );
 	?>
 	<input type="checkbox" name="<?php echo $args['option_name']; ?>[<?php echo $args['setting_id']; ?>]" value="true" <?php checked( true, isset( $settings[$args['setting_id']] ) ? $settings[$args['setting_id']] : false , true ); ?> />
-	<?php 
+	<?php
 	if ( isset( $args['label'] ) ) { ?>
 		<label><?php echo $args['label']; ?></label>
 	<?php }

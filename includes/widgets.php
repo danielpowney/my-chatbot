@@ -30,7 +30,7 @@ class MYC_Chatbot_Widget extends WP_Widget {
 		$name = __( 'Chatbot', 'my-chatbot' );
 		$widget_opts = array(
 				'classname' => 'myc-chatbot-widget',
-				'description' => __( 'Adds a chatbot powered by API.AI.', 'my-chatbot' )
+				'description' => __( 'Adds a chatbot powered by Dialogflow.', 'my-chatbot' )
 		);
 		$control_ops = array( 'width' => 400, 'height' => 350 );
 
@@ -44,24 +44,25 @@ class MYC_Chatbot_Widget extends WP_Widget {
 	function widget( $args, $instance ) {
 
 		extract( $args );
-			
+
 		$general_settings = (array) get_option( 'myc_general_settings' );
 		$debug = isset( $general_settings['debug'] ) ? $general_settings['debug'] : false;
 
 		$header = isset( $instance['header'] ) ? $instance['header'] : 'h3';
 		$title = apply_filters( 'widget_title', ! isset( $instance['title'] ) ? __( 'Chatbot', 'my-chatbot' ) : $instance['title'], $instance, $this->id_base );
-		
+
 		$before_title = '<' . $header . ' class="widget-title">';
 		$after_title = '</' . $header . '>';
-		
+
 		echo $before_widget;
 
 		myc_get_template_part( 'chatbot-widget', null, true, array(
-				'title' => $title,
-				'before_title' => $before_title,
-				'after_title' => $after_title,
-				'class' => 'myc-chatbot-widget',
-				'debug' => $debug
+				'title' 					=> $title,
+				'before_title' 				=> $before_title,
+				'after_title' 				=> $after_title,
+				'class' 					=> 'myc-chatbot-widget',
+				'debug' 					=> $debug,
+				'input_text'				=> $general_settings['input_text']
 		) );
 
 		echo $after_widget;
@@ -80,7 +81,7 @@ class MYC_Chatbot_Widget extends WP_Widget {
 			$instance['header'] = $new_instance['header'];
 		}
 		$instance['title'] = strip_tags( $new_instance['title'] );
-		
+
 		return $instance;
 	}
 
@@ -106,9 +107,9 @@ class MYC_Chatbot_Widget extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id( 'header' ); ?>"><?php _e( 'Header', 'my-chatbot' ); ?></label>
 			<select class="widefat" name="<?php echo $this->get_field_name( 'header' ); ?>" id="<?php echo $this->get_field_id( 'header' ); ?>">
-				<?php 
+				<?php
 				$header_options = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' );
-				
+
 				foreach ( $header_options as $header_option ) {
 					$selected = '';
 					if ( $header_option == $header ) {
@@ -118,8 +119,8 @@ class MYC_Chatbot_Widget extends WP_Widget {
 				}
 				?>
 			</select>
-		</p>		
-		<?php	
+		</p>
+		<?php
 	}
 }
 

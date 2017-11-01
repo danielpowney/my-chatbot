@@ -94,6 +94,12 @@
 	text-align: right;
 }
 
+.myc-datetime {
+	margin-top: 2px;
+	font-style: italic;
+	font-color: #888;
+}
+
 
 /* Overlay */
 .myc-content-overlay {
@@ -124,7 +130,6 @@
 	text-align: right;
 	font-style: italic;
 }
-
 .myc-content-overlay-header .dashicons-arrow-up-alt2, .myc-content-overlay-header .dashicons-arrow-down-alt2 {
 	cursor: pointer;
 	line-height: 50px;
@@ -163,11 +168,41 @@
 	.myc-image-response img {
 		max-width: 100%;
 	}
-	
 	.myc-content-overlay {
+		min-width: 100%;
 		width: 100%;
+		max-height: 100%;
+		right: auto;
 	}
 	.myc-content-overlay-container {
 		font-size: 100%;
+	}
+	.myc-toggle-open {
+		min-height: 100%;
+	}
+	.myc-content-overlay-container .myc-container {
+		display: block;
+		max-height: 100%;
+		position: fixed;
+	}
+	.myc-content-overlay-container .myc-container #myc-conversation-area {
+		position: relative;
+		max-height: 80%;
+	}
+	.myc-content-overlay-container .myc-container #myc-input-area {
+		position: fixed; 
+		bottom: 0;
+		width: 100%;
+	}
+}
+
+@media only screen and (min-width : 320px) and (max-width : 480px) and (orientation: landscape) {
+	.myc-content-overlay-container .myc-container #myc-conversation-area {
+		max-height: 170px;
+	}
+}
+@media only screen and (min-width : 320px) and (max-width : 480px) and (orientation: portrait) {
+	.myc-content-overlay-container .myc-container #myc-conversation-area {
+		max-height: 330px;
 	}
 }

@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: my-chatbot\n"
-"POT-Creation-Date: 2017-07-25 20:38+1000\n"
-"PO-Revision-Date: 2017-07-25 20:38+1000\n"
+"POT-Creation-Date: 2017-11-01 08:42+1100\n"
+"PO-Revision-Date: 2017-11-01 08:42+1100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.5\n"
+"X-Generator: Poedit 2.0.4\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -17,187 +17,246 @@ msgstr ""
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../includes/admin/admin-pages.php:24
-#: ../includes/admin/settings/register-settings.php:287
+#: ../includes/admin/settings/register-settings.php:325
+#: ../includes/post-meta-box.php:10
 msgid "My Chatbot"
+msgstr ""
+
+#: ../includes/admin/settings/display-settings.php:26
+msgid "My Chatbot Settings"
 msgstr ""
 
 #: ../includes/admin/settings/display-settings.php:31
 msgid "General"
 msgstr ""
 
-#: ../includes/admin/settings/display-settings.php:45
+#: ../includes/admin/settings/display-settings.php:32
+msgid "Overlay"
+msgstr ""
+
+#: ../includes/admin/settings/display-settings.php:47
 msgid "Settings saved."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:52
+#: ../includes/admin/settings/display-settings.php:75
+msgid "Dialogflow integration settings and chatbot conversation styles."
+msgstr ""
+
+#: ../includes/admin/settings/display-settings.php:84
+msgid ""
+"Settings to overlay a chatbot on the bottom right of each page which can "
+"toggle up and down."
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:55
 msgid "Access Token"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:59
-msgid "Enter API.API agent client access token."
+#: ../includes/admin/settings/register-settings.php:62
+msgid "Enter Dialogflow agent client access token."
 msgstr ""
 
 #: ../includes/admin/settings/register-settings.php:63
+msgid "Enter access token..."
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:67
+msgid "Input Text"
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:74
+msgid "Enter input text."
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:75
+msgid "Enter input text..."
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:79
 msgid "Enable Welcome Event"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:70
+#: ../includes/admin/settings/register-settings.php:86
 msgid ""
 "Check this box if you want to display the welcome fallback intent on page "
 "load."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:74
+#: ../includes/admin/settings/register-settings.php:90
 msgid "Messaging Platform"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:84
+#: ../includes/admin/settings/register-settings.php:100
 msgid "Default"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:88
+#: ../includes/admin/settings/register-settings.php:104
 msgid "Actions on Google"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:92
+#: ../includes/admin/settings/register-settings.php:108
 msgid "Facebook Messenger"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:96
+#: ../includes/admin/settings/register-settings.php:112
 msgid "Slack"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:100
+#: ../includes/admin/settings/register-settings.php:116
 msgid "Telegram"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:104
+#: ../includes/admin/settings/register-settings.php:120
 msgid "Kik"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:108
+#: ../includes/admin/settings/register-settings.php:124
 msgid "Viber"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:112
+#: ../includes/admin/settings/register-settings.php:128
 msgid "Skype"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:116
+#: ../includes/admin/settings/register-settings.php:132
 msgid ""
-"Assume appearance of a API.AI supported messaging platform. Note default "
+"Assume appearance of a Dialogflow supported messaging platform. Note default "
 "responses do not support rich message content."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:120
+#: ../includes/admin/settings/register-settings.php:136
+msgid "Show Time"
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:143
+msgid ""
+"Check this box if you want to show the time underneath the conversation "
+"bubbles."
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:147
 msgid "Request Background Color"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:127
+#: ../includes/admin/settings/register-settings.php:154
 msgid "Choose a background color for the conversation request bubble."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:131
+#: ../includes/admin/settings/register-settings.php:158
 msgid "Request Font Color"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:138
+#: ../includes/admin/settings/register-settings.php:165
 msgid "Choose a font color for the conversation request text."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:142
+#: ../includes/admin/settings/register-settings.php:169
 msgid "Response Background Color"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:149
+#: ../includes/admin/settings/register-settings.php:176
 msgid "Choose a background color for the conversation response bubble."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:153
+#: ../includes/admin/settings/register-settings.php:180
 msgid "Response Font Color"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:160
+#: ../includes/admin/settings/register-settings.php:187
 msgid "Choose a font color for the conversation response text."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:164
+#: ../includes/admin/settings/register-settings.php:191
 msgid "Non Current Opacity"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:171
+#: ../includes/admin/settings/register-settings.php:198
 msgid "Set the background color opacity for non current converation bubbles."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:180
-msgid "Overlay Header Background Color"
-msgstr ""
-
-#: ../includes/admin/settings/register-settings.php:187
-msgid "Choose a background color for the overlay header."
-msgstr ""
-
-#: ../includes/admin/settings/register-settings.php:191
-msgid "Overlay Header Font Color"
-msgstr ""
-
-#: ../includes/admin/settings/register-settings.php:198
-msgid "Choose a font color for the overlay header text."
-msgstr ""
-
-#: ../includes/admin/settings/register-settings.php:202
+#: ../includes/admin/settings/register-settings.php:207
 msgid "Enable Overlay"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:209
+#: ../includes/admin/settings/register-settings.php:214
 msgid ""
-"Check this box if you want to enable an overlay of the chatbot on every page."
+"Check this box if you want to enable an overlay of the chatbot on every "
+"page. Note you can override this setting from the Edit post screen for "
+"specific posts."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:213
-msgid "Overlay Default Open"
+#: ../includes/admin/settings/register-settings.php:218
+msgid "Header Background Color"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:220
+#: ../includes/admin/settings/register-settings.php:225
+msgid "Choose a background color for the overlay header."
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:229
+msgid "Header Font Color"
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:236
+msgid "Choose a font color for the overlay header text."
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:240
+msgid "Default Open"
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:247
 msgid "Check this box if you want to default the overlay to open on page load."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:224
-msgid "Overlay Header Text"
+#: ../includes/admin/settings/register-settings.php:251
+msgid "Header Text"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:231
+#: ../includes/admin/settings/register-settings.php:258
 msgid "Enter overlay header text."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:235
-msgid "Overlay Powered By Text"
+#: ../includes/admin/settings/register-settings.php:259
+msgid "Enter overlay header text..."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:242
+#: ../includes/admin/settings/register-settings.php:263
+msgid "Powered By Text"
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:270
 msgid ""
 "Enter overlay powered by text. If empty, the powered by bar will not be "
 "displayed."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:246
+#: ../includes/admin/settings/register-settings.php:271
+msgid "Enter powered by text..."
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:275
 msgid "Disable CSS Styles"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:253
+#: ../includes/admin/settings/register-settings.php:282
 msgid ""
 "Check this box if you want to disable loading the plugin default CSS styles."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:286
+#: ../includes/admin/settings/register-settings.php:302
+msgid "Ask something..."
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:324
 msgid "Powered by <a href=\"#\">Replace Me</a>"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:336
+#: ../includes/admin/settings/register-settings.php:365
 msgid "Non current opacity must be numeric."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:338
+#: ../includes/admin/settings/register-settings.php:367
 msgid "Non current opacity cannot be less than 0 or greater than 1."
 msgstr ""
 
@@ -219,7 +278,9 @@ msgid "Welcome to My Chatbot v%s"
 msgstr ""
 
 #: ../includes/admin/welcome.php:131
-msgid "A artificial intelligent chatbot for WordPress powered by API.AI."
+msgid ""
+"A artificial intelligent chatbot for WordPress powered by Dialogflow "
+"(formerly API.AI)."
 msgstr ""
 
 #: ../includes/admin/welcome.php:149
@@ -244,9 +305,9 @@ msgstr ""
 
 #: ../includes/admin/welcome.php:210
 msgid ""
-"Create an API.AI account, setup an agent and copy the client access token. "
-"If you're a newbie I recommend you try importing the Small Talk prebuilt "
-"agent."
+"Create a Dialogflow account, setup an agent and copy the client access "
+"token. If you're a newbie I recommend you try importing the Small Talk "
+"prebuilt agent."
 msgstr ""
 
 #: ../includes/admin/welcome.php:211
@@ -277,7 +338,7 @@ msgstr ""
 #: ../includes/admin/welcome.php:219
 msgid ""
 "demo - true or false. Default is false. If true, a textarea is added below "
-"the conversation area showing the API.AI JSON response data to assist "
+"the conversation area showing the Dialogflow JSON response data to assist "
 "debugging."
 msgstr ""
 
@@ -288,32 +349,64 @@ msgstr ""
 #: ../includes/admin/welcome.php:223
 msgid ""
 "To display rich message content responses you will need to set the "
-"appearance of an API.AI supported messaging platform in the settings. Note "
-"only Quick Replies and Image rich messages are supported."
+"appearance of a Dialogflow supported messaging platform in the settings. "
+"Note only Quick Replies and Image rich messages are supported."
 msgstr ""
 
 #: ../includes/admin/welcome.php:225
+msgid "Hyperlinks"
+msgstr ""
+
+#: ../includes/admin/welcome.php:226
+msgid ""
+"Hyperlinks in Text response messages are supported as HTML tags e.g. "
+"\"Here's a &lt;a href=&quot;https://example.com&quot;&gt;link&lt;/a&gt;\"."
+msgstr ""
+
+#: ../includes/admin/welcome.php:228
 msgid "GitHub Repository"
 msgstr ""
 
-#: ../includes/admin/welcome.php:232
+#: ../includes/admin/welcome.php:235
 msgid "Go to Options"
 msgstr ""
 
-#: ../includes/admin/welcome.php:271
+#: ../includes/admin/welcome.php:274
 msgid "No valid changelog was found."
 msgstr ""
 
-#: ../includes/admin/welcome.php:308
+#: ../includes/admin/welcome.php:311
 #, php-format
 msgid "View %s"
 msgstr ""
 
-#: ../includes/scripts.php:43
+#: ../includes/post-meta-box.php:32
+msgid "Chatbot Overlay"
+msgstr ""
+
+#: ../includes/post-meta-box.php:36
+msgid "Use global settings"
+msgstr ""
+
+#: ../includes/post-meta-box.php:37
+msgid "Enable"
+msgstr ""
+
+#: ../includes/post-meta-box.php:38
+msgid "Disable"
+msgstr ""
+
+#: ../includes/post-meta-box.php:41
+msgid ""
+"Do you want to enable or disable the chatbot overlay specifically for this "
+"post?"
+msgstr ""
+
+#: ../includes/scripts.php:51
 msgid "An internal error occured"
 msgstr ""
 
-#: ../includes/scripts.php:44
+#: ../includes/scripts.php:52
 msgid "I'm sorry I do not understand."
 msgstr ""
 
@@ -325,25 +418,20 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: ../includes/templates/chatbot-shortcode.php:4
-#: ../includes/templates/chatbot-widget.php:10
-msgid "Ask something..."
-msgstr ""
-
 #: ../includes/widgets.php:30 ../includes/widgets.php:52
-#: ../includes/widgets.php:94
+#: ../includes/widgets.php:95
 msgid "Chatbot"
 msgstr ""
 
 #: ../includes/widgets.php:33
-msgid "Adds a chatbot powered by API.AI."
+msgid "Adds a chatbot powered by Dialogflow."
 msgstr ""
 
-#: ../includes/widgets.php:103
+#: ../includes/widgets.php:104
 msgid "Title"
 msgstr ""
 
-#: ../includes/widgets.php:107
+#: ../includes/widgets.php:108
 msgid "Header"
 msgstr ""
 

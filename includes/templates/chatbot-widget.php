@@ -5,9 +5,12 @@ if ( ! empty( $title ) ) {
 ?>
 
 <div class="myc-container">
+
+	<?php do_action( 'myc_widget_before_conversation_area' ); ?>
+
 	<div id="myc-conversation-area"></div>
 	<div id="myc-input-area">
-		<input id="myc-text" type="text" placeholder="<?php _e( 'Ask something...', 'my-chatbot' ); ?>"></input>
+		<input id="myc-text" type="text" placeholder="<?php echo $input_text; ?>"></input>
 	</div>
 </div>
 
