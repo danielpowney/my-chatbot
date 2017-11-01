@@ -58,6 +58,7 @@ Attributes:
 * New: Added myc_widget_before_conversation_area action hook to chatbot widget template
 * New: Added option to show time underneath conversation bubbles
 * New: Added filters to modify the access token, enable welcome event, messaging platform, session id and show time options. This allows you to have different chatbots on different pages for example.
+* New: Added HTML5 required validation for required plugin settings
 
 = 0.3 (03/08/2017) =
 * Tweak: Added obverlay for mobile using CSS3 media queries for different small screens with portrait and lanscape orientations

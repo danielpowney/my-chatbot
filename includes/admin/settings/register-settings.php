@@ -60,7 +60,8 @@ function myc_register_settings() {
 							'option_name' 	=> 'myc_general_settings',
 							'setting_id' 	=> 'myc_access_token',
 							'label' 		=> __( 'Enter Dialogflow agent client access token.', 'my-chatbot' ),
-							'placeholder'	=> __( 'Enter access token...', 'my-chatbot' )
+							'placeholder'	=> __( 'Enter access token...', 'my-chatbot' ),
+							'required'		=> true
 					)
 			),
 			'input_text' => array(
@@ -72,7 +73,8 @@ function myc_register_settings() {
 							'option_name' 	=> 'myc_general_settings',
 							'setting_id' 	=> 'input_text',
 							'label' 		=> __( 'Enter input text.', 'my-chatbot' ),
-							'placeholder'	=> __( 'Enter input text...', 'my-chatbot' )
+							'placeholder'	=> __( 'Enter input text...', 'my-chatbot' ),
+							'required'		=> true
 					)
 			),
 			'enable_welcome_event' => array(
@@ -200,7 +202,8 @@ function myc_register_settings() {
 							'class'			=> 'small-text',
 							'min'			=> 0,
 							'max'			=> 1,
-							'step'			=> 0.05
+							'step'			=> 0.05,
+							'required'		=> true
 					)
 			),
 			'enable_overlay' => array(

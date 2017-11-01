@@ -41,28 +41,15 @@ function myc_options_page() {
 			?>
 		</h2>
 
-		<?php
-		if ( isset( $_GET['updated'] ) && isset( $_GET['page'] ) ) {
-			echo 'hello...';
-			add_settings_error( 'general', 'settings_updated', __( 'Settings saved.', 'my-chatbot' ), 'updated' );
-		}
-
-		settings_errors();
-
-		//if ( $current_tab == 'myc_general_settings' ) {
-			?>
-			<form method="post" name="<?php echo $current_tab; ?>" action="options.php">
-				<?php
-				wp_nonce_field( 'update-options' );
-				settings_fields( $current_tab );
-				do_settings_sections( 'my-chatbot&tab=' . $current_tab );
-				submit_button( null, 'primary', 'submit', true, null );
-				?>
-			</form>
+		<form method="post" name="<?php echo $current_tab; ?>" action="options.php">
 			<?php
-		//}
+			wp_nonce_field( 'update-options' );
+			settings_fields( $current_tab );
+			do_settings_sections( 'my-chatbot&tab=' . $current_tab );
+			submit_button( null, 'primary', 'submit', true, null );
+			?>
+		</form>
 
-		?>
 	</div>
 	<?php
 }
@@ -97,12 +84,13 @@ function myc_field_input( $args ) {
 	$step = isset( $args['step'] ) && is_numeric( $args['step'] ) ? floatval( $args['step'] ) : null;
 	$readonly = isset( $args['readonly'] ) && $args['readonly'] ? ' readonly' : '';
 	$placeholder = isset( $args['placeholder'] ) ? $args['placeholder'] : '';
+	$required = isset( $args['required'] ) && $args['required'] === true ? 'required' : '';
 	?>
 	<input class="<?php echo $class; ?>" type="<?php echo $type; ?>" name="<?php echo $args['option_name']; ?>[<?php echo $args['setting_id']; ?>]"
 			value="<?php echo esc_attr( $settings[$args['setting_id']] ); ?>" <?php if ( $min !== null ) { echo ' min="' . $min . '"'; } ?>
 			<?php if ( $max !== null) { echo ' max="' . $max . '"'; } echo $readonly; ?>
 			<?php if ( $step !== null ) { echo ' step="' . $step . '"'; } ?>
-			placeholder="<?php echo $placeholder; ?>" />
+			placeholder="<?php echo $placeholder; ?>" <?php echo $required; ?> />
 	<?php
 	if ( isset( $args['label'] ) ) { ?>
 		<label><?php echo $args['label']; ?></label>
