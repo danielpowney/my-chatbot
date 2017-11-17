@@ -5,7 +5,7 @@
  * Description: A artificial intelligent chatbot for WordPress powered by Dialogflow  (formerly API.AI).
  * Author: Daniel Powney
  * Author URI: https://danielpowney.com
- * Version: 0.4
+ * Version: 0.5
  * Text Domain: my-chatbot
  * Domain Path: languages
  *
@@ -24,7 +24,7 @@
  *
  * @package     MYC
  * @author 		Daniel Powney
- * @version		0.4
+ * @version		0.5
  */
 
 // Exit if accessed directly.
@@ -125,7 +125,7 @@ final class My_Chatbot {
 
 		// Plugin version.
 		if ( ! defined( 'MYC_VERSION' ) ) {
-			define( 'MYC_VERSION', '0.4' );
+			define( 'MYC_VERSION', '0.5' );
 		}
 
 		// Plugin slug.
