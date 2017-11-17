@@ -13,6 +13,7 @@ A artificial intelligent chatbot for WordPress powered by Dialogflow (formerly A
 
 A artificial intelligent chatbot for WordPress powered by Dialogflow (formerly API.AI). [View Demo](https://danielpowney.com/my-chatbot-demo?utm_source=view-demo&utm_medium=free-plugin&utm_campaign=readme).
 
+* Create your own branded chatbot
 * Assume the appearance of a Dialogflow supported messaging platform to display rich message content. Quick Replies and Image rich messages are supported.
 * Add hyperlinks in response message content using HTML markup.
 * An overlay can be added on every page to display the chatbot. The overlay can toggle up or down.
