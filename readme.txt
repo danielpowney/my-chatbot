@@ -36,7 +36,7 @@ Attributes:
 2. Create a Dialogflow account, setup an agent and copy the client access token. If you're a newbie I recommend you try importing the Small Talk prebuilt agent.
 3. Go to My Chatbot plugin options page under the Settings menu, enter the access token and then save
 4. Add the [my_chatbot] shortcode inside the contents of a page
-5  View your page and engage in conversation with your chatbot.
+5.  View your page and engage in conversation with your chatbot.
 
 == Screenshots ==
 
@@ -46,6 +46,11 @@ Attributes:
 4. Plugin options continued
 
 == Changelog ==
+
+= 0.5 (18/11/2017) =
+* New: Added show loading option
+* New: Added loading dots color option
+* New: Added response delay option 0 - 5000ms
 
 = 0.4 (11/09/2017) =
 * New: Added myc_protocol_version filter for API query requests

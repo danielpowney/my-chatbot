@@ -53,6 +53,8 @@ function myc_load_scripts() {
 			),
 			'session_id' => apply_filters( 'myc_script_session_id', $session_id ),
 			'show_time' => apply_filters( 'myc_script_show_time', $general_settings['show_time'] ),
+			'show_loading' => apply_filters( 'myc_script_show_loading', $general_settings['show_loading'] ),
+			'response_delay' => apply_filters( 'myc_script_response_delay', $general_settings['response_delay'] ),
 	) ) );
 
 }
@@ -86,6 +88,9 @@ function myc_register_styles() {
 	wp_register_style( 'myc-style', $css_dir . 'frontend' . $suffix . '.css', array(), MYC_VERSION, 'all' );
 
 	$custom_css = '
+		#myc-conversation-area .myc-loading-dot {
+			color: ' . $general_settings['loading_dots_color'] . ';
+		}
 		.myc-conversation-response, .myc-conversation-response:after {
 			background-color: ' . $general_settings['response_background_color'] . ';
 			color: ' . $general_settings['response_font_color'] . ';
@@ -123,8 +128,6 @@ function myc_register_styles() {
 	}
 	wp_add_inline_style( 'myc-style', $custom_css );
 	wp_enqueue_style( 'myc-style' );
-
-	wp_enqueue_style( 'dashicons' );
 }
 add_action( 'wp_enqueue_scripts', 'myc_register_styles' );
 

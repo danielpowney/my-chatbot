@@ -145,6 +145,44 @@ function myc_register_settings() {
 							'label' 		=> __( 'Check this box if you want to show the time underneath the conversation bubbles.', 'my-chatbot' )
 					)
 			),
+			'show_loading' => array(
+					'title' 	=> __( 'Show Loading', 'my-chatbot' ),
+					'callback' 	=> 'myc_field_checkbox',
+					'page' 		=> 'my-chatbot&tab=myc_general_settings',
+					'section' 	=> 'myc_section_general',
+					'args' => array(
+							'option_name' 	=> 'myc_general_settings',
+							'setting_id' 	=> 'show_loading',
+							'label' 		=> __( 'Check this box if you want to display loading dots until a response is returned.', 'my-chatbot' )
+					)
+			),
+			'loading_dots_color' => array(
+					'title' 	=> __( 'Loading Dots Color', 'my-chatbot' ),
+					'callback' 	=> 'myc_field_color_picker',
+					'page' 		=> 'my-chatbot&tab=myc_general_settings',
+					'section' 	=> 'myc_section_general',
+					'args' => array(
+							'option_name' 	=> 'myc_general_settings',
+							'setting_id' 	=> 'loading_dots_color',
+							'label'			=> __( 'Choose a color for the loading dots.', 'my-chatbot' )
+					)
+			),
+			'response_delay' => array(
+					'title' 	=> __( 'Response Delay', 'my-chatbot' ),
+					'callback' 	=> 'myc_field_input',
+					'page' 		=> 'my-chatbot&tab=myc_general_settings',
+					'section' 	=> 'myc_section_general',
+					'args' => array(
+							'option_name' 	=> 'myc_general_settings',
+							'setting_id' 	=> 'response_delay',
+							'label' 		=> __( 'milliseconds. Add a delay between messages.', 'my-chatbot' ),
+							'min'			=> 0,
+							'max'			=> 5000,
+							'required'		=> true,
+							'type' 			=> 'number',
+							'class'			=> 'small-text'
+					)
+			),
 			'request_background_color' => array(
 					'title' 	=> __( 'Request Background Color', 'my-chatbot' ),
 					'callback' 	=> 'myc_field_color_picker',
@@ -306,6 +344,9 @@ function myc_default_settings() {
 			'enable_welcome_event'				=> false,
 			'messaging_platform'				=> 'default',
 			'show_time'							=> false,
+			'show_loading'						=> false,
+			'loading_dots_color'				=> '#1f4c73',
+			'response_delay'					=> 1500,
 
 			// conversation bubbles
 			'request_background_color'			=> '#1f4c73',
@@ -356,6 +397,18 @@ function myc_sanitize_general_settings( $input ) {
 		$input['show_time'] = true;
 	} else {
 		$input['show_time'] = false;
+	}
+
+	if ( isset( $input['show_loading'] ) && $input['show_loading'] == 'true' ) {
+		$input['show_loading'] = true;
+	} else {
+		$input['show_loading'] = false;
+	}
+
+	if ( ! is_numeric( $input['response_delay'] ) ) {
+		add_settings_error( 'myc_general_settings', 'non_numeric_response_delay', __( 'Response delay must be numeric.' , 'my-chatbot' ), 'error' );
+	} else if ( intval( $input['response_delay'] ) < 0 || intval( $input['response_delay'] ) > 5000 ) {
+		add_settings_error( 'myc_general_settings', 'range_error_response_delay', __( 'Response delay cannot be less than 0 or greater than 5000.', 'my-chatbot' ), 'error' );
 	}
 
 	if ( isset( $input['disable_css_styles'] ) && $input['disable_css_styles'] == 'true' ) {

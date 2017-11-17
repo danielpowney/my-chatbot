@@ -19,6 +19,9 @@ jQuery(document).ready(function() {
 				innerHTML += "<div class=\"myc-datetime\">" + date.toLocaleTimeString() + "</div>";
 			}
 			innerHTML += "</div>";
+			if (myc_script_vars.show_loading) {
+				innerHTML += "<div class=\"myc-loading\"><i class=\"myc-loading-dot\" /><i class=\"myc-loading-dot\" /><i class=\"myc-loading-dot\" /></div>";
+			}
 			jQuery("#myc-conversation-area").append(innerHTML);
 			jQuery("input#myc-text").val("");
 			jQuery("#myc-conversation-area").scrollTop(jQuery("#myc-conversation-area").prop("scrollHeight"));
@@ -57,19 +60,21 @@ jQuery(document).ready(function() {
 
 
 	/* Overlay slide toggle */
-	jQuery(".myc-content-overlay .myc-content-overlay-header .dashicons-arrow-up-alt2").click(function(event){
-		jQuery(this).hide();
-		jQuery(this).parent().parent().removeClass("myc-toggle-closed");
-		jQuery(this).parent().parent().addClass("myc-toggle-open");
-		jQuery(this).parent().find(".dashicons-arrow-down-alt2").show();
-		jQuery(this).parent().siblings(".myc-content-overlay-container, .myc-content-overlay-powered-by").slideToggle("slow", function() {});
-	});
-	jQuery(".myc-content-overlay .myc-content-overlay-header .dashicons-arrow-down-alt2").click(function(event){
-		jQuery(this).hide();
-		jQuery(this).parent().parent().removeClass("myc-toggle-open");
-		jQuery(this).parent().parent().addClass("myc-toggle-closed");
-		jQuery(this).parent().find(".dashicons-arrow-up-alt2").show();
-		jQuery(this).parent().siblings(".myc-content-overlay-container, .myc-content-overlay-powered-by").slideToggle("slow", function() {});
+	jQuery(".myc-content-overlay .myc-content-overlay-header").click(function(event){
+
+		if (jQuery(this).find(".dashicons-arrow-up-alt2").css("display") !== "none") {
+			jQuery(this).find(".dashicons-arrow-up-alt2").hide();
+			jQuery(this).parent().removeClass("myc-toggle-closed");
+			jQuery(this).parent().addClass("myc-toggle-open");
+			jQuery(this).find(".dashicons-arrow-down-alt2").show();
+			jQuery(this).siblings(".myc-content-overlay-container, .myc-content-overlay-powered-by").slideToggle("slow", function() {});
+		} else {
+			jQuery(this).find(".dashicons-arrow-down-alt2").hide();
+			jQuery(this).parent().removeClass("myc-toggle-open");
+			jQuery(this).parent().addClass("myc-toggle-closed");
+			jQuery(this).find(".dashicons-arrow-up-alt2").show();
+			jQuery(this).siblings(".myc-content-overlay-container, .myc-content-overlay-powered-by").slideToggle("slow", function() {});
+		}
 	});
 
 });
@@ -96,9 +101,18 @@ function textQuery(text) {
 			sessionId: myc_script_vars.session_id
 		} ),
 		success : function(response) {
-			prepareResponse(response);
+			setTimeout(function(){
+				if (myc_script_vars.show_loading) {
+					jQuery(".myc-loading").empty();
+				}
+				prepareResponse(response);
+			}, myc_script_vars.response_delay);
+
 		},
 		error : function(response) {
+			if (myc_script_vars.show_loading) {
+				jQuery(".myc-loading").empty();
+			}
 			textResponse(myc_script_vars.messages.internal_error);
 			jQuery("#myc-conversation-area").scrollTop(jQuery("#myc-conversation-area").prop("scrollHeight"));
 		}
@@ -267,6 +281,9 @@ function quickRepliesResponse(title, replies) {
 		var innerHTML = "<div class=\"myc-conversation-bubble-container myc-conversation-bubble-container-request\"><div class=\"myc-conversation-bubble myc-conversation-request myc-is-active\">" + text + "</div>";
 		if (myc_script_vars.show_time) {
 			innerHTML += "<div class=\"myc-datetime\">" + date.toLocaleTimeString() + "</div>";
+		}
+		if (myc_script_vars.show_loading) {
+			innerHTML += "<div class=\"myc-loading\"><i class=\"myc-loading-dot\" /><i class=\"myc-loading-dot\" /><i class=\"myc-loading-dot\" /></div>";
 		}
 		innerHTML += "</div>";
 		jQuery("#myc-conversation-area").append(innerHTML);
