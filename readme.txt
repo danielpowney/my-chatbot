@@ -7,7 +7,7 @@ Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A artificial intelligent chatbot for WordPress powered by Dialogflow (formerly API.AI).
+Create your own branded AI chatbot for WordPress powered by Dialogflow (formerly API.AI).
 
 == Description ==
 
