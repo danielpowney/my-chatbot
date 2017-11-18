@@ -130,7 +130,7 @@
 	text-align: right;
 	font-style: italic;
 }
-.myc-content-overlay-header .dashicons-arrow-up-alt2, .myc-content-overlay-header .dashicons-arrow-down-alt2 {
+.myc-content-overlay-header .myc-icon-toggle-down, .myc-content-overlay-header .myc-icon-toggle-up {
 	line-height: 50px;
 	float: right;
 }
@@ -223,48 +223,53 @@
 	text-align: center;
 	vertical-align: center;
 }
-#myc-conversation-area .myc-loading-dot {
+#myc-conversation-area .myc-icon-loading-dot {
 	animation: 1s blink infinite;
 	font-size: 1em;
 	display: clear;
 	margin-left: 2px;
 	margin-right: 2px;
 }
-#myc-conversation-area .myc-loading-dot:nth-child(2) {
+#myc-conversation-area .myc-icon-loading-dot:nth-child(2) {
 	animation-delay: 750ms;
 }
-#myc-conversation-area .myc-loading-dot:nth-child(3) {
+#myc-conversation-area .myc-icon-loading-dot:nth-child(3) {
 	animation-delay: 1500ms;
 }
 
 
-
 @font-face {
-  font-family: 'myc-icons';
-  src:  url('../fonts/myc-icons.eot?oniopx');
-  src:  url('../fonts/myc-icons.eot?oniopx#iefix') format('embedded-opentype'),
-    url('../fonts/myc-icons.ttf?oniopx') format('truetype'),
-    url('../fonts/myc-icons.woff?oniopx') format('woff'),
-    url('../fonts/myc-icons.svg?oniopx#myc-icons') format('svg');
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'myc-icons';
+	src:  url('../fonts/icons.eot?6tk1sz');
+	src:  url('../fonts/icons.eot?6tk1sz#iefix') format('embedded-opentype'),
+	url('../fonts/icons.ttf?6tk1sz') format('truetype'),
+	url('../fonts/icons.woff?6tk1sz') format('woff'),
+	url('../fonts/icons.svg?6tk1sz#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
 }
 
-[class^="myc-loading-dot"], [class*=" myc-loading-dot"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'myc-icons' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
+[class^="myc-icon-"], [class*=" myc-icon-"] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'myc-icons' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
 
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
-.myc-loading-dot:before {
+.myc-icon-toggle-up:before {
+  content: "\f077";
+}
+.myc-icon-toggle-down:before {
+  content: "\f078";
+}
+.myc-icon-loading-dot:before {
   content: "\f111";
 }

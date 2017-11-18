@@ -87,7 +87,7 @@ function myc_register_styles() {
 	wp_register_style( 'myc-style', $css_dir . 'frontend' . $suffix . '.css', array(), MYC_VERSION, 'all' );
 
 	$custom_css = '
-		#myc-conversation-area .myc-loading-dot {
+		#myc-conversation-area .myc-icon-loading-dot {
 			color: ' . $general_settings['loading_dots_color'] . ';
 		}
 		.myc-conversation-response, .myc-conversation-response:after {
@@ -114,13 +114,13 @@ function myc_register_styles() {
 
 	if ( $overlay_settings['overlay_default_open'] ) {
 		$custom_css .= '
-			.myc-content-overlay-header .dashicons-arrow-up-alt2 {
+			.myc-content-overlay-header .myc-icon-toggle-up {
 				display: none;
 			}
 		';
 	} else {
 		$custom_css .= '
-			.myc-content-overlay-header .dashicons-arrow-down-alt2, .myc-content-overlay-powered-by, .myc-content-overlay-container {
+			.myc-content-overlay-header .myc-icon-toggle-down, .myc-content-overlay-powered-by, .myc-content-overlay-container {
 				display: none;
 			}
 		';

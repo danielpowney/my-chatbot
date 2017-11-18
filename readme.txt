@@ -49,10 +49,11 @@ Attributes:
 == Changelog ==
 
 = 0.5 (18/11/2017) =
-* New: Added show loading option
+* New: Added show loading option which is implemted using a local icon font and CSS animations
 * New: Added loading dots color option
 * New: Added response delay option 0 - 5000ms
 * Bug: Moved setting the sesison cookie to before any HTML appears to fix headers already set warning
+* Bug: Replaced Dashicon ico fonts for toggle up/down with a local icon font. It you have customized the chatbot-overlay.php template file, you will need to update it.
 
 = 0.4 (11/09/2017) =
 * New: Added myc_protocol_version filter for API query requests

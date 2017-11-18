@@ -20,7 +20,7 @@ jQuery(document).ready(function() {
 			}
 			innerHTML += "</div>";
 			if (myc_script_vars.show_loading) {
-				innerHTML += "<div class=\"myc-loading\"><i class=\"myc-loading-dot\" /><i class=\"myc-loading-dot\" /><i class=\"myc-loading-dot\" /></div>";
+				innerHTML += "<div class=\"myc-loading\"><i class=\"myc-icon-loading-dot\" /><i class=\"myc-icon-loading-dot\" /><i class=\"myc-icon-loading-dot\" /></div>";
 			}
 			jQuery("#myc-conversation-area").append(innerHTML);
 			jQuery("input#myc-text").val("");
@@ -62,17 +62,17 @@ jQuery(document).ready(function() {
 	/* Overlay slide toggle */
 	jQuery(".myc-content-overlay .myc-content-overlay-header").click(function(event){
 
-		if (jQuery(this).find(".dashicons-arrow-up-alt2").css("display") !== "none") {
-			jQuery(this).find(".dashicons-arrow-up-alt2").hide();
+		if (jQuery(this).find(".myc-icon-toggle-up").css("display") !== "none") {
+			jQuery(this).find(".myc-icon-toggle-up").hide();
 			jQuery(this).parent().removeClass("myc-toggle-closed");
 			jQuery(this).parent().addClass("myc-toggle-open");
-			jQuery(this).find(".dashicons-arrow-down-alt2").show();
+			jQuery(this).find(".myc-icon-toggle-down").show();
 			jQuery(this).siblings(".myc-content-overlay-container, .myc-content-overlay-powered-by").slideToggle("slow", function() {});
 		} else {
-			jQuery(this).find(".dashicons-arrow-down-alt2").hide();
+			jQuery(this).find(".myc-icon-toggle-down").hide();
 			jQuery(this).parent().removeClass("myc-toggle-open");
 			jQuery(this).parent().addClass("myc-toggle-closed");
-			jQuery(this).find(".dashicons-arrow-up-alt2").show();
+			jQuery(this).find(".myc-icon-toggle-up").show();
 			jQuery(this).siblings(".myc-content-overlay-container, .myc-content-overlay-powered-by").slideToggle("slow", function() {});
 		}
 	});
@@ -283,7 +283,7 @@ function quickRepliesResponse(title, replies) {
 			innerHTML += "<div class=\"myc-datetime\">" + date.toLocaleTimeString() + "</div>";
 		}
 		if (myc_script_vars.show_loading) {
-			innerHTML += "<div class=\"myc-loading\"><i class=\"myc-loading-dot\" /><i class=\"myc-loading-dot\" /><i class=\"myc-loading-dot\" /></div>";
+			innerHTML += "<div class=\"myc-loading\"><i class=\"myc-icon-loading-dot\" /><i class=\"myc-icon-loading-dot\" /><i class=\"myc-icon-loading-dot\" /></div>";
 		}
 		innerHTML += "</div>";
 		jQuery("#myc-conversation-area").append(innerHTML);
