@@ -2,17 +2,18 @@
 Contributors: dpowney
 Tags: chatbot, Dialogflow, AI, asssistant, natural language, intent recognition, conversational
 Requires at least: 4.0
-Tested up to: 4.8
+Tested up to: 4.9
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A artificial intelligent chatbot for WordPress powered by Dialogflow (formerly API.AI).
+Create your own branded AI chatbot for WordPress powered by Dialogflow (formerly API.AI).
 
 == Description ==
 
 A artificial intelligent chatbot for WordPress powered by Dialogflow (formerly API.AI). [View Demo](https://danielpowney.com/my-chatbot-demo?utm_source=view-demo&utm_medium=free-plugin&utm_campaign=readme).
 
+* Create your own branded chatbot
 * Assume the appearance of a Dialogflow supported messaging platform to display rich message content. Quick Replies and Image rich messages are supported.
 * Add hyperlinks in response message content using HTML markup.
 * An overlay can be added on every page to display the chatbot. The overlay can toggle up or down.
@@ -36,7 +37,7 @@ Attributes:
 2. Create a Dialogflow account, setup an agent and copy the client access token. If you're a newbie I recommend you try importing the Small Talk prebuilt agent.
 3. Go to My Chatbot plugin options page under the Settings menu, enter the access token and then save
 4. Add the [my_chatbot] shortcode inside the contents of a page
-5  View your page and engage in conversation with your chatbot.
+5.  View your page and engage in conversation with your chatbot.
 
 == Screenshots ==
 
@@ -46,6 +47,13 @@ Attributes:
 4. Plugin options continued
 
 == Changelog ==
+
+= 0.5 (18/11/2017) =
+* New: Added show loading option which is implemted using a local icon font and CSS animations
+* New: Added loading dots color option
+* New: Added response delay option 0 - 5000ms
+* Bug: Moved setting the sesison cookie to before any HTML appears to fix headers already set warning
+* Bug: Replaced Dashicon ico fonts for toggle up/down with a local icon font. It you have customized the chatbot-overlay.php template file, you will need to update it.
 
 = 0.4 (11/09/2017) =
 * New: Added myc_protocol_version filter for API query requests

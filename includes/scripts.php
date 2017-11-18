@@ -37,8 +37,7 @@ function myc_load_scripts() {
 	if ( isset( $_COOKIE['myc_session_id'] ) && strlen( $_COOKIE['myc_session_id'] ) > 0 ) {
 		$session_id = $_COOKIE['myc_session_id'];
 	} else {
-		$session_id = md5( uniqid( 'myc-' ) );
-		setcookie( 'myc_session_id', $session_id, time() + ( 86400 * 30 ), '/' ); // 86400 = 1 day
+		$session_id = md5( uniqid( 'myc-' ) ); // do not set cookie here as headers have already been set
 	}
 
 	wp_localize_script( 'myc-script', 'myc_script_vars', apply_filters( 'myc_script_vars', array(
@@ -53,6 +52,8 @@ function myc_load_scripts() {
 			),
 			'session_id' => apply_filters( 'myc_script_session_id', $session_id ),
 			'show_time' => apply_filters( 'myc_script_show_time', $general_settings['show_time'] ),
+			'show_loading' => apply_filters( 'myc_script_show_loading', $general_settings['show_loading'] ),
+			'response_delay' => apply_filters( 'myc_script_response_delay', $general_settings['response_delay'] ),
 	) ) );
 
 }
@@ -86,6 +87,9 @@ function myc_register_styles() {
 	wp_register_style( 'myc-style', $css_dir . 'frontend' . $suffix . '.css', array(), MYC_VERSION, 'all' );
 
 	$custom_css = '
+		#myc-conversation-area .myc-icon-loading-dot {
+			color: ' . $general_settings['loading_dots_color'] . ';
+		}
 		.myc-conversation-response, .myc-conversation-response:after {
 			background-color: ' . $general_settings['response_background_color'] . ';
 			color: ' . $general_settings['response_font_color'] . ';
@@ -110,21 +114,19 @@ function myc_register_styles() {
 
 	if ( $overlay_settings['overlay_default_open'] ) {
 		$custom_css .= '
-			.myc-content-overlay-header .dashicons-arrow-up-alt2 {
+			.myc-content-overlay-header .myc-icon-toggle-up {
 				display: none;
 			}
 		';
 	} else {
 		$custom_css .= '
-			.myc-content-overlay-header .dashicons-arrow-down-alt2, .myc-content-overlay-powered-by, .myc-content-overlay-container {
+			.myc-content-overlay-header .myc-icon-toggle-down, .myc-content-overlay-powered-by, .myc-content-overlay-container {
 				display: none;
 			}
 		';
 	}
 	wp_add_inline_style( 'myc-style', $custom_css );
 	wp_enqueue_style( 'myc-style' );
-
-	wp_enqueue_style( 'dashicons' );
 }
 add_action( 'wp_enqueue_scripts', 'myc_register_styles' );
 

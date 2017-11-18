@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: my-chatbot\n"
-"POT-Creation-Date: 2017-11-01 08:42+1100\n"
-"PO-Revision-Date: 2017-11-01 08:42+1100\n"
+"POT-Creation-Date: 2017-11-18 00:35+1100\n"
+"PO-Revision-Date: 2017-11-18 00:35+1100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../includes/admin/admin-pages.php:24
-#: ../includes/admin/settings/register-settings.php:325
+#: ../includes/admin/settings/register-settings.php:369
 #: ../includes/post-meta-box.php:10
 msgid "My Chatbot"
 msgstr ""
@@ -34,15 +34,11 @@ msgstr ""
 msgid "Overlay"
 msgstr ""
 
-#: ../includes/admin/settings/display-settings.php:47
-msgid "Settings saved."
-msgstr ""
-
-#: ../includes/admin/settings/display-settings.php:75
+#: ../includes/admin/settings/display-settings.php:62
 msgid "Dialogflow integration settings and chatbot conversation styles."
 msgstr ""
 
-#: ../includes/admin/settings/display-settings.php:84
+#: ../includes/admin/settings/display-settings.php:71
 msgid ""
 "Settings to overlay a chatbot on the bottom right of each page which can "
 "toggle up and down."
@@ -60,203 +56,237 @@ msgstr ""
 msgid "Enter access token..."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:67
+#: ../includes/admin/settings/register-settings.php:68
 msgid "Input Text"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:74
+#: ../includes/admin/settings/register-settings.php:75
 msgid "Enter input text."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:75
+#: ../includes/admin/settings/register-settings.php:76
 msgid "Enter input text..."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:79
+#: ../includes/admin/settings/register-settings.php:81
 msgid "Enable Welcome Event"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:86
+#: ../includes/admin/settings/register-settings.php:88
 msgid ""
 "Check this box if you want to display the welcome fallback intent on page "
 "load."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:90
+#: ../includes/admin/settings/register-settings.php:92
 msgid "Messaging Platform"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:100
+#: ../includes/admin/settings/register-settings.php:102
 msgid "Default"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:104
+#: ../includes/admin/settings/register-settings.php:106
 msgid "Actions on Google"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:108
+#: ../includes/admin/settings/register-settings.php:110
 msgid "Facebook Messenger"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:112
+#: ../includes/admin/settings/register-settings.php:114
 msgid "Slack"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:116
+#: ../includes/admin/settings/register-settings.php:118
 msgid "Telegram"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:120
+#: ../includes/admin/settings/register-settings.php:122
 msgid "Kik"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:124
+#: ../includes/admin/settings/register-settings.php:126
 msgid "Viber"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:128
+#: ../includes/admin/settings/register-settings.php:130
 msgid "Skype"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:132
+#: ../includes/admin/settings/register-settings.php:134
 msgid ""
 "Assume appearance of a Dialogflow supported messaging platform. Note default "
 "responses do not support rich message content."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:136
+#: ../includes/admin/settings/register-settings.php:138
 msgid "Show Time"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:143
+#: ../includes/admin/settings/register-settings.php:145
 msgid ""
 "Check this box if you want to show the time underneath the conversation "
 "bubbles."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:147
-msgid "Request Background Color"
+#: ../includes/admin/settings/register-settings.php:149
+msgid "Show Loading"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:154
-msgid "Choose a background color for the conversation request bubble."
+#: ../includes/admin/settings/register-settings.php:156
+msgid ""
+"Check this box if you want to display loading dots until a response is "
+"returned."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:158
-msgid "Request Font Color"
+#: ../includes/admin/settings/register-settings.php:160
+msgid "Loading Dots Color"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:165
-msgid "Choose a font color for the conversation request text."
+#: ../includes/admin/settings/register-settings.php:167
+msgid "Choose a color for the loading dots."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:169
-msgid "Response Background Color"
+#: ../includes/admin/settings/register-settings.php:171
+msgid "Response Delay"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:176
-msgid "Choose a background color for the conversation response bubble."
-msgstr ""
-
-#: ../includes/admin/settings/register-settings.php:180
-msgid "Response Font Color"
+#: ../includes/admin/settings/register-settings.php:178
+msgid "milliseconds. Add a delay between messages."
 msgstr ""
 
 #: ../includes/admin/settings/register-settings.php:187
-msgid "Choose a font color for the conversation response text."
+msgid "Request Background Color"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:191
-msgid "Non Current Opacity"
+#: ../includes/admin/settings/register-settings.php:194
+msgid "Choose a background color for the conversation request bubble."
 msgstr ""
 
 #: ../includes/admin/settings/register-settings.php:198
+msgid "Request Font Color"
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:205
+msgid "Choose a font color for the conversation request text."
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:209
+msgid "Response Background Color"
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:216
+msgid "Choose a background color for the conversation response bubble."
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:220
+msgid "Response Font Color"
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:227
+msgid "Choose a font color for the conversation response text."
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:231
+msgid "Non Current Opacity"
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:238
 msgid "Set the background color opacity for non current converation bubbles."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:207
+#: ../includes/admin/settings/register-settings.php:248
 msgid "Enable Overlay"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:214
+#: ../includes/admin/settings/register-settings.php:255
 msgid ""
 "Check this box if you want to enable an overlay of the chatbot on every "
 "page. Note you can override this setting from the Edit post screen for "
 "specific posts."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:218
+#: ../includes/admin/settings/register-settings.php:259
 msgid "Header Background Color"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:225
+#: ../includes/admin/settings/register-settings.php:266
 msgid "Choose a background color for the overlay header."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:229
+#: ../includes/admin/settings/register-settings.php:270
 msgid "Header Font Color"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:236
+#: ../includes/admin/settings/register-settings.php:277
 msgid "Choose a font color for the overlay header text."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:240
+#: ../includes/admin/settings/register-settings.php:281
 msgid "Default Open"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:247
+#: ../includes/admin/settings/register-settings.php:288
 msgid "Check this box if you want to default the overlay to open on page load."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:251
+#: ../includes/admin/settings/register-settings.php:292
 msgid "Header Text"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:258
+#: ../includes/admin/settings/register-settings.php:299
 msgid "Enter overlay header text."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:259
+#: ../includes/admin/settings/register-settings.php:300
 msgid "Enter overlay header text..."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:263
+#: ../includes/admin/settings/register-settings.php:304
 msgid "Powered By Text"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:270
+#: ../includes/admin/settings/register-settings.php:311
 msgid ""
 "Enter overlay powered by text. If empty, the powered by bar will not be "
 "displayed."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:271
+#: ../includes/admin/settings/register-settings.php:312
 msgid "Enter powered by text..."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:275
+#: ../includes/admin/settings/register-settings.php:316
 msgid "Disable CSS Styles"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:282
+#: ../includes/admin/settings/register-settings.php:323
 msgid ""
 "Check this box if you want to disable loading the plugin default CSS styles."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:302
+#: ../includes/admin/settings/register-settings.php:343
 msgid "Ask something..."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:324
+#: ../includes/admin/settings/register-settings.php:368
 msgid "Powered by <a href=\"#\">Replace Me</a>"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:365
+#: ../includes/admin/settings/register-settings.php:409
+msgid "Response delay must be numeric."
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:411
+msgid "Response delay cannot be less than 0 or greater than 5000."
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:421
 msgid "Non current opacity must be numeric."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:367
+#: ../includes/admin/settings/register-settings.php:423
 msgid "Non current opacity cannot be less than 0 or greater than 1."
 msgstr ""
 

@@ -67,7 +67,7 @@
 	max-width: 300px;
 	max-height: 200px;
 	display: inline-block;
-} 
+}
 .myc-conversation-request {
 	background-color: #1f4c73;
 	color: #fff;
@@ -103,9 +103,9 @@
 
 /* Overlay */
 .myc-content-overlay {
-	position: fixed; 
-	bottom: 0%; 
-	right: 5%; 
+	position: fixed;
+	bottom: 0%;
+	right: 5%;
 	width: 350px;
 	display: block;
 	box-shadow: 0 0 3px rgba(0,0,0,.3);
@@ -114,7 +114,7 @@
 	text-align: left;
 }
 .myc-content-overlay-header {
-	height: 50px; 
+	height: 50px;
 	font-weight: 600;
 	line-height: 50px;
 	font-size: 22px;
@@ -130,10 +130,12 @@
 	text-align: right;
 	font-style: italic;
 }
-.myc-content-overlay-header .dashicons-arrow-up-alt2, .myc-content-overlay-header .dashicons-arrow-down-alt2 {
-	cursor: pointer;
+.myc-content-overlay-header .myc-icon-toggle-down, .myc-content-overlay-header .myc-icon-toggle-up {
 	line-height: 50px;
 	float: right;
+}
+.myc-content-overlay-header {
+	cursor: pointer;
 }
 .myc-content-overlay-container {
 	display: block;
@@ -190,7 +192,7 @@
 		max-height: 80%;
 	}
 	.myc-content-overlay-container .myc-container #myc-input-area {
-		position: fixed; 
+		position: fixed;
 		bottom: 0;
 		width: 100%;
 	}
@@ -205,4 +207,69 @@
 	.myc-content-overlay-container .myc-container #myc-conversation-area {
 		max-height: 330px;
 	}
+}
+
+
+/* Loader */
+@keyframes blink {
+	50% {
+		color: transparent;
+	}
+}
+#myc-conversation-area .myc-loading {
+	display: block;
+	padding: 6px 9px;
+	margin-top: 10px;
+	text-align: center;
+	vertical-align: center;
+}
+#myc-conversation-area .myc-icon-loading-dot {
+	animation: 1s blink infinite;
+	font-size: 1em;
+	display: clear;
+	margin-left: 2px;
+	margin-right: 2px;
+}
+#myc-conversation-area .myc-icon-loading-dot:nth-child(2) {
+	animation-delay: 750ms;
+}
+#myc-conversation-area .myc-icon-loading-dot:nth-child(3) {
+	animation-delay: 1500ms;
+}
+
+
+@font-face {
+	font-family: 'myc-icons';
+	src:  url('../fonts/icons.eot?6tk1sz');
+	src:  url('../fonts/icons.eot?6tk1sz#iefix') format('embedded-opentype'),
+	url('../fonts/icons.ttf?6tk1sz') format('truetype'),
+	url('../fonts/icons.woff?6tk1sz') format('woff'),
+	url('../fonts/icons.svg?6tk1sz#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="myc-icon-"], [class*=" myc-icon-"] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'myc-icons' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.myc-icon-toggle-up:before {
+  content: "\f077";
+}
+.myc-icon-toggle-down:before {
+  content: "\f078";
+}
+.myc-icon-loading-dot:before {
+  content: "\f111";
 }
