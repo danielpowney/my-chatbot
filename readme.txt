@@ -52,6 +52,7 @@ Attributes:
 * New: Added show loading option
 * New: Added loading dots color option
 * New: Added response delay option 0 - 5000ms
+* Bug: Moved setting the sesison cookie to before any HTML appears to fix headers already set warning
 
 = 0.4 (11/09/2017) =
 * New: Added myc_protocol_version filter for API query requests

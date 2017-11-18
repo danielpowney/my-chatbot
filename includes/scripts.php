@@ -37,8 +37,7 @@ function myc_load_scripts() {
 	if ( isset( $_COOKIE['myc_session_id'] ) && strlen( $_COOKIE['myc_session_id'] ) > 0 ) {
 		$session_id = $_COOKIE['myc_session_id'];
 	} else {
-		$session_id = md5( uniqid( 'myc-' ) );
-		setcookie( 'myc_session_id', $session_id, time() + ( 86400 * 30 ), '/' ); // 86400 = 1 day
+		$session_id = md5( uniqid( 'myc-' ) ); // do not set cookie here as headers have already been set
 	}
 
 	wp_localize_script( 'myc-script', 'myc_script_vars', apply_filters( 'myc_script_vars', array(
