@@ -10,7 +10,7 @@ if ( ! empty( $title ) ) {
 
 	<div id="myc-conversation-area"></div>
 	<div id="myc-input-area">
-		<input id="myc-text" type="text" placeholder="<?php echo $input_text; ?>"></input>
+		<input id="myc-text" type="text" placeholder="<?php echo $input_text; ?>" /> 
 	</div>
 </div>
 
