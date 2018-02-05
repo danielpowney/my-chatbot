@@ -97,6 +97,35 @@ function myc_field_input( $args ) {
 	<?php }
 }
 
+
+
+/**
+ * Color picker field
+ *
+ * @param unknown $args
+ */
+function myc_field_select( $args ) {
+	$settings = (array) get_option( $args['option_name' ] );
+	$value = $settings[$args['setting_id']];
+	?>
+	<select name="<?php echo $args['option_name']; ?>[<?php echo $args['setting_id']; ?>]">
+		<?php
+		foreach ( $args['select_options'] as $option_value => $option_label ) {
+			$selected = '';
+			if ( $value == $option_value ) {
+				$selected = 'selected="selected"';
+			}
+			echo '<option value="' . $option_value . '" ' . $selected . '>' . $option_label . '</option>';
+		}
+		?>
+	</select>
+	<?php
+	if ( isset( $args['label'] ) ) { ?>
+		<label><?php echo $args['label']; ?></label>
+	<?php }
+}
+
+
 /**
  * Color picker field
  *

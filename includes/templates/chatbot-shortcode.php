@@ -1,11 +1,12 @@
-<div class="myc-container">
-	
+<div id="myc-container-<?php echo $sequence; ?>" class="myc-container">
+
 	<?php do_action( 'myc_shortcode_before_conversation_area' ); ?>
-	
-	<div id="myc-conversation-area"></div>
+
+	<div class="myc-conversation-area"></div>
 	<div id="myc-input-area">
-		<input id="myc-text" type="text" placeholder="<?php echo $input_text; ?>"></input>
+		<input class="myc-text" type="text" placeholder="<?php echo $input_text; ?>"></input>
 	</div>
+
 </div>
 
 <?php if ( $debug ) { ?>

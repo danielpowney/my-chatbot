@@ -19,31 +19,32 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 function myc_chatbot_shortcode( $atts = array(), $content = null, $tag ) {
 
-	extract( shortcode_atts( array( 
+	extract( shortcode_atts( array(
 			'echo' => false,
 			'debug' => false
 	), $atts ) );
-	
+
 	if ( is_string( $debug ) ) {
 		$debug = $debug == 'true' ? true : false;
 	}
-			
+
 	$general_settings = (array) get_option( 'myc_general_settings' );
-	
+
 	ob_start();
 	myc_get_template_part( 'chatbot', 'shortcode', true, array(
 			'debug' 					=> $debug,
-			'input_text'				=> $general_settings['input_text']
+			'input_text'				=> $general_settings['input_text'],
+			'sequence'					=> My_Chatbot::$sequence++
 	) );
 	$html = ob_get_contents();
 	ob_end_clean();
-	
+
 	$html = apply_filters( 'myc_template_html', $html );
-	
+
 	if ( $echo == true ) {
 		echo $html;
 	}
-	
+
 	return $html;
 }
 add_shortcode( 'my_chatbot', 'myc_chatbot_shortcode' );
