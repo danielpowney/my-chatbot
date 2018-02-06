@@ -48,6 +48,13 @@ Attributes:
 
 == Changelog ==
 
+= 0.6 (28/11/2017) =
+* New: Now supports multiple chatbots on the same page
+* Bug: Fixed loading welcome intent when overlay is initially closed
+* Tweak: Updated JavaScript and generated HTML to use classes instead of ids for some div elements as there can be more than one chatbot on the same page
+* Bug: Escape text input to prevent XSS
+* New: Added support for different languages https://dialogflow.com/docs/reference/language
+
 = 0.5 (18/11/2017) =
 * New: Added show loading option which is implemted using a local icon font and CSS animations
 * New: Added loading dots color option

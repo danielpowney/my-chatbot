@@ -41,19 +41,20 @@ function myc_load_scripts() {
 	}
 
 	wp_localize_script( 'myc-script', 'myc_script_vars', apply_filters( 'myc_script_vars', array(
-			'access_token' => apply_filters( 'myc_script_access_token', $general_settings['myc_access_token'] ),
-			'enable_welcome_event' => apply_filters( 'myc_script_enable_welcome_event', $general_settings['enable_welcome_event'] ),
-			'messaging_platform' => apply_filters( 'myc_script_messaging_platform', $general_settings['messaging_platform'] ),
-			'base_url' => 'https://api.dialogflow.com/v1/',
-			'version_date' => apply_filters( 'myc_protocol_version', '20170712' ),
-			'messages' => array(
-					'internal_error' => __( 'An internal error occured', 'my-chatbot' ),
-					'input_unknown' => __( 'I\'m sorry I do not understand.', 'my-chatbot' )
+			'access_token' 			=> apply_filters( 'myc_script_access_token', $general_settings['myc_access_token'] ),
+			'enable_welcome_event' 	=> apply_filters( 'myc_script_enable_welcome_event', $general_settings['enable_welcome_event'] ),
+			'messaging_platform' 	=> apply_filters( 'myc_script_messaging_platform', $general_settings['messaging_platform'] ),
+			'base_url' 				=> 'https://api.dialogflow.com/v1/',
+			'version_date' 			=> apply_filters( 'myc_protocol_version', '20170712' ),
+			'messages' 				=> array(
+					'internal_error' 		=> __( 'An internal error occured', 'my-chatbot' ),
+					'input_unknown' 		=> __( 'I\'m sorry I do not understand.', 'my-chatbot' )
 			),
-			'session_id' => apply_filters( 'myc_script_session_id', $session_id ),
-			'show_time' => apply_filters( 'myc_script_show_time', $general_settings['show_time'] ),
-			'show_loading' => apply_filters( 'myc_script_show_loading', $general_settings['show_loading'] ),
-			'response_delay' => apply_filters( 'myc_script_response_delay', $general_settings['response_delay'] ),
+			'session_id' 			=> apply_filters( 'myc_script_session_id', $session_id ),
+			'show_time' 			=> apply_filters( 'myc_script_show_time', $general_settings['show_time'] ),
+			'show_loading' 			=> apply_filters( 'myc_script_show_loading', $general_settings['show_loading'] ),
+			'response_delay' 		=> apply_filters( 'myc_script_response_delay', $general_settings['response_delay'] ),
+			'language' 				=> apply_filters( 'myc_language', $general_settings['language'] ),
 	) ) );
 
 }
@@ -87,7 +88,7 @@ function myc_register_styles() {
 	wp_register_style( 'myc-style', $css_dir . 'frontend' . $suffix . '.css', array(), MYC_VERSION, 'all' );
 
 	$custom_css = '
-		#myc-conversation-area .myc-icon-loading-dot {
+		.myc-conversation-area .myc-icon-loading-dot {
 			color: ' . $general_settings['loading_dots_color'] . ';
 		}
 		.myc-conversation-response, .myc-conversation-response:after {
@@ -150,10 +151,61 @@ function myc_load_admin_scripts() {
 	wp_register_script( 'myc-admin-script', $js_dir . 'admin' . $suffix . '.js', array( 'jquery' ), MYC_VERSION );
 	wp_enqueue_script( 'myc-admin-script' );
 
-	wp_enqueue_style( 'mrp-admin-style', $css_dir . 'admin' . $suffix . '.css' );
+	wp_enqueue_style( 'myc-admin-style', $css_dir . 'admin' . $suffix . '.css' );
 
 	wp_enqueue_style( 'wp-color-picker' );
 	wp_enqueue_script( 'wp-color-picker' );
 
 }
 add_action( 'admin_enqueue_scripts', 'myc_load_admin_scripts' );
+
+
+
+/**
+ *
+ */
+function myc_get_language( $language ) {
+
+	if ( $language == '' ) {
+
+		$locale = get_locale();
+
+		$language_map = array(
+				'pt_BR' 	=> 'pt-BR',
+				'zh_HK'		=> 'zh-HK',
+				'zh_CN'		=> 'zh-CN',
+				'zh_TW'		=> 'zh-TW',
+				''			=> 'en',
+				'en_AU'		=> 'en-AU',
+				'en_CA'		=> 'en-CA',
+				'en_GB'		=> 'en-GB',
+				'en_IN'		=> 'en-IN',
+				'en_US'		=> 'en-US',
+				'nl_NL'		=> 'nl',
+				'fr_FR'		=> 'fr',
+				'fr_CA'		=> 'fr-CA',
+				'de_DE'		=> 'gr',
+				'it_IT'		=> 'it',
+				'ja'		=> 'ja',
+				'ko_KR'		=> 'ko',
+				'pt_PT'		=> 'pt',
+				'ru_RU'		=> 'ru',
+				'es'		=> 'es',
+				'es_ES'		=> 'es',
+				'es_VE'		=> 'es-419',
+				'es_MX'		=> 'es-419',
+				'es_CR'		=> 'es-419',
+				'es_GT'		=> 'es-419',
+				'es_CL'		=> 'es-419',
+				'es_PE'		=> 'es-419',
+				'es_AR'		=> 'es-419',
+				'es_CO'		=> 'es-419',
+				'uk'		=> 'uk',
+		);
+
+		return $language_map[$locale];
+	}
+
+	return $language;
+}
+add_filter( 'myc_language', 'myc_get_language' );
