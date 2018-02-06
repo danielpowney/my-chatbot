@@ -98,7 +98,7 @@ function myc_register_settings() {
 							'setting_id' 	=> 'language',
 							'label' 		=> __( 'Leave blank for current locale.', 'my-chatbot' ),
 							'select_options' => array(
-									'' 		=> __( '', 'my-chatbot' ),
+									'' 				=> '',
 									'pt-BR' 		=> __( 'Brazilian Portuguese', 'my-chatbot' ),
 									'zh-HK' 		=> __( 'Chinese (Cantonese)', 'my-chatbot' ),
 									'zh-CN' 		=> __( 'Chinese (Simplified)', 'my-chatbot' ),
