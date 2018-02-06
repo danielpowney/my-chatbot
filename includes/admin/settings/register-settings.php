@@ -96,8 +96,9 @@ function myc_register_settings() {
 					'args' => array(
 							'option_name' 	=> 'myc_general_settings',
 							'setting_id' 	=> 'language',
-							'label' 		=> __( 'Choose a language.', 'my-chatbot' ),
+							'label' 		=> __( 'Leave blank for current locale.', 'my-chatbot' ),
 							'select_options' => array(
+									'' 		=> __( '', 'my-chatbot' ),
 									'pt-BR' 		=> __( 'Brazilian Portuguese', 'my-chatbot' ),
 									'zh-HK' 		=> __( 'Chinese (Cantonese)', 'my-chatbot' ),
 									'zh-CN' 		=> __( 'Chinese (Simplified)', 'my-chatbot' ),
@@ -107,7 +108,7 @@ function myc_register_settings() {
 									'en-CA' 		=> __( 'English - Canadian locale', 'my-chatbot' ),
 									'en-GB' 		=> __( 'English - Great Britain locale', 'my-chatbot' ),
 									'en-IN' 		=> __( 'English - Indian locale', 'my-chatbot' ),
-									'en-US' 		=> __( 'US locale', 'my-chatbot' ),
+									'en-US' 		=> __( 'English - US locale', 'my-chatbot' ),
 									'nl' 			=> __( 'Dutch', 'my-chatbot' ),
 									'fr' 			=> __( 'French', 'my-chatbot' ),
 									'fr-CA' 		=> __( 'French - Canadian locale', 'my-chatbot' ),
