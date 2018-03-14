@@ -88,6 +88,43 @@ function myc_register_settings() {
 							'label' 		=> __( 'Check this box if you want to display the welcome fallback intent on page load.', 'my-chatbot' )
 					)
 			),
+			'language' => array(
+					'title' 	=> __( 'Language', 'my-chatbot' ),
+					'callback' 	=> 'myc_field_select',
+					'page' 		=> 'my-chatbot&tab=myc_general_settings',
+					'section' 	=> 'myc_section_general',
+					'args' => array(
+							'option_name' 	=> 'myc_general_settings',
+							'setting_id' 	=> 'language',
+							'label' 		=> __( 'Leave blank for current locale.', 'my-chatbot' ),
+							'select_options' => array(
+									'' 				=> '',
+									'pt-BR' 		=> __( 'Brazilian Portuguese', 'my-chatbot' ),
+									'zh-HK' 		=> __( 'Chinese (Cantonese)', 'my-chatbot' ),
+									'zh-CN' 		=> __( 'Chinese (Simplified)', 'my-chatbot' ),
+									'zh-TW' 		=> __( 'Chinese (Traditional)', 'my-chatbot' ),
+									'en' 			=> __( 'English', 'my-chatbot' ),
+									'en-AU' 		=> __( 'English - Autralian locale', 'my-chatbot' ),
+									'en-CA' 		=> __( 'English - Canadian locale', 'my-chatbot' ),
+									'en-GB' 		=> __( 'English - Great Britain locale', 'my-chatbot' ),
+									'en-IN' 		=> __( 'English - Indian locale', 'my-chatbot' ),
+									'en-US' 		=> __( 'English - US locale', 'my-chatbot' ),
+									'nl' 			=> __( 'Dutch', 'my-chatbot' ),
+									'fr' 			=> __( 'French', 'my-chatbot' ),
+									'fr-CA' 		=> __( 'French - Canadian locale', 'my-chatbot' ),
+									'gr' 			=> __( 'German', 'my-chatbot' ),
+									'it' 			=> __( 'Italian', 'my-chatbot' ),
+									'ja' 			=> __( 'Japanese', 'my-chatbot' ),
+									'ko' 			=> __( 'Korean', 'my-chatbot' ),
+									'pt' 			=> __( 'Portuguese', 'my-chatbot' ),
+									'ru' 			=> __( 'Russian', 'my-chatbot' ),
+									'es' 			=> __( 'Spanish', 'my-chatbot' ),
+									'es-419' 		=> __( 'Spanish - Latin America locale', 'my-chatbot' ),
+									'es-ES' 		=> __( 'Spanish - Spain locale', 'my-chatbot' ),
+									'uk' 			=> __( 'Ukranian', 'my-chatbot' )
+								)
+					)
+			),
 			'messaging_platform' => array(
 					'title' 	=> __( 'Messaging Platform', 'my-chatbot' ),
 					'callback' 	=> 'myc_field_radio_buttons',
@@ -342,9 +379,10 @@ function myc_default_settings() {
 			'myc_access_token' 					=> '',
 			'input_text'						=> __( 'Ask something...', 'my-chatbot' ),
 			'enable_welcome_event'				=> false,
+			'language'							=> 'en',
 			'messaging_platform'				=> 'default',
-			'show_time'							=> false,
-			'show_loading'						=> false,
+			'show_time'							=> true,
+			'show_loading'						=> true,
 			'loading_dots_color'				=> '#1f4c73',
 			'response_delay'					=> 1500,
 

@@ -62,7 +62,8 @@ class MYC_Chatbot_Widget extends WP_Widget {
 				'after_title' 				=> $after_title,
 				'class' 					=> 'myc-chatbot-widget',
 				'debug' 					=> $debug,
-				'input_text'				=> $general_settings['input_text']
+				'input_text'				=> $general_settings['input_text'],
+				'sequence'					=> My_Chatbot::$sequence++
 		) );
 
 		echo $after_widget;
