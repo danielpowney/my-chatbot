@@ -171,6 +171,7 @@ final class My_Chatbot {
 		if( file_exists( MYC_PLUGIN_DIR . 'includes/deprecated-functions.php' ) ) {
 			require_once MYC_PLUGIN_DIR . 'includes/deprecated-functions.php';
 		}
+		require_once MYC_PLUGIN_DIR . 'includes/token.php';
 		require_once MYC_PLUGIN_DIR . 'includes/ajax-functions.php';
 		require_once MYC_PLUGIN_DIR . 'includes/api/class-myc-api.php';
 		require_once MYC_PLUGIN_DIR . 'includes/template-functions.php';

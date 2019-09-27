@@ -40,12 +40,25 @@ function myc_load_scripts() {
 		$session_id = md5( uniqid( 'myc-' ) ); // do not set cookie here as headers have already been set
 	}
 
+	global $wpdb;
+	$table_name = $wpdb->prefix . 'myc_token';
+
+	$oauth_token = '';
+
+	$sql = "SELECT * FROM {$table_name}";
+	$result = $wpdb->get_results( $sql );
+
+	if (!empty($result)) {
+		$oauth_token = $result[0]->token;
+	}
+
 	wp_localize_script( 'myc-script', 'myc_script_vars', apply_filters( 'myc_script_vars', array(
-			'access_token' 			=> apply_filters( 'myc_script_access_token', $general_settings['myc_access_token'] ),
+			'access_token' 			=> apply_filters( 'myc_script_access_token', $oauth_token ),
 			'enable_welcome_event' 	=> apply_filters( 'myc_script_enable_welcome_event', $general_settings['enable_welcome_event'] ),
-			'messaging_platform' 	=> apply_filters( 'myc_script_messaging_platform', $general_settings['messaging_platform'] ),
-			'base_url' 				=> 'https://api.dialogflow.com/v1/',
-			'version_date' 			=> apply_filters( 'myc_protocol_version', '20170712' ),
+			'project_id'			=> apply_filters( 'myc_script_project_id', $general_settings['myc_project_id'] ),
+			'base_url' 				=> 'https://dialogflow.googleapis.com/v2/projects/',
+			'mid_url'					=> '/agent/sessions/',
+			'end_url'					=> ':detectIntent',
 			'messages' 				=> array(
 					'internal_error' 		=> __( 'An internal error occured', 'my-chatbot' ),
 					'input_unknown' 		=> __( 'I\'m sorry I do not understand.', 'my-chatbot' )

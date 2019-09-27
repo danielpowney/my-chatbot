@@ -51,16 +51,29 @@ function myc_register_settings() {
 	add_settings_section( 'myc_section_overlay', null, 'myc_section_overlay_desc', 'my-chatbot&tab=myc_overlay_settings' );
 
 	$setting_fields = array(
-			'myc_access_token' => array(
-					'title' 	=> __( 'Access Token', 'my-chatbot' ),
+		'myc_key_file' => array(
+				'title' 	=> __( 'JSON Keyfile', 'my-chatbot' ),
+				'callback' 	=> 'myc_field_json',
+				'page' 		=> 'my-chatbot&tab=myc_general_settings',
+				'section' 	=> 'myc_section_general',
+				'args' => array(
+						'option_name' 	=> 'myc_general_settings',
+						'setting_id' 	=> 'myc_key_file',
+						'label' 		=> __( 'The file can be obtained from <a target="_blank" href="https://console.cloud.google.com/iam-admin/iam">Google Console IAM</a>', 'my-chatbot' ),
+						'placeholder'	=> __( 'JSON File', 'my-chatbot' ),
+						'required'		=> true
+				)
+		),
+			'myc_project_id' => array(
+					'title' 	=> __( 'Project ID', 'my-chatbot' ),
 					'callback' 	=> 'myc_field_input',
 					'page' 		=> 'my-chatbot&tab=myc_general_settings',
 					'section' 	=> 'myc_section_general',
 					'args' => array(
 							'option_name' 	=> 'myc_general_settings',
-							'setting_id' 	=> 'myc_access_token',
-							'label' 		=> __( 'Enter Dialogflow agent client access token.', 'my-chatbot' ),
-							'placeholder'	=> __( 'Enter access token...', 'my-chatbot' ),
+							'setting_id' 	=> 'myc_project_id',
+							'label' 		=> __( 'Enter Google Project ID. Can be found in Genaral Settins of Dialogflow Agent.', 'my-chatbot' ),
+							'placeholder'	=> __( 'Enter Project ID...', 'my-chatbot' ),
 							'required'		=> true
 					)
 			),
@@ -123,52 +136,6 @@ function myc_register_settings() {
 									'es-ES' 		=> __( 'Spanish - Spain locale', 'my-chatbot' ),
 									'uk' 			=> __( 'Ukranian', 'my-chatbot' )
 								)
-					)
-			),
-			'messaging_platform' => array(
-					'title' 	=> __( 'Messaging Platform', 'my-chatbot' ),
-					'callback' 	=> 'myc_field_radio_buttons',
-					'page' 		=> 'my-chatbot&tab=myc_general_settings',
-					'section' 	=> 'myc_section_general',
-					'args' => array(
-							'option_name' 	=> 'myc_general_settings',
-							'setting_id' 	=> 'messaging_platform',
-							'radio_buttons'	=> array(
-									array(
-											'value' => 'default',
-											'label' => __( 'Default', 'my-chatbot' ),
-									),
-									array(
-											'value' => 'google',
-											'label' => __( 'Actions on Google', 'my-chatbot' ),
-									),
-									array(
-											'value' => 'facebook',
-											'label' => __( 'Facebook Messenger', 'my-chatbot' ),
-									),
-									array(
-											'value' => 'slack',
-											'label' => __( 'Slack', 'my-chatbot' ),
-									),
-									array(
-											'value' => 'telegram',
-											'label' => __( 'Telegram', 'my-chatbot' ),
-									),
-									array(
-											'value' => 'kik',
-											'label' => __( 'Kik', 'my-chatbot' ),
-									),
-									array(
-											'value' => 'viber',
-											'label' => __( 'Viber', 'my-chatbot' ),
-									),
-									array(
-											'value' => 'skype',
-											'label' => __( 'Skype', 'my-chatbot' ),
-									)
-
-							),
-							'label'			=> __( 'Assume appearance of a Dialogflow supported messaging platform. Note default responses do not support rich message content.', 'my-chatbot' )
 					)
 			),
 			'show_time' => array(
@@ -376,11 +343,11 @@ function myc_default_settings() {
 	$general_settings = (array) get_option( 'myc_general_settings' );
 
 	$general_settings = array_merge( array(
-			'myc_access_token' 					=> '',
+			'myc_key_file'						=> '',
+			'myc_project_id'				=> '',
 			'input_text'						=> __( 'Ask something...', 'my-chatbot' ),
 			'enable_welcome_event'				=> false,
 			'language'							=> 'en',
-			'messaging_platform'				=> 'default',
 			'show_time'							=> true,
 			'show_loading'						=> true,
 			'loading_dots_color'				=> '#1f4c73',
