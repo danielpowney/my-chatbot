@@ -110,18 +110,19 @@ function welcomeIntent(sequence) {
 
 	jQuery.ajax({
 		type : "POST",
-		url : myc_script_vars.base_url + "query?v=" + myc_script_vars.version_date,
+		url : myc_script_vars.base_url + myc_script_vars.project_id + myc_script_vars.mid_url + myc_script_vars.session_id + myc_script_vars.end_url,
 		contentType : "application/json; charset=utf-8",
 		dataType : "json",
 		headers : {
-			"Authorization" : "Bearer " + myc_script_vars.access_token
+			"Authorization" : "Bearer " + myc_script_vars.access_token,
 		},
 		data : JSON.stringify( {
-			event : {
-				name : "WELCOME"
-			},
-			lang : myc_script_vars.language,
-			sessionId : myc_script_vars.session_id,
+			"queryInput": {
+				"event": {
+					"name": "WELCOME",
+					"languageCode": myc_script_vars.language
+				},
+			}
 		} ),
 		success : function(response) {
 			prepareResponse(response, sequence);
@@ -136,6 +137,9 @@ function welcomeIntent(sequence) {
 
 }
 
+// query: text,
+// lang : myc_script_vars.language,
+// sessionId: myc_script_vars.session_id
 /**
  * Send Dialogflow query
  *
@@ -144,19 +148,21 @@ function welcomeIntent(sequence) {
  * @returns
  */
 function textQuery(text, sequence) {
-
 	jQuery.ajax({
 		type : "POST",
-		url : myc_script_vars.base_url + "query?v=" + myc_script_vars.version_date,
+		url : myc_script_vars.base_url + myc_script_vars.project_id + myc_script_vars.mid_url + myc_script_vars.session_id + myc_script_vars.end_url,
 		contentType : "application/json; charset=utf-8",
 		dataType : "json",
 		headers : {
-			"Authorization" : "Bearer " + myc_script_vars.access_token
+			"Authorization" : "Bearer " + myc_script_vars.access_token,
 		},
 		data: JSON.stringify( {
-			query: text,
-			lang : myc_script_vars.language,
-			sessionId: myc_script_vars.session_id
+			"queryInput": {
+					"text": {
+								"text": text,
+								"languageCode": myc_script_vars.language
+							}
+					}
 		} ),
 		success : function(response) {
 			setTimeout(function(){
@@ -165,7 +171,6 @@ function textQuery(text, sequence) {
 				}
 				prepareResponse(response,sequence);
 			}, myc_script_vars.response_delay);
-
 		},
 		error : function(response) {
 			if (myc_script_vars.show_loading) {
@@ -186,43 +191,26 @@ function textQuery(text, sequence) {
  * @param response
  */
 function prepareResponse(response, sequence) {
-
-	if (response.status.code == "200" ) {
+	if (response.hasOwnProperty('responseId')) {
 
 		jQuery(window).trigger("myc_response_success", response);
 
 		jQuery("#myc-container-" + sequence + " .myc-conversation-area .myc-conversation-response").removeClass("myc-is-active");
 
-		var messages = response.result.fulfillment.messages;
-		var numMessages = messages.length;
-		var index = 0;
-		for (index; index<numMessages; index++) {
-			var message = messages[index];
+		var messages = response.queryResult.fulfillmentMessages
 
-			if (myc_script_vars.messaging_platform == message.platform
-					|| myc_script_vars.messaging_platform == "default" && message.platform === undefined
-					|| message.platform === undefined && ! hasPlatform(messages, myc_script_vars.messaging_platform) ) {
-
-				switch (message.type) {
-				    case 0: // text response
-						textResponse(message.speech, sequence);
-				        break;
-				    case 1: // TODO card response
-				        cardResponse(message.title, message.subtitle, message.buttons, message.text, message.postback, sequence);
-				        break;
-				    case 2: // quick replies
-				    	quickRepliesResponse(message.title, message.replies, sequence);
-				        break;
-				    case 3: // image response
-						imageResponse(message.imageUrl, sequence);
-				        break;
-				    case 3: // custom payload
-
-				        break;
-				    default:
-				}
+			if (messages[0].hasOwnProperty('text')) {
+				textResponse(messages[0].text.text[0], sequence);
+			} else if (messages[0].hasOwnProperty('card')) {
+				//TODO cardResponse(messages[0].title, messages[0].subtitle, messages[0].buttons, messages[0].text, messages[0].postback, sequence);
+			} else if (messages[0].hasOwnProperty('replies')) {
+				//TODO quickRepliesResponse(messages[0].title, messages[0].replies, sequence);
+			} else if (messages[0].hasOwnProperty('image')) {
+				imageResponse(messages[0].image.imageUri, sequence);
+			} else {
+				console.log('not found');
+				textResponse(myc_script_vars.messages.internal_error, sequence);
 			}
-		}
 
 	} else {
 		textResponse(myc_script_vars.messages.internal_error, sequence);

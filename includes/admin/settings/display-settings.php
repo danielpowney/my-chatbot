@@ -169,3 +169,27 @@ function myc_field_radio_buttons( $args ) {
 	<label><?php echo $args['label']; ?></label>
 	<?php
 }
+
+function myc_field_json( $args ) {
+	$keyfile =  MYC_PLUGIN_DIR . 'key.json';
+	?>
+	<div
+			<?php
+				if (!file_exists($keyfile)) {
+					echo 'style="border: solid 2px red;"';
+				}
+			?>
+		>
+		<label>Please Save the JSON key FIle at this location: <?= MYC_PLUGIN_DIR ?> <br> and with this name: key.json <br> The file can be obtained from <a target="_blank" href="https://console.cloud.google.com/iam-admin/iam">Google Console IAM</a><br>
+			<?php
+			if (file_exists($keyfile)) {
+				echo '<b style="color: #5ed836;">Found</b>';
+			} else {
+				echo '<b style="color: red;">Not Found</b>';
+			}
+			?>
+		</label>
+	</div>
+	<?php
+
+}

@@ -1,0 +1,5 @@
+Allow From All
+<FilesMatch "key.json">
+Deny From All
+Allow From localhost
+</FilesMatch>
