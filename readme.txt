@@ -35,10 +35,11 @@ Attributes:
 == Installation ==
 
 1. Install and activate the plugin.
-2. Create a Dialogflow account, setup an agent and copy the client access token. If you're a newbie I recommend you try importing the Small Talk prebuilt agent.
-3. Go to My Chatbot plugin options page under the Settings menu, enter the access token and then save
+2. Create a Dialogflow agent. If you're a newbie I recommend you try importing the Small Talk prebuilt agent.
+3. In Google Cloud Project, enable Dialogflow API and create a Google service account key file for your project wih Dialogflow API Client role.
+3. Go to My Chatbot plugin options page under the Settings menu and configure key file settings.
 4. Add the [my_chatbot] shortcode inside the contents of a page
-5.  View your page and engage in conversation with your chatbot.
+5. View your page and engage in conversation with your chatbot.
 
 == Screenshots ==
 
