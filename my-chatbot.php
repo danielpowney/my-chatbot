@@ -5,7 +5,7 @@
  * Description: A artificial intelligent chatbot for WordPress powered by Dialogflow  (formerly API.AI).
  * Author: Daniel Powney
  * Author URI: https://danielpowney.com
- * Version: 0.6
+ * Version: 1.0
  * Text Domain: my-chatbot
  * Domain Path: languages
  *
@@ -24,13 +24,14 @@
  *
  * @package     MYC
  * @author 		Daniel Powney
- * @version		0.6
+ * @version		1.0
  */
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 if ( ! class_exists( 'My_Chatbot' ) ) :
+
 
 /**
  * Main My_Chatbot Class.
@@ -130,7 +131,7 @@ final class My_Chatbot {
 
 		// Plugin version.
 		if ( ! defined( 'MYC_VERSION' ) ) {
-			define( 'MYC_VERSION', '0.6' );
+			define( 'MYC_VERSION', '1.0' );
 		}
 
 		// Plugin slug.
@@ -180,13 +181,16 @@ final class My_Chatbot {
 		require_once MYC_PLUGIN_DIR . 'includes/scripts.php';
 		require_once MYC_PLUGIN_DIR . 'includes/post-meta-box.php';
 
+		// TODO
+		//require_once MYC_PLUGIN_DIR . 'includes/gutenberg.php';
+		require_once MYC_PLUGIN_DIR . 'includes/rest-api.php';
+
 		if ( is_admin() ) {
 			require_once MYC_PLUGIN_DIR . 'includes/admin/admin-actions.php';
 			require_once MYC_PLUGIN_DIR . 'includes/admin/admin-pages.php';
 			require_once MYC_PLUGIN_DIR . 'includes/admin/settings/display-settings.php';
 			require_once MYC_PLUGIN_DIR . 'includes/admin/upgrades/upgrade-functions.php';
 			require_once MYC_PLUGIN_DIR . 'includes/admin/welcome.php';
-
 		}
 
 		require_once MYC_PLUGIN_DIR . 'includes/install.php';

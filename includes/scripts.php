@@ -40,12 +40,17 @@ function myc_load_scripts() {
 		$session_id = md5( uniqid( 'myc-' ) ); // do not set cookie here as headers have already been set
 	}
 
+
+	// read SSH key for Google
+	// Get JWT token...
+
 	wp_localize_script( 'myc-script', 'myc_script_vars', apply_filters( 'myc_script_vars', array(
-			'access_token' 			=> apply_filters( 'myc_script_access_token', $general_settings['myc_access_token'] ),
+			//'access_token' 			=> apply_filters( 'myc_script_access_token', $general_settings['myc_access_token'] ),
 			'enable_welcome_event' 	=> apply_filters( 'myc_script_enable_welcome_event', $general_settings['enable_welcome_event'] ),
 			'messaging_platform' 	=> apply_filters( 'myc_script_messaging_platform', $general_settings['messaging_platform'] ),
-			'base_url' 				=> 'https://api.dialogflow.com/v1/',
-			'version_date' 			=> apply_filters( 'myc_protocol_version', '20170712' ),
+			//'base_url' 				=> 'https://dialogflow.googleapis.com/v2/',
+			//'project_id'			=> 'test-8ac44', // FIXME
+			//'version_date' 			=> apply_filters( 'myc_protocol_version', '20170712' ),
 			'messages' 				=> array(
 					'internal_error' 		=> __( 'An internal error occured', 'my-chatbot' ),
 					'input_unknown' 		=> __( 'I\'m sorry I do not understand.', 'my-chatbot' )
@@ -55,6 +60,10 @@ function myc_load_scripts() {
 			'show_loading' 			=> apply_filters( 'myc_script_show_loading', $general_settings['show_loading'] ),
 			'response_delay' 		=> apply_filters( 'myc_script_response_delay', $general_settings['response_delay'] ),
 			'language' 				=> apply_filters( 'myc_language', $general_settings['language'] ),
+			'wpApiSettings' 		=> array(
+				'root' => esc_url_raw( rest_url() ),
+    			'nonce' => wp_create_nonce( 'wp_rest' )
+			)
 	) ) );
 
 }

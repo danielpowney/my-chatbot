@@ -23,6 +23,24 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function myc_options_page() {
 	?>
 	<div class="wrap">
+		<?php
+	    $key_file = '';
+	    if ( defined( 'MYC_KEY_FILE' ) ) {
+	        $key_file = MYC_KEY_FILE;
+	    } else {
+	    	$general_settings = (array) get_option( 'myc_general_settings' );
+	        $key_file = $general_settings['myc_key_file'];
+	    }
+
+		if ( strlen( $key_file ) === 0 ) { ?>
+			<div class="notice notice-error is-dismissible"> 
+				<p><strong>Please configure key file settings for Dialogflow API v2 integration.</strong></p>
+				<button type="button" class="notice-dismiss">
+					<span class="screen-reader-text">Dismiss this notice.</span>
+				</button>
+			</div>
+		<?php } ?>
+
 		<h1><?php _e( 'My Chatbot Settings', 'my-chatbot' ); ?></h1>
 		<h2 class="nav-tab-wrapper">
 			<?php
@@ -100,6 +118,27 @@ function myc_field_input( $args ) {
 
 
 /**
+ * Field input setting
+ */
+function myc_field_textarea( $args ) {
+	$settings = (array) get_option( $args['option_name' ] );
+	$class = isset( $args['class'] ) ? $args['class'] : 'widefat';
+	$readonly = isset( $args['readonly'] ) && $args['readonly'] ? ' readonly' : '';
+	$placeholder = isset( $args['placeholder'] ) ? $args['placeholder'] : '';
+	$required = isset( $args['required'] ) && $args['required'] === true ? 'required' : '';
+	?>
+	<textarea class="<?php echo $class; ?>" name="<?php echo $args['option_name']; ?>[<?php echo $args['setting_id']; ?>]"
+			<?php echo $readonly; ?>
+			placeholder="<?php echo $placeholder; ?>" <?php echo $required; ?> cols="50" rows="5"><?php echo esc_attr( $settings[$args['setting_id']] ); ?></textarea>
+	<?php
+	if ( isset( $args['label'] ) ) { ?>
+		<label><?php echo $args['label']; ?></label>
+	<?php }
+}
+
+
+
+/**
  * Color picker field
  *
  * @param unknown $args
@@ -167,5 +206,41 @@ function myc_field_radio_buttons( $args ) {
 	?>
 	<br />
 	<label><?php echo $args['label']; ?></label>
+	<?php
+}
+
+
+/**
+ * Field input setting
+ */
+function myc_field_service_account_textarea( $args ) {
+	$settings = (array) get_option( $args['option_name' ] );
+	$class = isset( $args['class'] ) ? $args['class'] : 'widefat';
+	$readonly = isset( $args['readonly'] ) && $args['readonly'] ? ' readonly' : '';
+	$placeholder = isset( $args['placeholder'] ) ? $args['placeholder'] : '';
+	$required = isset( $args['required'] ) && $args['required'] === true ? 'required' : '';
+	
+	?>
+	<p><?php _e( 'Define a constant with key file content in wp-config.php:', 'my-chatbot' ); ?></p>
+	<code>define(&apos;MYC_KEY_FILE&apos;, &apos;&lt;<?php _e( 'Add key file content here', 'my-chatbot' ); ?>&gt;&apos;);</code>
+
+	<br /><br />
+	
+	<p><?php _e( 'Or add key file content below:', 'my-chatbot' ); ?></p>
+	<textarea style="margin-top: 6px;" class="<?php echo $class; ?>" name="<?php echo $args['option_name']; ?>[<?php echo $args['setting_id']; ?>]"
+			<?php echo $readonly; ?>
+			placeholder="<?php echo $placeholder; ?>" <?php echo $required; ?> cols="50" rows="5"><?php echo esc_attr( $settings[$args['setting_id']] ); ?></textarea>
+	<br /><br />
+
+	<p><?php _e( 'Setup Dialogflow integration using a Google service account key file for authentication. Here\'s how to create a key file:', 'my-chatbot' ); ?></p>
+	<ol style="margin-top: 6px;">
+		<li><?php _e( 'Login to <a href="https://console.cloud.google.com/">Google Cloud Platform Console</a>.', 'my-chatbot' ); ?></li>
+		<li><?php _e( 'Navigate to the Credentials section of the APIs & Services page for your Dialogflow project.', 'my-chatbot' ); ?></li>
+		<li><?php _e( 'Click the Create credentials button and select Service account key.', 'my-chatbot' ); ?></li>
+		<li><?php _e( 'From the Service account drop down select New service account.', 'my-chatbot' ); ?></li>
+		<li><?php _e( 'Enter a name for the account, then select the "DialogFlow API Client" role.', 'my-chatbot' ); ?></li>
+		<li><?php _e( 'Leave the default Key type of "JSON" selected, then click the Create button to finish creating the new service account key and download its key file.', 'my-chatbot' ); ?></li>
+	</ol>
+	<p><?php _e( 'Also, under API & Services, make sure the Dialogflow API is enabled for your Dialogflow project...', 'my-chatbot' ); ?></p>
 	<?php
 }

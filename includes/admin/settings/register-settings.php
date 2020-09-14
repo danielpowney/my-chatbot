@@ -51,17 +51,16 @@ function myc_register_settings() {
 	add_settings_section( 'myc_section_overlay', null, 'myc_section_overlay_desc', 'my-chatbot&tab=myc_overlay_settings' );
 
 	$setting_fields = array(
-			'myc_access_token' => array(
-					'title' 	=> __( 'Access Token', 'my-chatbot' ),
-					'callback' 	=> 'myc_field_input',
+			'myc_key_file' => array(
+					'title' 	=> __( 'Key File', 'my-chatbot' ),
+					'callback' 	=> 'myc_field_service_account_textarea',
 					'page' 		=> 'my-chatbot&tab=myc_general_settings',
 					'section' 	=> 'myc_section_general',
 					'args' => array(
 							'option_name' 	=> 'myc_general_settings',
-							'setting_id' 	=> 'myc_access_token',
-							'label' 		=> __( 'Enter Dialogflow agent client access token.', 'my-chatbot' ),
-							'placeholder'	=> __( 'Enter access token...', 'my-chatbot' ),
-							'required'		=> true
+							'setting_id' 	=> 'myc_key_file',
+							'placeholder'	=> __( 'Enter key file JSON data...', 'my-chatbot' ),
+							'required'		=> false
 					)
 			),
 			'input_text' => array(
@@ -140,7 +139,7 @@ function myc_register_settings() {
 									),
 									array(
 											'value' => 'google',
-											'label' => __( 'Actions on Google', 'my-chatbot' ),
+											'label' => __( 'Google Assistant', 'my-chatbot' ),
 									),
 									array(
 											'value' => 'facebook',
@@ -151,21 +150,17 @@ function myc_register_settings() {
 											'label' => __( 'Slack', 'my-chatbot' ),
 									),
 									array(
+											'value' => 'hangouts',
+											'label' => __( 'Hangouts', 'my-chatbot' ),
+									),
+									array(
 											'value' => 'telegram',
 											'label' => __( 'Telegram', 'my-chatbot' ),
 									),
 									array(
-											'value' => 'kik',
-											'label' => __( 'Kik', 'my-chatbot' ),
+											'value' => 'line',
+											'label' => __( 'Line', 'my-chatbot' ),
 									),
-									array(
-											'value' => 'viber',
-											'label' => __( 'Viber', 'my-chatbot' ),
-									),
-									array(
-											'value' => 'skype',
-											'label' => __( 'Skype', 'my-chatbot' ),
-									)
 
 							),
 							'label'			=> __( 'Assume appearance of a Dialogflow supported messaging platform. Note default responses do not support rich message content.', 'my-chatbot' )

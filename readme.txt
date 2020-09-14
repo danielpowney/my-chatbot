@@ -2,7 +2,7 @@
 Contributors: dpowney
 Tags: chatbot, Dialogflow, AI, asssistant, natural language, intent recognition, conversational
 Requires at least: 4.0
-Tested up to: 4.9
+Tested up to: 5.4
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -14,13 +14,14 @@ Create your own branded AI chatbot for WordPress powered by Dialogflow (formerly
 A artificial intelligent chatbot for WordPress powered by Dialogflow (formerly API.AI). [View Demo](https://danielpowney.com/my-chatbot-demo?utm_source=view-demo&utm_medium=free-plugin&utm_campaign=readme).
 
 * Create your own branded chatbot
-* Assume the appearance of a Dialogflow supported messaging platform to display rich message content. Quick Replies and Image rich messages are supported.
+* Assume the appearance of a Dialogflow supported messaging platform to display rich message content. Currently supports quick replies and images for Facebook, and displays these as messages to your website chatbot visitors.
 * Add hyperlinks in response message content using HTML markup.
 * An overlay can be added on every page to display the chatbot. The overlay can toggle up or down.
 * A shortcode and widget are available to display the chatbot.
 * Settings with color pickers for backgrounds and fonts, custom text (e.g. powered by) and opacity for old conversation bubbles.
 * Lightweight and super fast as it uses the Dialogflow Agent API to process natural language queries.
 * Enable the chatbot overlay to be displayed on specific posts.
+* Secure. API authentication is server-side.
 * In-built template system and plenty of extensible WordPress action hooks & filters.
 
 **[my_chatbot] Shortcode**
@@ -46,9 +47,18 @@ Attributes:
 3. Plugin options
 4. Plugin options continued
 
+== Upgrade Notice ==
+= 1.0 =	
+* Dialogflow v2 APIs now require a service account key file for authentication. Please review your settings.
+
 == Changelog ==
 
-= 0.6 (28/11/2017) =
+= 1.0 (13/09/2020) =
+* New: Upgraded to Dialogflow v2 APIs. Dialogflow API integration is now server side with OAuth 2.0 using a service account key file.
+* Tweak: Removed Skype, Kik and Viber messaging platform support
+* New: Conversation history saved in local storage
+
+= 0.6 (15/03/2018) =
 * New: Now supports multiple chatbots on the same page
 * Bug: Fixed loading welcome intent when overlay is initially closed
 * Tweak: Updated JavaScript and generated HTML to use classes instead of ids for some div elements as there can be more than one chatbot on the same page
