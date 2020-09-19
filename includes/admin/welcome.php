@@ -128,7 +128,7 @@ class MYC_Welcome {
 
 			<h1><?php printf( __( 'Welcome to My Chatbot v%s', 'my-chatbot' ), $display_version ); ?></h1>
 			<p class="about-text">
-				<?php _e( 'A artificial intelligent chatbot for WordPress powered by Dialogflow (formerly API.AI).', 'my-chatbot' ); ?>
+				<?php _e( 'A artificial intelligent chatbot for WordPress powered by Google Dialogflow (formerly API.AI).', 'my-chatbot' ); ?>
 			</p>
 		</div>
 		<?php
@@ -207,16 +207,17 @@ class MYC_Welcome {
 						<h4><?php _e( 'Installation & Setup', 'my-chatbot' ); ?></h4>
 						<ol>
 							<li><?php _e( 'Install and activate the plugin.', 'my-chatbot' ); ?></li>
-							<li><?php _e( 'Create a Dialogflow account, setup an agent and copy the client access token. If you\'re a newbie I recommend you try importing the Small Talk prebuilt agent.', 'my-chatbot' ); ?></li>
-							<li><?php printf( __( 'Go to <a href="%s">My Chatbot plugin options page</a> under the Settings menu, enter the client access token and then save.', 'my-chatbot' ), esc_url( admin_url( add_query_arg( array( 'page' => 'my-chatbot' ), 'options-general.php' ) ) ) ); ?></li>
-							<li><?php _e( 'Either enable the chatbot overlay on every page or add the [my_chatbot] shortcode inside the contents of a page', 'my-chatbot' ); ?></li>
+							<li><?php _e( 'Create a Google Dialogflow agent. If you\'re a newbie I recommend you try importing the Small Talk prebuilt agent.', 'my-chatbot' ); ?></li>
+							<li><?php printf( __( 'Login into <a href="%s">Google Cloud Platform</a> console for your Dialogflow project. Create a service account credential with DialogFlow API Client role permission. Download the credential key file in JSON format. And enable the Dialogflow API.', 'my-chatbot' ), 'https://console.cloud.google.com/' ); ?></li>
+							<li><?php printf( __( 'Go to <a href="%s">My Chatbot plugin options page</a> under the Settings menu, configure the key file settings.', 'my-chatbot' ), esc_url( admin_url( add_query_arg( array( 'page' => 'my-chatbot' ), 'options-general.php' ) ) ) ); ?></li>
+							<li><?php _e( 'Either enable the chatbot overlay or add the [my_chatbot] shortcode inside the contents of a page', 'my-chatbot' ); ?></li>
 							<li><?php _e( 'View your page and engage in conversation with your chatbot.', 'my-chatbot' ); ?></li>
 						</ol>
 
 						<h4><?php _e( '[my_chatbot] Shortcode', 'my-chatbot' );?></h4>
 						<p><?php _e( 'Attributes:', 'my-chatbot' ); ?></p>
 						<ul style="margin-left: 10px">
-							<li><?php _e( 'demo - true or false. Default is false. If true, a textarea is added below the conversation area showing the Dialogflow JSON response data to assist debugging.', 'my-chatbot' ); ?></li>
+							<li><?php _e( 'debug - true or false. Default is false. If true, a textarea is added below the conversation area showing the Dialogflow JSON response data to assist debugging.', 'my-chatbot' ); ?></li>
 						</ul>
 
 						<h4><?php _e( 'Rich Messages', 'my-chatbot' );?></h4>
