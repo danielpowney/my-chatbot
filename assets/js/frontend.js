@@ -1,13 +1,9 @@
-// Based on blog post: https://www.sitepoint.com/how-to-build-your-own-ai-assistant-using-api-ai/
-// Source code: https://github.com/sitepoint-editors/Api-AI-Personal-Assistant-Demo/blob/master/index.html.
-// Demo: https://devdiner.com/demos/barry/
-
 // When ready :)
 jQuery(document).ready(function() {
 
-	    loadFromLocalStorage();
+	loadFromLocalStorage();
 
-    //Added mutation to storage the html when there is a change on chat box.
+    // Added mutation to store the html when there is a change on chat box.
     var chat = document.querySelectorAll(".myc-conversation-area")[0];
     var mutationObserver = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
@@ -21,17 +17,13 @@ jQuery(document).ready(function() {
 
     /**
      * Storage all html of chatbot in localstorage
-     * 
-     * @author Cristo M. Estévez Hernández <cristom.estevez@gmail.com>
-     * @param {String} messages 
      */
     function saveOnLocalStorage(messages) {
         localStorage.setItem("conversation", messages);
     }
 
     /**
-     * Get all html content from localstorage when load the page.
-     * @author Cristo M. Estévez Hernández <cristom.estevez@gmail.com>
+     * Get all html content from localstorage when loading the page.
      */
     function loadFromLocalStorage() {
         document.querySelector(".myc-conversation-area").innerHTML = localStorage.getItem("conversation");
