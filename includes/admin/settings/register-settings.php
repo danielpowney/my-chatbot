@@ -51,18 +51,17 @@ function myc_register_settings() {
 	add_settings_section( 'myc_section_overlay', null, 'myc_section_overlay_desc', 'my-chatbot&tab=myc_overlay_settings' );
 
 	$setting_fields = array(
-			'myc_key_file' => array(
+			'key_file_option' => array(
 					'title' 	=> __( 'Key File', 'my-chatbot' ),
-					'callback' 	=> 'myc_field_service_account_textarea',
+					'callback' 	=> 'myc_field_key_file_option',
 					'page' 		=> 'my-chatbot&tab=myc_general_settings',
 					'section' 	=> 'myc_section_general',
 					'args' => array(
 							'option_name' 	=> 'myc_general_settings',
-							'setting_id' 	=> 'myc_key_file',
-							'placeholder'	=> __( 'Enter key file JSON data...', 'my-chatbot' ),
-							'required'		=> false
+							'setting_id' 	=> 'key_file_option'
 					)
 			),
+
 			'input_text' => array(
 					'title' 	=> __( 'Input Text', 'my-chatbot' ),
 					'callback' 	=> 'myc_field_input',
@@ -371,7 +370,8 @@ function myc_default_settings() {
 	$general_settings = (array) get_option( 'myc_general_settings' );
 
 	$general_settings = array_merge( array(
-			'myc_access_token' 					=> '',
+			'key_file_option' 					=> 'config',
+			'key_file_content'					=> '',
 			'input_text'						=> __( 'Ask something...', 'my-chatbot' ),
 			'enable_welcome_event'				=> false,
 			'language'							=> 'en',
@@ -419,6 +419,12 @@ if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
  * @param 	$input
  */
 function myc_sanitize_general_settings( $input ) {
+
+	if ( isset( $input['enable_welcome_event'] ) && $input['enable_welcome_event'] == 'true' ) {
+		$input['enable_welcome_event'] = true;
+	} else {
+		$input['enable_welcome_event'] = false;
+	}	
 
 	if ( isset( $input['enable_welcome_event'] ) && $input['enable_welcome_event'] == 'true' ) {
 		$input['enable_welcome_event'] = true;

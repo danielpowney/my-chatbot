@@ -18,18 +18,19 @@ function myc_detect_intent( $request ) {
     $general_settings = (array) get_option( 'myc_general_settings' );
     $platform = strtolower( $general_settings['messaging_platform'] );
 
-    $key_file = '';
-    if ( defined( 'MYC_KEY_FILE' ) ) {
-        $key_file = MYC_KEY_FILE;
-    } else {
-        $key_file = $general_settings['myc_key_file'];
+    $key_file_content = '';
+
+    if ( defined( 'MYC_KEY_FILE_CONTENT' ) && $general_settings['key_file_option'] === 'config') {
+        $key_file_content = MYC_KEY_FILE_CONTENT;
+    } else if ( $general_settings['key_file_option'] === 'options' ) {
+        $key_file_content = $general_settings['key_file_content'];
     }
 
-    if ( strlen( $key_file ) === 0 ) {
+    if ( strlen( $key_file_content ) === 0 ) {
         return;
     }
 
-    $credentials = json_decode( $key_file, true );
+    $credentials = json_decode( $key_file_content, true );
     $project_id = $credentials['project_id'];
 
     $sessions_client = new SessionsClient( array(

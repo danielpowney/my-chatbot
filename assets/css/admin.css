@@ -1,3 +1,36 @@
 p.myc-settings-section {
 	font-size: 14px;
 }
+.myc-key-file-table {
+	/* background-color: #e5e5e5; */
+	border-collapse: collapse;
+}
+.myc-key-file-table label {
+	font-weight: 600;
+}
+.myc-key-file-table th {
+	width: auto;
+	padding: 10px 0 10px 10px;
+	border-collapse: collapse;
+}
+.myc-key-file-table td {
+	padding: 10px;
+	vertical-align: middle;
+	border-collapse: collapse;
+}
+.myc-key-file-table .myc-key-file-options td, .myc-key-file-table .myc-key-file-config td {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+.myc-key-file-table .myc-key-file-config textarea {
+	padding: 10px;
+	font-size: 11px;
+	overflow: hidden;
+	background-color: #eee;
+	width: 100%;
+	margin-top: 10px;
+}
+.myc-key-file-table .myc-key-file-options textarea {
+	margin-top: 6px;
+	margin-bottom: 10px;
+}

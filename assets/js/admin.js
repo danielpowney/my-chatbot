@@ -10,5 +10,16 @@ jQuery(document).ready(function() {
 	    hide: true,
 	    palettes: true
 	});
+
+	jQuery('.myc-key-file-table input:radio').change(function () {
+		if (jQuery(this).val() === 'config') {
+			jQuery(".myc-key-file-config").show();
+			jQuery(".myc-key-file-options").hide();
+		} else {
+			jQuery(".myc-key-file-config").hide();
+			jQuery(".myc-key-file-options").show();
+		}
+       
+	});
 	    
 });
