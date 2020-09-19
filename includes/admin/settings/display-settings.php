@@ -220,7 +220,20 @@ function myc_field_key_file_option( $args ) {
 	$readonly = isset( $args['readonly'] ) && $args['readonly'] ? ' readonly' : '';
 	
 	?>
-
+	<p><?php _e( 'How to create a key file. <a id="myc-how-to-create-key-file-btn" href="#">Click here »</a>', 'my-chatbot' ); ?></p>
+	
+	<div id="myc-how-to-create-key-file-text" style="display: none;">
+		<ol>
+			<li><?php _e( 'Login to <a href="https://console.cloud.google.com/">Google Cloud Platform</a> and select your Dialogflow project.', 'my-chatbot' ); ?></li>
+			<li><?php _e( 'Navigate to the credentials section of the APIs & Services page.', 'my-chatbot' ); ?></li>
+			<li><?php _e( 'Click the create credentials button and select service account key.', 'my-chatbot' ); ?></li>
+			<li><?php _e( 'From the service account drop down, select new service account.', 'my-chatbot' ); ?></li>
+			<li><?php _e( 'Enter a name for the account, then select the "DialogFlow API Client" role.', 'my-chatbot' ); ?></li>
+			<li><?php _e( 'Leave the default key type, then click the create button and download the key file.', 'my-chatbot' ); ?></li>
+			<li><?php _e( 'Make sure the Dialogflow API has been enabled.', 'my-chatbot' ); ?></li>
+		</ol>
+	</div>
+		
 	<table class="myc-key-file-table">
 		<tbody>
 			<tr>

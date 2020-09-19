@@ -34,3 +34,13 @@ p.myc-settings-section {
 	margin-top: 6px;
 	margin-bottom: 10px;
 }
+
+div#myc-how-to-create-key-file-text {
+    background-color: #e5e5e5;
+    padding: 2px;
+    margin-top: 6px;
+}
+div#myc-how-to-create-key-file-text ol {
+	margin-top: 6px;
+	margin-bottom: 0px;
+}

@@ -1,23 +1,24 @@
 === My Chatbot ===
 Contributors: dpowney
-Tags: chatbot, Dialogflow, AI, asssistant, natural language, intent recognition, conversational
+Tags: google, chatbot, dialogflow, AI, asssistant
 Requires at least: 4.0
-Tested up to: 5.4
+Tested up to: 5.5
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Create your own branded AI chatbot for WordPress powered by Dialogflow (formerly API.AI).
+Create your own branded AI chatbot for WordPress powered by Google Dialogflow (formerly API.AI).
 
 == Description ==
 
-A artificial intelligent chatbot for WordPress powered by Dialogflow (formerly API.AI). [View Demo](https://danielpowney.com/my-chatbot-demo?utm_source=view-demo&utm_medium=free-plugin&utm_campaign=readme).
+A artificial intelligent chatbot for WordPress powered by Google Dialogflow (formerly API.AI). [View Demo](https://danielpowney.com/my-chatbot-demo?utm_source=view-demo&utm_medium=free-plugin&utm_campaign=readme).
 
 * Create your own branded chatbot
-* Assume the appearance of a Dialogflow supported messaging platform to display rich message content. Currently supports quick replies and images for Facebook, and displays these as messages to your website chatbot visitors.
-* Add hyperlinks in response message content using HTML markup.
+* Assume the appearance of a Dialogflow supported messaging platform to display rich message content. Currently supports quick replies and images, and displays these as messages to your website chatbot visitors.
 * An overlay can be added on every page to display the chatbot. The overlay can toggle up or down.
+* Shows conversation history across pages
 * A shortcode and widget are available to display the chatbot.
+* Add hyperlinks in response message content using HTML markup.
 * Settings with color pickers for backgrounds and fonts, custom text (e.g. powered by) and opacity for old conversation bubbles.
 * Lightweight and super fast as it uses the Dialogflow Agent API to process natural language queries.
 * Enable the chatbot overlay to be displayed on specific posts.
@@ -28,18 +29,17 @@ A artificial intelligent chatbot for WordPress powered by Dialogflow (formerly A
 
 Attributes:
 
- * demo - true or false. Default is false. If true, a textarea is added below the conversation area showing the Dialogflow JSON response data to assist debugging.
+ * debug - true or false. Default is false. If true, a textarea is added below the conversation area showing the Dialogflow JSON response data to assist debugging.
 
 **Follow this plugin on [GitHub](https://github.com/danielpowney/my-chatbot)**
 
 == Installation ==
 
 1. Install and activate the plugin.
-2. Create a Dialogflow agent. If you're a newbie I recommend you try importing the Small Talk prebuilt agent.
-3. In Google Cloud Project, enable Dialogflow API and create a Google service account key file for your project wih Dialogflow API Client role.
-3. Go to My Chatbot plugin options page under the Settings menu and configure key file settings.
-4. Add the [my_chatbot] shortcode inside the contents of a page
-5. View your page and engage in conversation with your chatbot.
+2. Create a Google Dialogflow agent. If you're a newbie I recommend you try importing the Small Talk prebuilt agent.
+3. In the Google Cloud Platform console for your Dialogflow project, create a Google service account credential with DialogFlow API Client role permission. Download the credential key file in JSON format. Also enable the Dialogflow API.
+4. Go to My Chatbot plugin options page under the Settings menu and configure key file settings.
+5. Enabe the chatbot overlay or use the [my_chatbot] shortcode
 
 == Screenshots ==
 
@@ -50,14 +50,15 @@ Attributes:
 
 == Upgrade Notice ==
 = 1.0 =	
-* Dialogflow v2 APIs now require a service account key file for authentication. Please review your settings.
+* Dialogflow v2 APIs now require a service account key file for authentication. Please configure settings.
 
 == Changelog ==
 
-= 1.0 (13/09/2020) =
+= 1.0 (19/09/2020) =
 * New: Upgraded to Dialogflow v2 APIs. Dialogflow API integration is now server side with OAuth 2.0 using a service account key file.
 * Tweak: Removed Skype, Kik and Viber messaging platform support
 * New: Conversation history saved in local storage
+* Fix: Shortcode debug textarea
 
 = 0.6 (15/03/2018) =
 * New: Now supports multiple chatbots on the same page

@@ -21,5 +21,9 @@ jQuery(document).ready(function() {
 		}
        
 	});
+
+	jQuery('#myc-how-to-create-key-file-btn').click(function() {
+		jQuery("#myc-how-to-create-key-file-text").show();
+	});
 	    
 });

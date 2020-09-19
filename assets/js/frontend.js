@@ -252,9 +252,9 @@ function prepareResponse(response, sequence) {
 			.scrollTop(jQuery("#myc-container-" + sequence + " .myc-conversation-area")
 			.prop("scrollHeight"));
 
-	if (jQuery("#myc-container-" + sequence + " #myc-debug-data").length) {
+	if (jQuery("#myc-container-" + sequence + " + .myc-debug #myc-debug-data").length) {
 		var debugData = JSON.stringify(response, undefined, 2);
-		jQuery("#myc-container-" + sequence + " #myc-debug-data").text(debugData);
+		jQuery("#myc-container-" + sequence + " + .myc-debug #myc-debug-data").text(debugData);
 	}
 }
 
