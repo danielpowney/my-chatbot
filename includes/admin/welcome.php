@@ -128,7 +128,7 @@ class MYC_Welcome {
 
 			<h1><?php printf( __( 'Welcome to My Chatbot v%s', 'my-chatbot' ), $display_version ); ?></h1>
 			<p class="about-text">
-				<?php _e( 'A artificial intelligent chatbot for WordPress powered by Google Dialogflow (formerly API.AI).', 'my-chatbot' ); ?>
+				<?php _e( 'A artificial intelligent chatbot for WordPress powered by Google Dialogflow.', 'my-chatbot' ); ?>
 			</p>
 		</div>
 		<?php

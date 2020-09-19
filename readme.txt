@@ -7,11 +7,11 @@ Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Create your own branded AI chatbot for WordPress powered by Google Dialogflow (formerly API.AI).
+Create your own branded AI chatbot for WordPress powered by Google Dialogflow.
 
 == Description ==
 
-A artificial intelligent chatbot for WordPress powered by Google Dialogflow (formerly API.AI). [View Demo](https://danielpowney.com/my-chatbot-demo?utm_source=view-demo&utm_medium=free-plugin&utm_campaign=readme).
+A artificial intelligent chatbot for WordPress powered by Google Dialogflow. [View Demo](https://danielpowney.com/my-chatbot-demo?utm_source=view-demo&utm_medium=free-plugin&utm_campaign=readme).
 
 * Create your own branded chatbot
 * Assume the appearance of a Dialogflow supported messaging platform to display rich message content. Currently supports quick replies and images, and displays these as messages to your website chatbot visitors.
@@ -50,7 +50,7 @@ Attributes:
 
 == Upgrade Notice ==
 = 1.0 =	
-* Dialogflow v2 APIs now require a service account key file for authentication. Please configure settings.
+Dialogflow v1 API is shutting down soon. This upgrade will enable Dialogflow v2 APIs. You will need to re-configure the plugin settings to use a new service account key file for authentication.
 
 == Changelog ==
 
