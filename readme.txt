@@ -11,7 +11,7 @@ Create your own branded AI chatbot for WordPress powered by Google Dialogflow.
 
 == Description ==
 
-A artificial intelligent chatbot for WordPress powered by Google Dialogflow. [View Demo](https://danielpowney.com/my-chatbot-demo?utm_source=view-demo&utm_medium=free-plugin&utm_campaign=readme).
+An artificial intelligent chatbot for WordPress powered by Google Dialogflow. [View Demo](https://danielpowney.com/my-chatbot-demo?utm_source=view-demo&utm_medium=free-plugin&utm_campaign=readme).
 
 * Create your own branded chatbot
 * Assume the appearance of a Dialogflow supported messaging platform to display rich message content. Currently supports quick replies and images, and displays these as messages to your website chatbot visitors.

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: My Chatbot
  * Plugin URI: https://github.com/danielpowney/my-chatbot
- * Description: A artificial intelligent chatbot for WordPress powered by Dialogflow.
+ * Description: An artificial intelligent chatbot for WordPress powered by Dialogflow.
  * Author: Daniel Powney
  * Author URI: https://danielpowney.com
  * Version: 1.0
@@ -86,7 +86,7 @@ final class My_Chatbot {
 			self::$instance->setup_constants();
 
 			add_action( 'plugins_loaded', array( self::$instance, 'load_textdomain' ) );
-			//add_action( 'in_plugin_update_message-my-chatbot/my-chatbot.php', array( self::$instance, 'upgrade_notice' ), 10, 2 );
+			add_action( 'in_plugin_update_message-my-chatbot/my-chatbot.php', array( self::$instance, 'upgrade_notice' ), 10, 2 );
 
 			self::$instance->includes();
 			self::$instance->api = new MYC_API();
@@ -270,7 +270,7 @@ final class My_Chatbot {
 
 	/**
 	 * Displays upgrade notice
-	 *
+	 */
 	public function upgrade_notice( $data, $response ) {
 	
 		if( isset( $data['upgrade_notice'] ) ) {
@@ -279,7 +279,7 @@ final class My_Chatbot {
 				wpautop( $data['upgrade_notice'] )
 			);
 		}
-	}*/
+	}
 
 }
 
