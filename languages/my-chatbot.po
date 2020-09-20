@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: my-chatbot\n"
-"POT-Creation-Date: 2018-02-06 21:20+1100\n"
-"PO-Revision-Date: 2018-02-06 21:20+1100\n"
+"POT-Creation-Date: 2020-09-20 10:35+1000\n"
+"PO-Revision-Date: 2020-09-20 10:36+1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -17,376 +17,430 @@ msgstr ""
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../includes/admin/admin-pages.php:24
-#: ../includes/admin/settings/register-settings.php:407
+#: ../includes/admin/settings/register-settings.php:402
 #: ../includes/post-meta-box.php:10
 msgid "My Chatbot"
 msgstr ""
 
-#: ../includes/admin/settings/display-settings.php:26
+#: ../includes/admin/settings/display-settings.php:45
 msgid "My Chatbot Settings"
 msgstr ""
 
-#: ../includes/admin/settings/display-settings.php:31
+#: ../includes/admin/settings/display-settings.php:50
 msgid "General"
 msgstr ""
 
-#: ../includes/admin/settings/display-settings.php:32
+#: ../includes/admin/settings/display-settings.php:51
 msgid "Overlay"
 msgstr ""
 
-#: ../includes/admin/settings/display-settings.php:62
+#: ../includes/admin/settings/display-settings.php:81
 msgid "Dialogflow integration settings and chatbot conversation styles."
 msgstr ""
 
-#: ../includes/admin/settings/display-settings.php:71
+#: ../includes/admin/settings/display-settings.php:90
 msgid ""
 "Settings to overlay a chatbot on the bottom right of each page which can "
 "toggle up and down."
 msgstr ""
 
+#: ../includes/admin/settings/display-settings.php:223
+msgid ""
+"How to create a key file. <a id=\"myc-how-to-create-key-file-btn\" href=\"#"
+"\">Click here »</a>"
+msgstr ""
+
+#: ../includes/admin/settings/display-settings.php:227
+msgid ""
+"Login to <a href=\"https://console.cloud.google.com/\">Google Cloud "
+"Platform</a> and select your Dialogflow project."
+msgstr ""
+
+#: ../includes/admin/settings/display-settings.php:228
+msgid "Navigate to the credentials section of the APIs & Services page."
+msgstr ""
+
+#: ../includes/admin/settings/display-settings.php:229
+msgid "Click the create credentials button and select service account key."
+msgstr ""
+
+#: ../includes/admin/settings/display-settings.php:230
+msgid "From the service account drop down, select new service account."
+msgstr ""
+
+#: ../includes/admin/settings/display-settings.php:231
+msgid ""
+"Enter a name for the account, then select the \"DialogFlow API Client\" role."
+msgstr ""
+
+#: ../includes/admin/settings/display-settings.php:232
+msgid ""
+"Leave the default key type, then click the create button and download the "
+"key file."
+msgstr ""
+
+#: ../includes/admin/settings/display-settings.php:233
+msgid "Make sure the Dialogflow API has been enabled."
+msgstr ""
+
+#: ../includes/admin/settings/display-settings.php:244
+msgid "Define key file content in wp-config.php"
+msgstr ""
+
+#: ../includes/admin/settings/display-settings.php:250
+msgid ""
+"Copy the following snippet <strong>near the top</strong> of your wp-config."
+"php and replace <strong>&lt;Add key file JSON content here&gt;</strong>."
+msgstr ""
+
+#: ../includes/admin/settings/display-settings.php:260
+msgid ""
+"I understand the risks but I'd like to store the key file's content in the "
+"database anyway (not recommended)"
+msgstr ""
+
+#: ../includes/admin/settings/display-settings.php:266
+msgid ""
+"Storing your key file's content in the database is less secure, but if "
+"you're ok with that, go ahead and enter your key file's JSON data in the "
+"field below."
+msgstr ""
+
+#: ../includes/admin/settings/display-settings.php:267
+msgid "Enter key file JSON data..."
+msgstr ""
+
 #: ../includes/admin/settings/register-settings.php:55
-msgid "Access Token"
+msgid "Key File"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:62
-msgid "Enter Dialogflow agent client access token."
-msgstr ""
-
-#: ../includes/admin/settings/register-settings.php:63
-msgid "Enter access token..."
-msgstr ""
-
-#: ../includes/admin/settings/register-settings.php:68
+#: ../includes/admin/settings/register-settings.php:66
 msgid "Input Text"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:75
+#: ../includes/admin/settings/register-settings.php:73
 msgid "Enter input text."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:76
+#: ../includes/admin/settings/register-settings.php:74
 msgid "Enter input text..."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:81
+#: ../includes/admin/settings/register-settings.php:79
 msgid "Enable Welcome Event"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:88
+#: ../includes/admin/settings/register-settings.php:86
 msgid ""
 "Check this box if you want to display the welcome fallback intent on page "
 "load."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:92
+#: ../includes/admin/settings/register-settings.php:90
 msgid "Language"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:99
+#: ../includes/admin/settings/register-settings.php:97
 msgid "Leave blank for current locale."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:102
+#: ../includes/admin/settings/register-settings.php:100
 msgid "Brazilian Portuguese"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:103
+#: ../includes/admin/settings/register-settings.php:101
 msgid "Chinese (Cantonese)"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:104
+#: ../includes/admin/settings/register-settings.php:102
 msgid "Chinese (Simplified)"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:105
+#: ../includes/admin/settings/register-settings.php:103
 msgid "Chinese (Traditional)"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:106
+#: ../includes/admin/settings/register-settings.php:104
 msgid "English"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:107
+#: ../includes/admin/settings/register-settings.php:105
 msgid "English - Autralian locale"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:108
+#: ../includes/admin/settings/register-settings.php:106
 msgid "English - Canadian locale"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:109
+#: ../includes/admin/settings/register-settings.php:107
 msgid "English - Great Britain locale"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:110
+#: ../includes/admin/settings/register-settings.php:108
 msgid "English - Indian locale"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:111
+#: ../includes/admin/settings/register-settings.php:109
 msgid "English - US locale"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:112
+#: ../includes/admin/settings/register-settings.php:110
 msgid "Dutch"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:113
+#: ../includes/admin/settings/register-settings.php:111
 msgid "French"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:114
+#: ../includes/admin/settings/register-settings.php:112
 msgid "French - Canadian locale"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:115
+#: ../includes/admin/settings/register-settings.php:113
 msgid "German"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:116
+#: ../includes/admin/settings/register-settings.php:114
 msgid "Italian"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:117
+#: ../includes/admin/settings/register-settings.php:115
 msgid "Japanese"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:118
+#: ../includes/admin/settings/register-settings.php:116
 msgid "Korean"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:119
+#: ../includes/admin/settings/register-settings.php:117
 msgid "Portuguese"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:120
+#: ../includes/admin/settings/register-settings.php:118
 msgid "Russian"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:121
+#: ../includes/admin/settings/register-settings.php:119
 msgid "Spanish"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:122
+#: ../includes/admin/settings/register-settings.php:120
 msgid "Spanish - Latin America locale"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:123
+#: ../includes/admin/settings/register-settings.php:121
 msgid "Spanish - Spain locale"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:124
+#: ../includes/admin/settings/register-settings.php:122
 msgid "Ukranian"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:129
+#: ../includes/admin/settings/register-settings.php:127
 msgid "Messaging Platform"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:139
+#: ../includes/admin/settings/register-settings.php:137
 msgid "Default"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:143
-msgid "Actions on Google"
+#: ../includes/admin/settings/register-settings.php:141
+msgid "Google Assistant"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:147
+#: ../includes/admin/settings/register-settings.php:145
 msgid "Facebook Messenger"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:151
+#: ../includes/admin/settings/register-settings.php:149
 msgid "Slack"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:155
+#: ../includes/admin/settings/register-settings.php:153
+msgid "Hangouts"
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:157
 msgid "Telegram"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:159
-msgid "Kik"
+#: ../includes/admin/settings/register-settings.php:161
+msgid "Line"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:163
-msgid "Viber"
-msgstr ""
-
-#: ../includes/admin/settings/register-settings.php:167
-msgid "Skype"
-msgstr ""
-
-#: ../includes/admin/settings/register-settings.php:171
+#: ../includes/admin/settings/register-settings.php:165
 msgid ""
 "Assume appearance of a Dialogflow supported messaging platform. Note default "
 "responses do not support rich message content."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:175
+#: ../includes/admin/settings/register-settings.php:169
 msgid "Show Time"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:182
+#: ../includes/admin/settings/register-settings.php:176
 msgid ""
 "Check this box if you want to show the time underneath the conversation "
 "bubbles."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:186
+#: ../includes/admin/settings/register-settings.php:180
 msgid "Show Loading"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:193
+#: ../includes/admin/settings/register-settings.php:187
 msgid ""
 "Check this box if you want to display loading dots until a response is "
 "returned."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:197
+#: ../includes/admin/settings/register-settings.php:191
 msgid "Loading Dots Color"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:204
+#: ../includes/admin/settings/register-settings.php:198
 msgid "Choose a color for the loading dots."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:208
+#: ../includes/admin/settings/register-settings.php:202
 msgid "Response Delay"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:215
+#: ../includes/admin/settings/register-settings.php:209
 msgid "milliseconds. Add a delay between messages."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:224
+#: ../includes/admin/settings/register-settings.php:218
 msgid "Request Background Color"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:231
+#: ../includes/admin/settings/register-settings.php:225
 msgid "Choose a background color for the conversation request bubble."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:235
+#: ../includes/admin/settings/register-settings.php:229
 msgid "Request Font Color"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:242
+#: ../includes/admin/settings/register-settings.php:236
 msgid "Choose a font color for the conversation request text."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:246
+#: ../includes/admin/settings/register-settings.php:240
 msgid "Response Background Color"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:253
+#: ../includes/admin/settings/register-settings.php:247
 msgid "Choose a background color for the conversation response bubble."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:257
+#: ../includes/admin/settings/register-settings.php:251
 msgid "Response Font Color"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:264
+#: ../includes/admin/settings/register-settings.php:258
 msgid "Choose a font color for the conversation response text."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:268
+#: ../includes/admin/settings/register-settings.php:262
 msgid "Non Current Opacity"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:275
+#: ../includes/admin/settings/register-settings.php:269
 msgid "Set the background color opacity for non current converation bubbles."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:285
+#: ../includes/admin/settings/register-settings.php:279
 msgid "Enable Overlay"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:292
+#: ../includes/admin/settings/register-settings.php:286
 msgid ""
 "Check this box if you want to enable an overlay of the chatbot on every "
 "page. Note you can override this setting from the Edit post screen for "
 "specific posts."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:296
+#: ../includes/admin/settings/register-settings.php:290
 msgid "Header Background Color"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:303
+#: ../includes/admin/settings/register-settings.php:297
 msgid "Choose a background color for the overlay header."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:307
+#: ../includes/admin/settings/register-settings.php:301
 msgid "Header Font Color"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:314
+#: ../includes/admin/settings/register-settings.php:308
 msgid "Choose a font color for the overlay header text."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:318
+#: ../includes/admin/settings/register-settings.php:312
 msgid "Default Open"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:325
+#: ../includes/admin/settings/register-settings.php:319
 msgid "Check this box if you want to default the overlay to open on page load."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:329
+#: ../includes/admin/settings/register-settings.php:323
 msgid "Header Text"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:336
+#: ../includes/admin/settings/register-settings.php:330
 msgid "Enter overlay header text."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:337
+#: ../includes/admin/settings/register-settings.php:331
 msgid "Enter overlay header text..."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:341
+#: ../includes/admin/settings/register-settings.php:335
 msgid "Powered By Text"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:348
+#: ../includes/admin/settings/register-settings.php:342
 msgid ""
 "Enter overlay powered by text. If empty, the powered by bar will not be "
 "displayed."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:349
+#: ../includes/admin/settings/register-settings.php:343
 msgid "Enter powered by text..."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:353
+#: ../includes/admin/settings/register-settings.php:347
 msgid "Disable CSS Styles"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:360
+#: ../includes/admin/settings/register-settings.php:354
 msgid ""
 "Check this box if you want to disable loading the plugin default CSS styles."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:380
+#: ../includes/admin/settings/register-settings.php:375
 msgid "Ask something..."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:406
+#: ../includes/admin/settings/register-settings.php:401
 msgid "Powered by <a href=\"#\">Replace Me</a>"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:447
+#: ../includes/admin/settings/register-settings.php:448
 msgid "Response delay must be numeric."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:449
+#: ../includes/admin/settings/register-settings.php:450
 msgid "Response delay cannot be less than 0 or greater than 5000."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:459
+#: ../includes/admin/settings/register-settings.php:460
 msgid "Non current opacity must be numeric."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:461
+#: ../includes/admin/settings/register-settings.php:462
 msgid "Non current opacity cannot be less than 0 or greater than 1."
 msgstr ""
 
@@ -409,8 +463,7 @@ msgstr ""
 
 #: ../includes/admin/welcome.php:131
 msgid ""
-"A artificial intelligent chatbot for WordPress powered by Dialogflow "
-"(formerly API.AI)."
+"An artificial intelligent chatbot for WordPress powered by Google Dialogflow."
 msgstr ""
 
 #: ../includes/admin/welcome.php:149
@@ -435,77 +488,85 @@ msgstr ""
 
 #: ../includes/admin/welcome.php:210
 msgid ""
-"Create a Dialogflow account, setup an agent and copy the client access "
-"token. If you're a newbie I recommend you try importing the Small Talk "
-"prebuilt agent."
+"Create a Google Dialogflow agent. If you're a newbie I recommend you try "
+"importing the Small Talk prebuilt agent."
 msgstr ""
 
 #: ../includes/admin/welcome.php:211
 #, php-format
 msgid ""
-"Go to <a href=\"%s\">My Chatbot plugin options page</a> under the Settings "
-"menu, enter the client access token and then save."
+"Login into <a href=\"%s\">Google Cloud Platform</a> console for your "
+"Dialogflow project. Create a service account credential with DialogFlow API "
+"Client role permission. Download the credential key file in JSON format. And "
+"enable the Dialogflow API."
 msgstr ""
 
 #: ../includes/admin/welcome.php:212
+#, php-format
 msgid ""
-"Either enable the chatbot overlay on every page or add the [my_chatbot] "
-"shortcode inside the contents of a page"
+"Go to <a href=\"%s\">My Chatbot plugin options page</a> under the Settings "
+"menu, configure the key file settings."
 msgstr ""
 
 #: ../includes/admin/welcome.php:213
+msgid ""
+"Either enable the chatbot overlay or add the [my_chatbot] shortcode inside "
+"the contents of a page"
+msgstr ""
+
+#: ../includes/admin/welcome.php:214
 msgid "View your page and engage in conversation with your chatbot."
 msgstr ""
 
-#: ../includes/admin/welcome.php:216
+#: ../includes/admin/welcome.php:217
 msgid "[my_chatbot] Shortcode"
 msgstr ""
 
-#: ../includes/admin/welcome.php:217
+#: ../includes/admin/welcome.php:218
 msgid "Attributes:"
 msgstr ""
 
-#: ../includes/admin/welcome.php:219
+#: ../includes/admin/welcome.php:220
 msgid ""
-"demo - true or false. Default is false. If true, a textarea is added below "
+"debug - true or false. Default is false. If true, a textarea is added below "
 "the conversation area showing the Dialogflow JSON response data to assist "
 "debugging."
 msgstr ""
 
-#: ../includes/admin/welcome.php:222
+#: ../includes/admin/welcome.php:223
 msgid "Rich Messages"
 msgstr ""
 
-#: ../includes/admin/welcome.php:223
+#: ../includes/admin/welcome.php:224
 msgid ""
 "To display rich message content responses you will need to set the "
 "appearance of a Dialogflow supported messaging platform in the settings. "
 "Note only Quick Replies and Image rich messages are supported."
 msgstr ""
 
-#: ../includes/admin/welcome.php:225
+#: ../includes/admin/welcome.php:226
 msgid "Hyperlinks"
 msgstr ""
 
-#: ../includes/admin/welcome.php:226
+#: ../includes/admin/welcome.php:227
 msgid ""
 "Hyperlinks in Text response messages are supported as HTML tags e.g. "
 "\"Here's a &lt;a href=&quot;https://example.com&quot;&gt;link&lt;/a&gt;\"."
 msgstr ""
 
-#: ../includes/admin/welcome.php:228
+#: ../includes/admin/welcome.php:229
 msgid "GitHub Repository"
 msgstr ""
 
-#: ../includes/admin/welcome.php:235
+#: ../includes/admin/welcome.php:236
 msgid "Go to Options"
 msgstr ""
 
-#: ../includes/admin/welcome.php:274
+#: ../includes/admin/welcome.php:275
 msgid "No valid changelog was found."
 msgstr ""
 
-#: ../includes/admin/welcome.php:311
+#: ../includes/admin/welcome.php:312
 #, php-format
 msgid "View %s"
 msgstr ""
@@ -532,11 +593,11 @@ msgid ""
 "post?"
 msgstr ""
 
-#: ../includes/scripts.php:50
+#: ../includes/scripts.php:55
 msgid "An internal error occured"
 msgstr ""
 
-#: ../includes/scripts.php:51
+#: ../includes/scripts.php:56
 msgid "I'm sorry I do not understand."
 msgstr ""
 
@@ -565,6 +626,6 @@ msgstr ""
 msgid "Header"
 msgstr ""
 
-#: ../my-chatbot.php:107 ../my-chatbot.php:119
+#: ../my-chatbot.php:109 ../my-chatbot.php:121
 msgid "Cheatin&#8217; huh?"
 msgstr ""
