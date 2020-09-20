@@ -54,6 +54,9 @@ Dialogflow v1 API is shutting down soon. This upgrade will enable Dialogflow v2 
 
 == Changelog ==
 
+= 1.0.1 (20/09/2020) =
+* Fix: Incorrect locale used for German intent
+
 = 1.0 (19/09/2020) =
 * New: Upgraded to Dialogflow v2 APIs. Dialogflow API integration is now server side with OAuth 2.0 using a service account key file.
 * Tweak: Removed Skype, Kik and Viber messaging platform support

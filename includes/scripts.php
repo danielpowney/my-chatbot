@@ -193,7 +193,7 @@ function myc_get_language( $language ) {
 				'nl_NL'		=> 'nl',
 				'fr_FR'		=> 'fr',
 				'fr_CA'		=> 'fr-CA',
-				'de_DE'		=> 'gr',
+				'de_DE'		=> 'de',
 				'it_IT'		=> 'it',
 				'ja'		=> 'ja',
 				'ko_KR'		=> 'ko',
