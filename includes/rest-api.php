@@ -60,6 +60,7 @@ function myc_detect_intent( $request ) {
     $fulfillment_messages = $query_result->getFulfillmentMessages();
     $messages = array();
     $i=0;
+    $default_messages = array();
     $current_platform = 'default'; // can be changed in first iteration...
     while ($fulfillment_messages[$i]) {
 
@@ -70,6 +71,8 @@ function myc_detect_intent( $request ) {
         // ensures responses are only returned for the first platform...
         if ( isset( $current_message['platform'] ) ) {
             $current_platform = strtolower( $current_message['platform'] );
+        } else {
+            array_push( $default_messages, $current_message );
         }
 
         // we only want text or custom responses from supported platforms
@@ -78,6 +81,11 @@ function myc_detect_intent( $request ) {
         }
 
         $i++;
+    }
+
+    // fallback to default if there's no messages for current platform
+    if ( count( $messages ) === 0 && count( $default_messages ) > 0) {
+        $messages = $default_messages;
     }
 
     // ensure only unique responses are returned
