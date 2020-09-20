@@ -154,7 +154,7 @@ function welcomeIntent(sequence) {
 					.prop("scrollHeight"));
 		}
 	} ).done( function ( response ) {
-	    console.log( response );
+	    //console.log( response );
 	} );
 
 }
@@ -197,7 +197,7 @@ function textQuery(text, sequence) {
 					.prop("scrollHeight"));
 		}
 	} ).done( function ( response ) {
-	    console.log( response );
+	    //console.log( response );
 	} );
 
 }
